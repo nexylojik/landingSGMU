@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Медицинская информатика — стоматологи — тренажёр</title>
+<link rel="stylesheet" href="../assets/trainer.css">
+<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]]}};</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="title-row">
+      <h1 id="appTitle"></h1>
+      <div class="h-side"><span class="h-meta" id="totalMeta"></span><a class="xlink" href="../">← Все тренажёры</a></div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ ГЛАВНАЯ ============ -->
+    <section id="screen-home">
+      <div id="homeTop"><p class="intro" id="appIntro">Выбери тему → тест → режим: все вопросы по порядку, диапазон или случайные. Первый запуск теста начинается с изучения вопросов.</p>
+      <div class="modes">
+        <button class="mode" id="modeMistakes">
+          <span class="mode-tag">Повторение</span>
+          <span class="mode-title">Работа над ошибками</span>
+          <span class="mode-sub" id="modeMistakesSub"></span>
+        </button>
+        <button class="mode" id="modeRandom">
+          <span class="mode-tag">Смешанный</span>
+          <span class="mode-title">30 случайных</span>
+          <span class="mode-sub">Из всех тем сразу</span>
+        </button>
+      </div></div>
+      <div class="qgroup" id="topicsBlock">
+        <h2>Темы <button class="btn ghost" id="openList" style="font-size:.85rem; padding:6px 12px;">Все вопросы с ответами</button></h2>
+        <div class="topics" id="topics"></div>
+      </div>
+    </section>
+
+    <!-- ============ ТЕМА ============ -->
+    <section id="screen-topic" hidden>
+      <div class="crumbs">
+        <div class="quiz-title" id="topicTitle"></div>
+        <button class="btn ghost" id="topicBack">← Темы</button>
+      </div>
+      <div class="topics" id="tests"></div>
+    </section>
+
+    <!-- ============ ЗАПУСК ТЕСТА ============ -->
+    <section id="screen-launch" hidden>
+      <div id="launchHome" hidden></div>
+      <div class="crumbs" id="launchCrumbRow">
+        <div class="quiz-title" id="launchCrumb"></div>
+        <button class="btn ghost" id="launchBack">← Назад</button>
+      </div>
+      <div class="launch-card">
+        <div class="launch-title" id="launchTitle"></div>
+        <div class="launch-meta" id="launchMeta"></div>
+        <div class="launch-controls">
+          <div class="seg" role="radiogroup" aria-label="Режим" id="launchSeg"></div>
+          <div class="range" id="rangeBox" hidden>
+            <label>с <input type="number" id="rFrom" min="1" inputmode="numeric"></label>
+            <label>по <input type="number" id="rTo" min="1" inputmode="numeric"></label>
+          </div>
+          <div class="range" id="randBox" hidden>
+            <label>вопросов <select id="rCount"><option>10</option><option>20</option><option>30</option><option>50</option><option>100</option></select></label>
+          </div>
+        </div>
+        <p class="launch-sub" id="launchSub"></p>
+        <div class="launch-actions">
+          <button class="btn" id="launchStudy">Изучить вопросы</button>
+          <button class="btn ghost" id="launchList">Все вопросы с ответами</button>
+          <button class="btn primary" id="launchStart">Начать →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ИЗУЧЕНИЕ ============ -->
+    <section id="screen-study" hidden>
+      <div class="crumbs">
+        <div class="quiz-title" id="studyTitle"></div>
+        <button class="btn ghost" id="studyBack">← Назад</button>
+      </div>
+      <div class="study-hint" id="studyHint"></div>
+      <div id="studyList"></div>
+      <div class="study-start"><button class="btn primary" id="studyStart">Я изучил — начать тест →</button></div>
+    </section>
+
+    <!-- ============ ТЕСТ ============ -->
+    <section id="screen-quiz" hidden>
+      <div class="quiz-sticky">
+        <div class="quiz-bar">
+          <div class="quiz-title" id="quizTitle"></div>
+          <button class="btn ghost" id="peekBtn" title="Список вопросов этого теста с ответами">Вопросы<span class="wide-only"> теста</span></button>
+          <button class="btn ghost" id="restartBtn" title="Начать этот тест заново">↻ Заново</button>
+          <button class="btn ghost" id="finishBtn">Завершить</button>
+        </div>
+        <div class="progress">
+          <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+          <span class="score-live" id="scoreLive"></span>
+          <span class="progress-text" id="progressText"></span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="q-meta" id="qMeta"></div>
+        <div id="qBody"></div>
+        <ul class="answers" id="answers"></ul>
+        <div id="taskExtra"></div>
+        <div class="feedback" id="feedback" aria-live="polite"></div>
+        <div class="actions">
+          <button class="btn primary" id="checkBtn">Проверить</button>
+          <button class="btn primary" id="nextBtn" hidden>Дальше →</button>
+          <span class="kbd-hint">1–9 — выбрать · Enter — проверить / дальше</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ РЕЗУЛЬТАТ ============ -->
+    <section id="screen-result" hidden>
+      <div class="card">
+        <div class="q-meta" id="resultTitle">Результат</div>
+        <div class="result-score" id="resultScore"></div>
+        <div class="grade" id="resultGrade"></div>
+        <div class="perfect-line" id="perfectLine" hidden></div>
+        <div class="actions">
+          <button class="btn primary" id="nextTest" hidden>Следующий тест →</button>
+          <button class="btn primary" id="retryMistakes">Повторить ошибки</button>
+          <button class="btn" id="retrySame">Решить заново</button>
+          <button class="btn" id="newSet" hidden>Новый набор</button>
+          <button class="btn ghost" id="toMenu">В меню</button>
+        </div>
+        <div class="mistakes" id="mistakes"></div>
+      </div>
+    </section>
+
+    <!-- ============ СПИСОК ============ -->
+    <section id="screen-list" hidden>
+      <div class="quiz-bar"><div class="quiz-title" id="listTitle">Все вопросы с ответами</div></div>
+      <div class="list-tools" id="listTools">
+        <div class="tools-row">
+          <button class="btn ghost back-btn" id="listBack">← Меню</button>
+          <input class="search" id="search" type="search" placeholder="Поиск по вопросам и ответам">
+        </div>
+        <nav class="sec-nav topic-nav" id="topicNav" aria-label="Темы"></nav>
+        <nav class="sec-nav test-nav" id="testNav" aria-label="Тесты темы"></nav>
+      </div>
+      <p class="list-count" id="listCount"></p>
+      <div id="list"></div>
+      <button class="to-top" id="toTop" aria-label="Наверх" title="Наверх">↑</button>
+    </section>
+  </main>
+</div>
+
+<div class="lightbox" id="lightbox" hidden><img id="lightboxImg" alt=""></div>
+
+<script src="data.js"></script>
+<script src="../assets/trainer.js"></script>
+</body>
+</html>
