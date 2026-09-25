@@ -406,7 +406,7 @@
       transition: transform .15s, border-color .15s, background .15s;
     }
     .question-nav-button:hover { transform: translateY(-1px); border-color: var(--green); }
-    .question-nav-button-primary { color: #fff; border-color: var(--green); background: var(--green); }
+    .question-nav-button-primary { color: #1A1216; border-color: var(--green); background: var(--green); }
     .question-nav-button-primary:hover { background: var(--green-dark); }
     .exam-view + .footer { display: none; }
     .source-heading {
@@ -765,6 +765,15 @@
     body{font-weight:500;}
     #theme-button{display:none !important;}
     html, body{overflow-x:clip;}
+    /* Схемы и иллюстрации стоят на светлой подложке — внутри них светлая палитра */
+    .figure{
+      --paper:#FFFFFF; --paper-soft:#F4F2F7; --ink:#1F1B26; --muted:#5E5868;
+      --line:#D9D3DF; --figure-line:#D9D3DF;
+      --green:#D6505A; --green-dark:#B63F48; --green-soft:#FFE3E4;
+      --amber:#B8742F; --amber-soft:#FBEBD8; --rose:#C9434D; --rose-soft:#FBE3E5;
+      --blue:#3F6C95; --blue-soft:#E3EDF6;
+      color:#1F1B26;
+    }
     .brand-mark{background:var(--green) !important; color:#1A1216 !important;}
     h1, h2{font-weight:400 !important; letter-spacing:.01em;}
     .xlink{font-family:'Inter Tight', sans-serif; font-size:.8rem; font-weight:600; color:#FF9FA2; text-decoration:none; border:1px solid #332F3D; border-radius:999px; padding:5px 12px; white-space:nowrap; align-self:center; transition:border-color .15s ease, background .15s ease;}
