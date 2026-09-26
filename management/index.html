@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Менеджмент — конспекты к зачёту</title>
+<meta name="description" content="Ответы на 35 вопросов зачёта по менеджменту и управлению в здравоохранении: конспекты, схемы, таблицы.">
+<style>
+  @font-face{ font-family:'Libre Caslon Cond'; src:url('../fonts/LibreCaslonCyrCondensed-Regular.otf') format('opentype'); font-weight:400; font-display:swap; }
+  @font-face{ font-family:'Inter Tight'; src:url('../fonts/InterTight-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+  @font-face{ font-family:'Inter Tight'; src:url('../fonts/InterTight-SemiBold.ttf') format('truetype'); font-weight:600; font-display:swap; }
+  @font-face{ font-family:'Atkinson Mono'; src:url('../fonts/AtkinsonHyperlegibleMono-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+  :root{
+    color-scheme: dark;
+    --bg:#100E14; --surface:#1A1822; --surface-2:#211E2A; --border:#332F3D;
+    --text:#ECF4FF; --text-muted:rgba(236,244,255,.62); --text-faint:rgba(236,244,255,.45);
+    --accent:#FF9FA2; --accent-soft:rgba(255,159,162,.14);
+    --accent-2:#E7B588; --accent-2-soft:rgba(231,181,136,.14);
+    --ok:#8FD6A6; --ok-soft:rgba(143,214,166,.14);
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 14px 34px -14px rgba(0,0,0,.65);
+  }
+  *{box-sizing:border-box;}
+  html{background:var(--bg); scroll-padding-top:118px;}
+  body{
+    background:var(--bg); color:var(--text); margin:0; padding:0 16px 80px;
+    font-family:'Inter Tight','Segoe UI',Arial,sans-serif; font-weight:500; line-height:1.62;
+    background-image:radial-gradient(900px 480px at 12% -8%, rgba(255,159,162,.13), transparent 60%), radial-gradient(760px 420px at 100% 4%, rgba(231,181,136,.09), transparent 60%);
+    background-repeat:no-repeat;
+  }
+  .wrap{max-width:860px; margin:0 auto;}
+  h1,h2,h3{font-family:'Libre Caslon Cond',Georgia,serif; font-weight:400; letter-spacing:.01em; text-wrap:balance; margin:0;}
+  a{color:inherit;}
+  b{font-weight:600; color:#fff;}
+  .mono{font-family:'Atkinson Mono',monospace; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase;}
+
+  .top{display:flex; justify-content:space-between; align-items:center; padding:20px 0 0; gap:12px;}
+  .back{color:var(--text-muted); text-decoration:none; font-size:.9rem; display:inline-flex; gap:6px; align-items:center;}
+  .back:hover{color:var(--accent);}
+  .hero{padding:36px 0 26px;}
+  .kicker{color:var(--accent); display:inline-flex; align-items:center; gap:8px;}
+  .kicker::before{content:""; width:22px; height:1px; background:var(--accent);}
+  .hero h1{font-size:clamp(2.2rem,6vw,3.4rem); line-height:1.04; margin:14px 0 12px;}
+  .hero h1 em{font-style:normal; color:var(--accent);}
+  .hero p{color:var(--text-muted); max-width:580px; margin:0;}
+  .progress{margin-top:22px; display:flex; align-items:center; gap:14px; max-width:420px;}
+  .bar{flex:1; height:6px; border-radius:99px; background:var(--surface-2); overflow:hidden;}
+  .bar i{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--accent),var(--accent-2)); transition:width .3s ease;}
+  .progress span{color:var(--text-muted); font-size:.85rem; white-space:nowrap;}
+
+  /* навигация */
+  .nav{position:sticky; top:0; z-index:5; background:rgba(16,14,20,.88); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border); padding:10px 0; margin-bottom:8px;}
+  .nav-row{display:flex; gap:8px; align-items:center;}
+  .search{flex:1; min-width:0; position:relative;}
+  .search input{width:100%; font:inherit; font-size:.92rem; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:9px 12px 9px 36px; outline:none;}
+  .search input::placeholder{color:var(--text-faint);}
+  .search input:focus{border-color:var(--accent);}
+  .search svg{position:absolute; left:11px; top:50%; transform:translateY(-50%); width:16px; height:16px; color:var(--text-faint);}
+  .toggle{flex:none; font:inherit; font-weight:600; font-size:.85rem; color:var(--text-muted); background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:9px 12px; cursor:pointer;}
+  .toggle:hover{color:var(--text);}
+  .nums{display:flex; gap:5px; overflow-x:auto; scrollbar-width:none; padding-top:9px;}
+  .nums::-webkit-scrollbar{display:none;}
+  .nums a{flex:none; min-width:34px; height:30px; display:flex; align-items:center; justify-content:center; text-decoration:none; font-family:'Atkinson Mono',monospace; font-size:.8rem;
+    color:var(--text-muted); background:var(--surface); border:1px solid var(--border); border-radius:9px; transition:all .15s ease;}
+  .nums a:hover{color:var(--text); border-color:rgba(236,244,255,.3);}
+  .nums a.cur{border-color:var(--accent); color:var(--accent);}
+  .nums a.ok{background:var(--ok-soft); border-color:rgba(143,214,166,.4); color:var(--ok);}
+  .nums a.hide{display:none;}
+
+  /* группы и темы */
+  .group{padding-top:26px;}
+  .group-head{margin:0 0 14px;}
+  .group-head .mono{color:var(--accent-2);}
+  .group-head h2{font-size:2rem; line-height:1.1; margin:6px 0 4px;}
+  .group-head p{color:var(--text-muted); margin:0; font-size:.93rem;}
+  .topic{background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:20px 22px 22px; margin-bottom:12px; box-shadow:var(--shadow);}
+  .topic.is-done{border-color:rgba(143,214,166,.35);}
+  .t-head{display:flex; gap:12px; align-items:flex-start;}
+  .t-num{flex:none; width:36px; height:36px; border-radius:11px; background:var(--accent-soft); color:var(--accent); display:flex; align-items:center; justify-content:center; font-family:'Atkinson Mono',monospace; font-size:.9rem; margin-top:1px;}
+  .group#g-b .t-num{background:var(--accent-2-soft); color:var(--accent-2);}
+  .topic.is-done .t-num{background:var(--ok-soft); color:var(--ok);}
+  .t-head h3{flex:1; font-size:1.5rem; line-height:1.15; padding-top:3px;}
+  .done{flex:none; display:inline-flex; align-items:center; gap:6px; font:inherit; font-size:.8rem; font-weight:600; color:var(--text-muted); background:transparent; border:1px solid var(--border); border-radius:99px; padding:6px 11px; cursor:pointer; transition:all .15s ease;}
+  .done svg{width:14px; height:14px;}
+  .done:hover{color:var(--text); border-color:rgba(236,244,255,.3);}
+  .done[aria-pressed="true"]{background:var(--ok-soft); color:var(--ok); border-color:rgba(143,214,166,.45);}
+  .t-body{margin-top:12px; padding-left:48px;}
+  .t-body p{margin:0 0 10px; color:rgba(236,244,255,.86);}
+  .t-body h4{font-family:'Inter Tight',sans-serif; font-weight:600; font-size:.98rem; color:var(--accent-2); margin:16px 0 6px;}
+  .t-body h4:first-child{margin-top:0;}
+  .t-body ul,.t-body ol{margin:0 0 10px; padding:0; list-style:none;}
+  .t-body li{position:relative; padding-left:20px; margin:0 0 6px; color:rgba(236,244,255,.86);}
+  .t-body ul li::before{content:""; position:absolute; left:4px; top:.66em; width:6px; height:6px; border-radius:50%; background:var(--accent);}
+  .t-body ol{counter-reset:n;}
+  .t-body ol li{counter-increment:n; padding-left:28px;}
+  .t-body ol li::before{content:counter(n); position:absolute; left:0; top:.15em; width:20px; height:20px; border-radius:6px; background:var(--accent-soft); color:var(--accent); font-family:'Atkinson Mono',monospace; font-size:.72rem; display:flex; align-items:center; justify-content:center;}
+  mark{background:rgba(231,181,136,.32); color:#fff; border-radius:3px; padding:0 1px;}
+
+  .fig{margin:14px 0 12px;}
+  .zoom{display:block; width:100%; padding:12px; margin:0; border:1px solid var(--border); border-radius:14px; background:#FFFFFF; cursor:zoom-in;}
+  .zoom img{display:block; width:100%; height:auto;}
+  .zoom:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+  .fig figcaption{margin-top:7px; color:var(--text-muted); font-size:.86rem;}
+  .fig figcaption .mono{color:var(--accent-2); margin-right:4px;}
+
+  .tbl{overflow-x:auto; margin:12px 0; border:1px solid var(--border); border-radius:14px;}
+  .tbl table{border-collapse:collapse; width:100%; min-width:460px; font-size:.9rem;}
+  .tbl th,.tbl td{padding:9px 12px; text-align:left; vertical-align:top; border-bottom:1px solid var(--border);}
+  .tbl tr:last-child th,.tbl tr:last-child td{border-bottom:0;}
+  .tbl thead th{background:var(--surface-2); color:var(--accent-2); font-weight:600;}
+  .tbl tbody th{color:var(--text); font-weight:600;}
+  .tbl td{color:rgba(236,244,255,.86);}
+
+  .empty{display:none; text-align:center; color:var(--text-muted); padding:40px 0;}
+  .hidden{display:none !important;}
+  body.collapsed .t-body{display:none;}
+  body.collapsed .topic{padding-bottom:20px;}
+
+  .lightbox{position:fixed; inset:0; z-index:20; background:rgba(8,7,10,.9); display:none; align-items:center; justify-content:center; padding:16px; cursor:zoom-out;}
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:min(1300px,100%); max-height:88vh; background:#fff; border-radius:12px; padding:14px;}
+  .lightbox p{position:absolute; bottom:14px; left:16px; right:16px; text-align:center; color:var(--text-muted); margin:0; font-size:.9rem;}
+
+  footer{margin-top:40px; padding-top:20px; border-top:1px solid var(--border); color:var(--text-faint); font-size:.85rem; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+  footer a{color:var(--text-muted);}
+  footer a:hover{color:var(--accent);}
+
+  @media (max-width:600px){
+    .topic{padding:16px 15px 18px; border-radius:16px;}
+    .t-body{padding-left:0;}
+    .t-head h3{font-size:1.28rem;}
+    .done span{display:none;}
+    .done{padding:7px;}
+    .zoom{padding:6px;}
+    .toggle .long{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="back" href="../">← Все тренажёры</a>
+    <span class="mono" style="color:var(--text-faint)">Зачёт · конспекты</span>
+  </div>
+
+  <header class="hero">
+    <span class="kicker mono">Менеджмент</span>
+    <h1>Ответы к зачёту<br>по <em>менеджменту</em></h1>
+    <p>35 вопросов: основы менеджмента и управление в здравоохранении — кратко, по пунктам, со схемами. Отмечайте выученные темы, прогресс сохранится в браузере.</p>
+    <div class="progress"><div class="bar"><i id="bar"></i></div><span id="pcount">0 из 35</span></div>
+  </header>
+
+  <nav class="nav" aria-label="Темы">
+    <div class="nav-row">
+      <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input id="q" type="search" placeholder="Поиск по темам: например, риск, мотивация, Файоль" aria-label="Поиск по темам"></label>
+      <button class="toggle" id="collapse" type="button" aria-pressed="false">Свернуть<span class="long"> ответы</span></button>
+    </div>
+    <div class="nums" id="nums">
+<a href="#t1" data-n="1">1</a>
+<a href="#t2" data-n="2">2</a>
+<a href="#t3" data-n="3">3</a>
+<a href="#t4" data-n="4">4</a>
+<a href="#t5" data-n="5">5</a>
+<a href="#t6" data-n="6">6</a>
+<a href="#t7" data-n="7">7</a>
+<a href="#t8" data-n="8">8</a>
+<a href="#t9" data-n="9">9</a>
+<a href="#t10" data-n="10">10</a>
+<a href="#t11" data-n="11">11</a>
+<a href="#t12" data-n="12">12</a>
+<a href="#t13" data-n="13">13</a>
+<a href="#t14" data-n="14">14</a>
+<a href="#t15" data-n="15">15</a>
+<a href="#t16" data-n="16">16</a>
+<a href="#t17" data-n="17">17</a>
+<a href="#t18" data-n="18">18</a>
+<a href="#t19" data-n="19">19</a>
+<a href="#t20" data-n="20">20</a>
+<a href="#t21" data-n="21">21</a>
+<a href="#t22" data-n="22">22</a>
+<a href="#t23" data-n="23">23</a>
+<a href="#t24" data-n="24">24</a>
+<a href="#t25" data-n="25">25</a>
+<a href="#t26" data-n="26">26</a>
+<a href="#t27" data-n="27">27</a>
+<a href="#t28" data-n="28">28</a>
+<a href="#t29" data-n="29">29</a>
+<a href="#t30" data-n="30">30</a>
+<a href="#t31" data-n="31">31</a>
+<a href="#t32" data-n="32">32</a>
+<a href="#t33" data-n="33">33</a>
+<a href="#t34" data-n="34">34</a>
+<a href="#t35" data-n="35">35</a>
+    </div>
+  </nav>
+
+  <main id="main">
+<section class="group" id="g-a"><div class="group-head"><span class="mono">Темы 1–17</span><h2>Основы менеджмента</h2><p>Конспекты к контрольной: история и функции менеджмента, организации, планирование, контроль, инновации, персонал, конфликты.</p></div>
+<article class="topic" id="t1" data-n="1">
+<header class="t-head"><span class="t-num">1</span><h3>Развитие менеджмента в прошлом и настоящем</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<h4>Классические школы управления</h4>
+<ul>
+<li>Школа научного управления (Ф. Тейлор, нач. XX в.) — нормирование труда, разделение труда на элементарные операции, материальное стимулирование.</li>
+<li>Административная (классическая) школа (А. Файоль) — 14 принципов управления, выделение функций менеджмента.</li>
+<li>Школа человеческих отношений (Э. Мэйо, Хоторнские эксперименты) — роль психологического климата и мотивации.</li>
+<li>Школа поведенческих наук (Маслоу, Герцберг, Мак-Грегор) — изучение мотивации и поведения человека в организации.</li>
+<li>Количественная школа — применение математических моделей, статистики, исследования операций.</li>
+</ul>
+<h4>Современные подходы</h4>
+<ul>
+<li>Процессный подход — управление рассматривается как непрерывная серия взаимосвязанных функций.</li>
+<li>Системный подход — организация как открытая система, взаимодействующая с внешней средой.</li>
+<li>Ситуационный подход — выбор методов управления зависит от конкретной ситуации.</li>
+<li>Современный этап — стратегический менеджмент, управление знаниями, цифровизация, клиентоориентированность, гибкие (agile) методы управления.</li>
+</ul>
+</div></article>
+<article class="topic" id="t2" data-n="2">
+<header class="t-head"><span class="t-num">2</span><h3>Цели, задачи, функции менеджмента</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<h4>Цель менеджмента</h4>
+<p>Обеспечить эффективное и рациональное достижение целей организации за счёт правильного использования ресурсов (людских, финансовых, материальных, информационных).</p>
+<h4>Основные задачи</h4>
+<ul>
+<li>Определение перспектив развития организации.</li>
+<li>Рациональное распределение и использование ресурсов.</li>
+<li>Организация слаженной работы коллектива.</li>
+<li>Создание условий для мотивации и развития сотрудников.</li>
+<li>Обеспечение контроля и своевременной корректировки деятельности.</li>
+</ul>
+<h4>Функции менеджмента</h4>
+<ul>
+<li>Планирование — постановка целей и определение путей их достижения.</li>
+<li>Организация — распределение задач, ресурсов, полномочий.</li>
+<li>Мотивация — побуждение персонала к эффективной работе.</li>
+<li>Контроль — сравнение фактических результатов с плановыми и корректировка.</li>
+<li>Координация — согласование действий всех подразделений (иногда выделяется отдельно).</li>
+</ul>
+</div></article>
+<article class="topic" id="t3" data-n="3">
+<header class="t-head"><span class="t-num">3</span><h3>Пути эффективного достижения поставленных целей</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<ul>
+<li>Формулирование целей по принципу SMART (конкретность, измеримость, достижимость, значимость, ограниченность во времени).</li>
+<li>Декомпозиция генеральной цели на подцели («дерево целей»).</li>
+<li>Разработка чёткого плана действий с указанием сроков и ответственных.</li>
+<li>Рациональное распределение ресурсов и делегирование полномочий.</li>
+<li>Мотивация персонала на достижение результата (материальная и нематериальная).</li>
+<li>Регулярный контроль промежуточных результатов и своевременная корректировка плана.</li>
+<li>Устранение барьеров: недостатка ресурсов, сопротивления изменениям, дефицита информации.</li>
+<li>Использование обратной связи и анализа отклонений (план–факт).</li>
+</ul>
+</div></article>
+<article class="topic" id="t4" data-n="4">
+<header class="t-head"><span class="t-num">4</span><h3>Понятие и классификация организаций</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<h4>Понятие</h4>
+<p>Организация — группа людей, деятельность которых сознательно координируется для достижения общей цели (целей).</p>
+<h4>Признаки организации</h4>
+<ul>
+<li>Наличие цели, наличие двух и более людей, разделение труда, наличие структуры управления.</li>
+</ul>
+<h4>Классификация</h4>
+<ul>
+<li>По форме собственности: государственные, частные, муниципальные, смешанные.</li>
+<li>По цели деятельности: коммерческие (цель — прибыль) и некоммерческие.</li>
+<li>По размеру: малые, средние, крупные.</li>
+<li>По организационно-правовой форме: ООО, АО, учреждения, унитарные предприятия и т.д.</li>
+<li>По степени формализации: формальные (официально зарегистрированы, есть структура и правила) и неформальные (возникают спонтанно).</li>
+<li>По отраслевой принадлежности: промышленные, торговые, медицинские, образовательные и др.</li>
+</ul>
+</div></article>
+<article class="topic" id="t5" data-n="5">
+<header class="t-head"><span class="t-num">5</span><h3>Способности к управленческой деятельности</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<h4>Группы качеств руководителя</h4>
+<ul>
+<li>Профессиональные — знание отрасли, экономики, права, современных методов управления.</li>
+<li>Деловые — организаторские способности, умение планировать, делегировать, принимать решения в условиях неопределённости.</li>
+<li>Личностные — стрессоустойчивость, ответственность, целеустремлённость, самообладание.</li>
+<li>Коммуникативные — умение слушать, убеждать, вести переговоры, разрешать конфликты.</li>
+<li>Лидерские качества — способность вести за собой, вдохновлять и мотивировать коллектив.</li>
+</ul>
+<h4>Управленческие роли (по Г. Минцбергу)</h4>
+<ul>
+<li>Межличностные роли (глава, лидер, связующее звено).</li>
+<li>Информационные роли (приёмник, распространитель, представитель).</li>
+<li>Роли, связанные с принятием решений (предприниматель, устраняющий нарушения, распределитель ресурсов, переговорщик).</li>
+</ul>
+</div></article>
+<article class="topic" id="t6" data-n="6">
+<header class="t-head"><span class="t-num">6</span><h3>Контроль качества деятельности. Его результативность</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<h4>Понятие контроля</h4>
+<p>Контроль — процесс обеспечения достижения целей организации через сопоставление фактических результатов с планируемыми.</p>
+<h4>Виды контроля</h4>
+<ul>
+<li>Предварительный — проверка ресурсов и готовности до начала работы.</li>
+<li>Текущий — осуществляется в процессе деятельности.</li>
+<li>Итоговый (заключительный) — оценка результатов по завершении работы.</li>
+</ul>
+<h4>Этапы процесса контроля</h4>
+<ul>
+<li>Установление стандартов и норм.</li>
+<li>Измерение фактически достигнутых результатов.</li>
+<li>Сопоставление результатов со стандартами.</li>
+<li>Принятие корректирующих действий.</li>
+</ul>
+<h4>Показатели результативности</h4>
+<ul>
+<li>Эффективность (соотношение результата и затрат), экономичность, качество продукции/услуг, удовлетворённость потребителей.</li>
+</ul>
+</div></article>
+<article class="topic" id="t7" data-n="7">
+<header class="t-head"><span class="t-num">7</span><h3>Организационные структуры управления: простые и сложные</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<h4>Простые структуры</h4>
+<ul>
+<li>Линейная — прямое подчинение сверху вниз, единоначалие; проста, но руководитель перегружен.</li>
+<li>Функциональная — управление по отдельным функциям (финансы, кадры и т.д.); специализация, но возможна путаница в подчинении.</li>
+</ul>
+<h4>Сложные (комбинированные) структуры</h4>
+<ul>
+<li>Линейно-функциональная — сочетание линейного подчинения и функциональных штабов- консультантов.</li>
+<li>Дивизиональная — деление по продуктам, регионам или потребителям; гибкость для крупных организаций.</li>
+<li>Матричная — двойное подчинение (функциональному и проектному руководителю); высокая гибкость, но сложность координации.</li>
+</ul>
+<h4>Критерии выбора структуры</h4>
+<ul>
+<li>Размер организации, сложность технологий, степень изменчивости внешней среды, стратегия.</li>
+</ul>
+</div></article>
+<article class="topic" id="t8" data-n="8">
+<header class="t-head"><span class="t-num">8</span><h3>Особенности финансового управления</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<h4>Сущность финансового менеджмента</h4>
+<p>Система принципов и методов управления денежными потоками, капиталом и финансовыми рисками организации для повышения её финансовой устойчивости.</p>
+<h4>Основные задачи</h4>
+<ul>
+<li>Формирование достаточного объёма финансовых ресурсов.</li>
+<li>Эффективное распределение и использование капитала.</li>
+<li>Оптимизация денежных потоков (поступления/выплаты).</li>
+<li>Управление финансовыми рисками.</li>
+<li>Обеспечение финансовой устойчивости и платёжеспособности.</li>
+</ul>
+<h4>Инструменты</h4>
+<ul>
+<li>Бюджетирование, финансовый анализ (ликвидность, рентабельность), инвестиционное планирование, управление затратами и дебиторской/кредиторской задолженностью.</li>
+</ul>
+</div></article>
+<article class="topic" id="t9" data-n="9">
+<header class="t-head"><span class="t-num">9</span><h3>Стратегическое планирование</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<h4>Понятие</h4>
+<p>Стратегическое планирование — процесс определения долгосрочных целей организации и способов их достижения с учётом изменений внешней среды.</p>
+<h4>Этапы</h4>
+<ul>
+<li>Анализ внешней и внутренней среды (SWOT-, PEST-анализ).</li>
+<li>Определение миссии и стратегических целей.</li>
+<li>Разработка альтернативных стратегий и выбор оптимальной.</li>
+<li>Реализация стратегии (планы, программы, бюджеты).</li>
+<li>Оценка и контроль выполнения стратегии.</li>
+</ul>
+<h4>Виды стратегий</h4>
+<ul>
+<li>Стратегия роста, стратегия стабилизации, стратегия сокращения (защиты).</li>
+</ul>
+</div></article>
+<article class="topic" id="t10" data-n="10">
+<header class="t-head"><span class="t-num">10</span><h3>Антикризисный план лечебного учреждения: понятие, цель разработки</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<h4>Понятие</h4>
+<p>Антикризисный план — комплекс мероприятий, направленных на предупреждение, преодоление кризисной ситуации в лечебно-профилактическом учреждении (ЛПУ) и восстановление его устойчивой работы.</p>
+<h4>Цели разработки</h4>
+<ul>
+<li>Сохранение непрерывности и качества оказания медицинской помощи.</li>
+<li>Финансовое оздоровление учреждения (сокращение издержек, поиск дополнительных источников финансирования).</li>
+<li>Оптимизация структуры и штата без потери качества услуг.</li>
+<li>Предупреждение репутационных и юридических рисков.</li>
+</ul>
+<h4>Основные этапы разработки</h4>
+<ul>
+<li>Диагностика причин кризиса (финансовых, кадровых, организационных).</li>
+<li>Разработка комплекса антикризисных мер и сроков их реализации.</li>
+<li>Назначение ответственных, контроль исполнения и корректировка плана.</li>
+</ul>
+</div></article>
+<article class="topic" id="t11" data-n="11">
+<header class="t-head"><span class="t-num">11</span><h3>Инновационный менеджмент: управление инновациями в сфере здравоохранения</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<h4>Понятие</h4>
+<p>Инновационный менеджмент — управление процессами создания, внедрения и распространения новшеств, повышающих качество и эффективность медицинской помощи.</p>
+<h4>Виды инноваций в здравоохранении</h4>
+<ul>
+<li>Продуктовые — новые лекарственные препараты, методы диагностики и лечения.</li>
+<li>Процессные — новые технологии оказания помощи, цифровизация (телемедицина, электронные карты).</li>
+<li>Организационно-управленческие — новые формы организации труда и управления учреждением.</li>
+</ul>
+<h4>Задачи управления инновациями</h4>
+<ul>
+<li>Планирование и финансирование инновационной деятельности.</li>
+<li>Оценка рисков и экономической/медицинской эффективности.</li>
+<li>Обучение персонала работе с новыми технологиями.</li>
+<li>Контроль внедрения и оценка результатов.</li>
+</ul>
+</div></article>
+<article class="topic" id="t12" data-n="12">
+<header class="t-head"><span class="t-num">12</span><h3>Этапы создания инновационного процесса в организациях здравоохранения</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<ol>
+<li>Генерация идеи — выявление проблемы и поиск новых решений (научные исследования, инициативы персонала).</li>
+<li>Разработка (проектирование) — техническое и организационное оформление новшества, разработка методики применения.</li>
+<li>Апробация (испытание) — пилотное внедрение в ограниченном масштабе, клинические/организационные испытания.</li>
+<li>Внедрение — масштабное распространение новшества в учреждении.</li>
+<li>Диффузия — распространение инновации на другие подразделения или учреждения здравоохранения.</li>
+<li>Оценка результатов — анализ медицинской, экономической и социальной эффективности внедрённой инновации.</li>
+</ol>
+</div></article>
+<article class="topic" id="t13" data-n="13">
+<header class="t-head"><span class="t-num">13</span><h3>Особенности менеджмента в здравоохранении</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<ul>
+<li>Высокая социальная значимость и ответственность результатов деятельности (здоровье и жизнь пациентов).</li>
+<li>Жёсткое нормативно-правовое регулирование (стандарты оказания медицинской помощи, лицензирование).</li>
+<li>Сочетание медицинской, экономической и управленческой составляющих в принятии решений.</li>
+<li>Ограниченность ресурсов при постоянно растущем спросе на медицинские услуги.</li>
+<li>Необходимость этического подхода — соблюдение прав пациента, врачебной тайны, деонтологии.</li>
+<li>Работа с высококвалифицированным персоналом, требующим особых подходов к мотивации и развитию.</li>
+<li>Сложность оценки качества и эффективности («результат» — здоровье пациента — трудно измерим).</li>
+</ul>
+</div></article>
+<article class="topic" id="t14" data-n="14">
+<header class="t-head"><span class="t-num">14</span><h3>Управление трудовыми ресурсами лечебного учреждения: его особенность</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<h4>Особенности</h4>
+<ul>
+<li>Высокие квалификационные требования и длительный цикл подготовки медицинских кадров.</li>
+<li>Необходимость непрерывного профессионального образования (аккредитация, повышение квалификации).</li>
+<li>Высокая эмоциональная и физическая нагрузка, риск профессионального выгорания.</li>
+<li>Жёсткая регламентация деятельности (должностные инструкции, стандарты, протоколы).</li>
+<li>Дефицит кадров по отдельным специальностям, территориальные диспропорции.</li>
+</ul>
+<h4>Основные направления управления персоналом</h4>
+<ul>
+<li>Кадровое планирование, подбор и адаптация сотрудников.</li>
+<li>Обучение и развитие, аттестация и оценка квалификации.</li>
+<li>Мотивация (материальная — оклад, надбавки; нематериальная — признание, карьерный рост).</li>
+<li>Профилактика профессионального выгорания и создание благоприятного психологического климата.</li>
+</ul>
+</div></article>
+<article class="topic" id="t15" data-n="15">
+<header class="t-head"><span class="t-num">15</span><h3>Управление, направленное на успех</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<ul>
+<li>Чёткая постановка амбициозных, но реалистичных и измеримых целей.</li>
+<li>Ориентация всей деятельности организации на конечный результат, а не на процесс.</li>
+<li>Формирование сплочённой, мотивированной команды, разделяющей цели организации.</li>
+<li>Гибкость и готовность к изменениям, быстрая реакция на новые возможности и угрозы.</li>
+<li>Постоянное обучение и развитие персонала, использование обратной связи и анализа ошибок.</li>
+<li>Эффективная система мотивации, поощряющая инициативу и достижения.</li>
+<li>Личный пример и лидерство руководителя, вера в достижимость поставленных целей.</li>
+</ul>
+</div></article>
+<article class="topic" id="t16" data-n="16">
+<header class="t-head"><span class="t-num">16</span><h3>Внешняя и внутренняя сторона организации</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<h4>Внутренняя среда организации</h4>
+<ul>
+<li>Цели — конкретные конечные состояния, к которым стремится организация.</li>
+<li>Структура — логические взаимоотношения уровней управления и функциональных подразделений.</li>
+<li>Задачи — предписанная работа, серия работ, которая должна быть выполнена.</li>
+<li>Технология — способ преобразования ресурсов в продукцию/услуги.</li>
+<li>Люди (персонал) — ключевой фактор, определяющий эффективность использования всех остальных элементов.</li>
+</ul>
+<h4>Внешняя среда организации</h4>
+<ul>
+<li>Среда прямого воздействия — поставщики, потребители, конкуренты, законы и государственные органы.</li>
+<li>Среда косвенного воздействия — состояние экономики, научно-технический прогресс, политические факторы, социокультурные факторы, международные события.</li>
+</ul>
+<p>Организация рассматривается как открытая система, находящаяся в постоянном взаимодействии с внешней средой.</p>
+</div></article>
+<article class="topic" id="t17" data-n="17">
+<header class="t-head"><span class="t-num">17</span><h3>Конфликтология в управлении</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<h4>Понятие конфликта</h4>
+<p>Конфликт — столкновение противоположно направленных целей, интересов, позиций или взглядов субъектов взаимодействия.</p>
+<h4>Виды конфликтов</h4>
+<ul>
+<li>Внутриличностный, межличностный, между личностью и группой, межгрупповой.</li>
+<li>По направленности: горизонтальные, вертикальные, смешанные.</li>
+<li>По последствиям: конструктивные (функциональные) и деструктивные (дисфункциональные).</li>
+</ul>
+<h4>Причины конфликтов</h4>
+<ul>
+<li>Ограниченность ресурсов, взаимозависимость задач, различия в целях и ценностях, плохие коммуникации, различия в психологических особенностях.</li>
+</ul>
+<h4>Стадии развития конфликта</h4>
+<ul>
+<li>Предконфликтная ситуация, инцидент, эскалация, кульминация, разрешение, постконфликтный период.</li>
+</ul>
+<h4>Стили поведения в конфликте (сетка Томаса–Килманна)</h4>
+<ul>
+<li>Соперничество (конкуренция), сотрудничество, компромисс, избегание (уклонение), приспособление.</li>
+</ul>
+</div></article></section>
+<section class="group" id="g-b"><div class="group-head"><span class="mono">Темы 18–35</span><h2>Управление в здравоохранении</h2><p>Конфликты, стили руководства, методы и контроль, качество, риски, мотивация, коммуникации — со схемами.</p></div>
+<article class="topic" id="t18" data-n="18">
+<header class="t-head"><span class="t-num">18</span><h3>Пути предотвращения и устранения конфликтов</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Конфликт</b> — столкновение интересов, целей или мнений людей в коллективе. В больнице он возникает между врачами и медсёстрами, руководителем и подчинёнными, отделениями, персоналом и пациентами. <b>Причины:</b> нехватка ресурсов, нечёткие обязанности, несправедливая оплата и оценка труда, плохая информированность, перегрузка.</p>
+<ul>
+<li><b>Как предотвратить:</b> чёткие должностные инструкции, справедливая оплата и поощрения, открытая информация (планёрки, обратная связь), распределение нагрузки, обучение общению, личный пример руководителя.</li>
+<li><b>Как устранить:</b> выяснить причину и позиции сторон, провести переговоры, при необходимости привлечь посредника (заведующего, комиссию по этике), в крайнем случае — административные меры (приказ, перевод, взыскание).</li>
+<li><b>Стили поведения в конфликте:</b> соперничество, сотрудничество, компромисс, избегание, приспособление. Лучший — сотрудничество (ищем решение, выгодное обеим сторонам).</li>
+</ul>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Пути предотвращения и устранения конфликтов"><img src="img/fig01.png" alt="Пути предотвращения и устранения конфликтов" loading="lazy"></button><figcaption><span class="mono">Рис. 1</span> Пути предотвращения и устранения конфликтов</figcaption></figure>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Стили поведения в конфликте (в центре — компромисс)"><img src="img/fig02.png" alt="Стили поведения в конфликте (в центре — компромисс)" loading="lazy"></button><figcaption><span class="mono">Рис. 2</span> Стили поведения в конфликте (в центре — компромисс)</figcaption></figure>
+</div></article>
+<article class="topic" id="t19" data-n="19">
+<header class="t-head"><span class="t-num">19</span><h3>Менеджмент медицинской организации в сфере охраны здоровья населения</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Менеджмент медицинской организации</b> — управление больницей, поликлиникой или другим учреждением для того, чтобы оказывать населению доступную и качественную помощь, проводить профилактику и рационально использовать кадры, деньги и оборудование. Главный результат — здоровье пациентов, а не прибыль.</p>
+<ul>
+<li><b>Функции:</b> планирование (цели, объёмы помощи), организация (структура, распределение работы), мотивация персонала, контроль качества.</li>
+<li><b>Уровни управления:</b> высший (главный врач) — стратегия; средний (заместители, заведующие отделениями, главная медсестра) — организация работы; низовой (старшие медсёстры) — руководство исполнителями.</li>
+<li><b>Особенность:</b> руководитель должен знать и медицину, и экономику, и право.</li>
+</ul>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Функции менеджмента"><img src="img/fig03.png" alt="Функции менеджмента" loading="lazy"></button><figcaption><span class="mono">Рис. 3</span> Функции менеджмента</figcaption></figure>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Уровни управления в больнице"><img src="img/fig04.png" alt="Уровни управления в больнице" loading="lazy"></button><figcaption><span class="mono">Рис. 4</span> Уровни управления в больнице</figcaption></figure>
+</div></article>
+<article class="topic" id="t20" data-n="20">
+<header class="t-head"><span class="t-num">20</span><h3>Генетические способности к управлению</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p>Управленческие способности <b>отчасти врождённые</b>, но в основном развиваются в течение жизни. От природы человек получает задатки: тип темперамента, стрессоустойчивость, общительность, энергичность. Но стать хорошим руководителем без образования и опыта нельзя.</p>
+<ul>
+<li><b>Врождённое:</b> темперамент, эмоциональная устойчивость, склонность к общению и лидерству.</li>
+<li><b>Приобретаемое:</b> знания по менеджменту, умение принимать решения, делегировать, вести переговоры, разрешать конфликты — приходит с обучением и практикой.</li>
+<li>В здравоохранении хороший врач не всегда хороший руководитель: нужна дополнительная подготовка по организации здравоохранения и менеджменту.</li>
+</ul>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: От чего зависят способности к управлению"><img src="img/fig05.png" alt="От чего зависят способности к управлению" loading="lazy"></button><figcaption><span class="mono">Рис. 5</span> От чего зависят способности к управлению</figcaption></figure>
+</div></article>
+<article class="topic" id="t21" data-n="21">
+<header class="t-head"><span class="t-num">21</span><h3>Особенности управления персоналом в медицинских организациях</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Управление персоналом</b> — подбор, расстановка, обучение, оценка и мотивация сотрудников. В больнице от работы людей напрямую зависят здоровье и жизнь пациентов, поэтому у управления кадрами есть особенности.</p>
+<ul>
+<li>высокая квалификация и самостоятельность врачей — руководить лучше через убеждение и участие, чем приказами;</li>
+<li>большая ответственность и строгие этические требования (врачебная тайна, деонтология);</li>
+<li>разные группы персонала: врачи, средний и младший медперсонал, администрация — у каждой свои задачи и статус;</li>
+<li>сменная работа, ночные дежурства, стресс, риск профессионального выгорания;</li>
+<li>обязательное обучение: аккредитация, повышение квалификации, аттестация;</li>
+<li>нехватка кадров, особенно в сельской местности; жёсткое трудовое и медицинское законодательство.</li>
+</ul>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Основные этапы работы с персоналом"><img src="img/fig06.png" alt="Основные этапы работы с персоналом" loading="lazy"></button><figcaption><span class="mono">Рис. 6</span> Основные этапы работы с персоналом</figcaption></figure>
+</div></article>
+<article class="topic" id="t22" data-n="22">
+<header class="t-head"><span class="t-num">22</span><h3>Этика и критика. Определения. Типы критики</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Этика</b> — правила нравственного поведения. В медицине — врачебная этика и деонтология: не навредить пациенту, соблюдать врачебную тайну, уважать его права. <b>Критика</b> — оценка работы человека с указанием недостатков; нужна, чтобы исправлять ошибки и улучшать работу.</p>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Типы критики"><img src="img/fig07.png" alt="Типы критики" loading="lazy"></button><figcaption><span class="mono">Рис. 7</span> Типы критики</figcaption></figure>
+<ul>
+<li><b>Правила этичной критики:</b> критиковать поступок, а не человека; делать замечание наедине (не при пациентах и коллегах); опираться на факты; предложить, как исправить; сохранять спокойный тон; уметь принимать критику в свой адрес.</li>
+</ul>
+</div></article>
+<article class="topic" id="t23" data-n="23">
+<header class="t-head"><span class="t-num">23</span><h3>Самокритичность руководителя: плюсы и минусы</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Самокритичность</b> — умение честно оценивать свои решения и ошибки и исправлять их. Для руководителя это важное качество, но нужна мера.</p>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Уровни самокритичности руководителя"><img src="img/fig08.png" alt="Уровни самокритичности руководителя" loading="lazy"></button><figcaption><span class="mono">Рис. 8</span> Уровни самокритичности руководителя</figcaption></figure>
+</div></article>
+<article class="topic" id="t24" data-n="24">
+<header class="t-head"><span class="t-num">24</span><h3>Завышенная и заниженная самооценка</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Самооценка</b> — то, как человек оценивает свои способности и качества. Она может быть адекватной, завышенной или заниженной. От неё зависит, как руководитель принимает решения, реагирует на критику и общается с коллективом.</p>
+<ul>
+<li><b>Завышенная:</b> самоуверенность, не слушает критику и советы, принимает рискованные решения, авторитарен, конфликтует. В медицине опасна — ведёт к ошибкам.</li>
+<li><b>Заниженная:</b> неуверенность, боится ошибок и ответственности, зависит от чужого мнения, не отстаивает интересы отделения, быстро выгорает.</li>
+<li><b>Как корректировать:</b> обратная связь от коллег, обучение, тренинги, наставник, реалистичные цели.</li>
+</ul>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Виды самооценки"><img src="img/fig09.png" alt="Виды самооценки" loading="lazy"></button><figcaption><span class="mono">Рис. 9</span> Виды самооценки</figcaption></figure>
+</div></article>
+<article class="topic" id="t25" data-n="25">
+<header class="t-head"><span class="t-num">25</span><h3>Стили лидерства в управлении</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Стиль руководства</b> — привычная манера руководителя принимать решения и общаться с подчинёнными. Лучшего стиля на все случаи нет — он зависит от ситуации и от коллектива.</p>
+<ul>
+<li><b>Авторитарный:</b> решает единолично, жёсткий контроль. Плюс — быстро; минус — подавляет инициативу. Подходит для экстренных ситуаций.</li>
+<li><b>Демократический:</b> решения принимаются вместе с коллективом. Плюс — мотивация и ответственность; минус — дольше. Подходит для врачебных коллективов.</li>
+<li><b>Либеральный:</b> руководитель почти не вмешивается. Подходит для опытных специалистов, но при слабом контроле падает дисциплина.</li>
+</ul>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Основные стили руководства"><img src="img/fig10.png" alt="Основные стили руководства" loading="lazy"></button><figcaption><span class="mono">Рис. 10</span> Основные стили руководства</figcaption></figure>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Выбор стиля по уровню подготовки сотрудников"><img src="img/fig11.png" alt="Выбор стиля по уровню подготовки сотрудников" loading="lazy"></button><figcaption><span class="mono">Рис. 11</span> Выбор стиля по уровню подготовки сотрудников</figcaption></figure>
+</div></article>
+<article class="topic" id="t26" data-n="26">
+<header class="t-head"><span class="t-num">26</span><h3>Методы управления в здравоохранении</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Методы управления</b> — способы, которыми руководитель воздействует на коллектив, чтобы достичь целей учреждения.</p>
+<ul>
+<li><b>Административные:</b> приказы, распоряжения, инструкции, стандарты, контроль исполнения.</li>
+<li><b>Экономические:</b> оплата труда, премии, надбавки за качество, штрафы, платные услуги.</li>
+<li><b>Социально-психологические:</b> подбор кадров, создание хорошего климата в коллективе, признание, обучение, разрешение конфликтов.</li>
+<li><b>Правовые:</b> опора на законы, стандарты и порядки оказания помощи, трудовые договоры, ответственность.</li>
+</ul>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Группы методов управления"><img src="img/fig12.png" alt="Группы методов управления" loading="lazy"></button><figcaption><span class="mono">Рис. 12</span> Группы методов управления</figcaption></figure>
+</div></article>
+<article class="topic" id="t27" data-n="27">
+<header class="t-head"><span class="t-num">27</span><h3>Типы и методы контроля в системе здравоохранения</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Контроль</b> — проверка, соответствует ли работа учреждения установленным стандартам и планам, и исправление отклонений. Цель — безопасная и качественная помощь, соблюдение законов, рациональное расходование средств.</p>
+<ul>
+<li><b>По времени:</b> предварительный (до начала работы: проверка кадров, оборудования, лекарств), текущий (в процессе: обходы, проверка выполнения назначений), заключительный (по итогам: исходы лечения, экспертиза случаев).</li>
+<li><b>По источнику:</b> внутренний (заведующие, врачебная комиссия, служба качества) и внешний (надзорные органы, страховые компании, общественный контроль).</li>
+<li><b>Методы:</b> наблюдение и обходы, проверка медицинской документации, анализ показателей (летальность, средняя длительность лечения, внутрибольничные инфекции, жалобы), аудит, опросы пациентов.</li>
+</ul>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Этапы контроля"><img src="img/fig13.png" alt="Этапы контроля" loading="lazy"></button><figcaption><span class="mono">Рис. 13</span> Этапы контроля</figcaption></figure>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Типы контроля по времени"><img src="img/fig14.png" alt="Типы контроля по времени" loading="lazy"></button><figcaption><span class="mono">Рис. 14</span> Типы контроля по времени</figcaption></figure>
+</div></article>
+<article class="topic" id="t28" data-n="28">
+<header class="t-head"><span class="t-num">28</span><h3>Качество управленческой деятельности в здравоохранении и его результаты</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Качество управления</b> — насколько хорошо решения и работа руководителей помогают достичь целей учреждения: доступной и качественной помощи при разумных затратах. Оценивают по трём составляющим: <b>структура</b> (кадры, оборудование), <b>процесс</b> (как организована работа) и <b>результат</b>.</p>
+<ul>
+<li><b>Критерии:</b> достижение целей, эффективность использования ресурсов, своевременность и обоснованность решений, законность, удовлетворённость пациентов и сотрудников.</li>
+<li><b>Результаты:</b> медицинские (меньше смертности, осложнений, инфекций), социальные (доступность помощи, довольные пациенты), экономические (рациональное использование коек и средств).</li>
+<li><b>Как улучшать:</b> цикл «планируй — делай — проверяй — исправляй», стандарты, обучение, аккредитация.</li>
+</ul>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Составляющие качества"><img src="img/fig15.png" alt="Составляющие качества" loading="lazy"></button><figcaption><span class="mono">Рис. 15</span> Составляющие качества</figcaption></figure>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Цикл улучшения качества (PDCA)"><img src="img/fig16.png" alt="Цикл улучшения качества (PDCA)" loading="lazy"></button><figcaption><span class="mono">Рис. 16</span> Цикл улучшения качества (PDCA)</figcaption></figure>
+</div></article>
+<article class="topic" id="t29" data-n="29">
+<header class="t-head"><span class="t-num">29</span><h3>Типы рисков и угроз в организации здравоохранения</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Риск</b> — возможность неблагоприятного события, которое причинит ущерб (пациентам, персоналу, финансам, репутации). <b>Угроза</b> — фактор, который может привести к такому событию.</p>
+<ul>
+<li><b>Клинические:</b> врачебные ошибки, осложнения, лекарственные реакции, внутрибольничные инфекции;</li>
+<li><b>Кадровые:</b> нехватка и уход специалистов, выгорание, конфликты;</li>
+<li><b>Финансовые:</b> недофинансирование, неоплата случаев, неэффективные расходы;</li>
+<li><b>Правовые:</b> нарушение лицензионных требований, жалобы и иски;</li>
+<li><b>Технические и информационные:</b> поломка оборудования, перебои с лекарствами, утечка данных, сбои программ;</li>
+<li><b>Чрезвычайные:</b> эпидемии, пожары, стихийные бедствия.</li>
+</ul>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Основные типы рисков"><img src="img/fig17.png" alt="Основные типы рисков" loading="lazy"></button><figcaption><span class="mono">Рис. 17</span> Основные типы рисков</figcaption></figure>
+</div></article>
+<article class="topic" id="t30" data-n="30">
+<header class="t-head"><span class="t-num">30</span><h3>Риск-менеджмент в здравоохранении</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Риск-менеджмент</b> — управление рисками: заранее выявлять опасности, оценивать их и принимать меры, чтобы предотвратить ущерб или уменьшить его последствия. Цель — безопасность пациентов и персонала и бесперебойная работа учреждения.</p>
+<ul>
+<li><b>Этапы:</b> 1) выявить риски (анализ жалоб, нежелательных событий, аудит); 2) оценить (насколько вероятен и насколько тяжёл ущерб); 3) выбрать меры — избежать, уменьшить, передать (страхование) или принять; 4) контролировать и обновлять.</li>
+<li><b>Примеры мер:</b> чек-листы безопасности, стандарты и протоколы, учёт нежелательных событий, инфекционный контроль, план действий при ЧС, страхование ответственности.</li>
+</ul>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Этапы риск-менеджмента"><img src="img/fig18.png" alt="Этапы риск-менеджмента" loading="lazy"></button><figcaption><span class="mono">Рис. 18</span> Этапы риск-менеджмента</figcaption></figure>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Оценка рисков по вероятности и тяжести"><img src="img/fig19.png" alt="Оценка рисков по вероятности и тяжести" loading="lazy"></button><figcaption><span class="mono">Рис. 19</span> Оценка рисков по вероятности и тяжести</figcaption></figure>
+</div></article>
+<article class="topic" id="t31" data-n="31">
+<header class="t-head"><span class="t-num">31</span><h3>Особенности управления в коммерческих лечебных учреждениях</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Коммерческая клиника</b> оказывает услуги за плату (деньги пациентов, ДМС) и должна зарабатывать. Руководитель следит и за качеством лечения, и за финансовым результатом.</p>
+<ul>
+<li>ориентация на пациента как на клиента: сервис, удобство, скорость, репутация, реклама;</li>
+<li>финансовое управление: цены на услуги, себестоимость, окупаемость, инвестиции в оборудование;</li>
+<li>гибкость и быстрота решений, простая структура, оплата труда по результату, конкуренция за врачей;</li>
+<li>обязательны лицензия, стандарты качества, налоги; нельзя навязывать ненужные услуги.</li>
+</ul>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Основные направления управления"><img src="img/fig20.png" alt="Основные направления управления" loading="lazy"></button><figcaption><span class="mono">Рис. 20</span> Основные направления управления</figcaption></figure>
+<div class="tbl"><table><thead><tr><th>Признак</th><th>Государственное</th><th>Коммерческое</th></tr></thead><tbody><tr><th>Цель</th><td>Доступная помощь населению</td><td>Доход при качественном лечении</td></tr><tr><th>Финансирование</th><td>Бюджет, ОМС</td><td>Оплата пациентов, ДМС</td></tr><tr><th>Цены</th><td>Тарифы устанавливает государство</td><td>Свободные, по рынку</td></tr></tbody></table></div>
+</div></article>
+<article class="topic" id="t32" data-n="32">
+<header class="t-head"><span class="t-num">32</span><h3>Мотивация персонала лечебных учреждений и её специфика</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Мотивация</b> — побуждение сотрудников хорошо работать. Работает через <b>материальные</b> стимулы (зарплата, премии, надбавки) и <b>нематериальные</b> (признание, обучение, карьера, условия труда, участие в решениях).</p>
+<ul>
+<li><b>Специфика медицины:</b> многие идут в профессию по призванию, поэтому важны уважение и признание; низкая оплата при высокой нагрузке и ответственности сильно демотивирует;</li>
+<li>важны условия труда, график, безопасность, возможность учиться и расти;</li>
+<li>нужна профилактика выгорания: разумная нагрузка, психологическая поддержка;</li>
+<li>оплата должна зависеть от качества и результата работы, а не только от должности.</li>
+</ul>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Пирамида потребностей персонала (Маслоу)"><img src="img/fig21.png" alt="Пирамида потребностей персонала (Маслоу)" loading="lazy"></button><figcaption><span class="mono">Рис. 21</span> Пирамида потребностей персонала (Маслоу)</figcaption></figure>
+</div></article>
+<article class="topic" id="t33" data-n="33">
+<header class="t-head"><span class="t-num">33</span><h3>Специфика отбора управленческого персонала для лечебных учреждений</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Отбор руководителей</b> — выбор тех, кто подходит на должность главного врача, заведующего отделением, главной медсестры. Ошибка в выборе дорого обходится всему учреждению.</p>
+<ul>
+<li>нужны <b>и медицинская квалификация</b> (образование, специальность, стаж), <b>и управленческие</b> <b>навыки</b> (организация здравоохранения, экономика, право): хороший врач не всегда хороший руководитель;</li>
+<li>важны личные качества: ответственность, стрессоустойчивость, умение общаться, справедливость;</li>
+<li><b>источники:</b> кадровый резерв внутри учреждения или внешний поиск, конкурс на должность;</li>
+<li><b>методы:</b> анализ документов, собеседование, тесты, кейсы, рекомендации, испытательный срок.</li>
+</ul>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Этапы отбора руководителей"><img src="img/fig22.png" alt="Этапы отбора руководителей" loading="lazy"></button><figcaption><span class="mono">Рис. 22</span> Этапы отбора руководителей</figcaption></figure>
+</div></article>
+<article class="topic" id="t34" data-n="34">
+<header class="t-head"><span class="t-num">34</span><h3>Коммуникативные отношения в сфере здравоохранения: вертикальные и горизонтальные</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Коммуникации</b> — обмен информацией между сотрудниками. В медицине от них зависят безопасность пациента и слаженность работы (например, при передаче смены).</p>
+<ul>
+<li><b>Вертикальные</b> — между руководителем и подчинёнными: сверху вниз (приказы, инструкции, задания) и снизу вверх (отчёты, предложения, жалобы). Проблемы: искажение информации, формализм, страх сообщать о проблемах.</li>
+<li><b>Горизонтальные</b> — между равными по должности и между отделениями: консилиумы, консультации, передача смены, совещания. Проблемы: нет взаимопонимания, нечёткое разделение ответственности.</li>
+<li><b>Как улучшить:</b> чёткие каналы информации, обратная связь, единые формы передачи данных, открытая атмосфера.</li>
+</ul>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Вертикальные и горизонтальные связи в больнице"><img src="img/fig23.png" alt="Вертикальные и горизонтальные связи в больнице" loading="lazy"></button><figcaption><span class="mono">Рис. 23</span> Вертикальные и горизонтальные связи в больнице</figcaption></figure>
+</div></article>
+<article class="topic" id="t35" data-n="35">
+<header class="t-head"><span class="t-num">35</span><h3>Государственные лечебные учреждения в условиях рыночных отношений</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p>Государственные больницы и поликлиники по-прежнему обеспечивают бесплатную помощь населению, но работают в рыночных условиях: деньги идут из нескольких источников, есть конкуренция с частными клиниками, пациент выбирает, куда обратиться.</p>
+<ul>
+<li><b>Источники финансирования:</b> бюджет и госзадание, средства ОМС (оплата за пролеченный случай), ДМС, платные услуги;</li>
+<li><b>Что меняется в управлении:</b> нужно считать себестоимость и экономить ресурсы, планировать развитие, повышать качество и сервис, привлекать дополнительные средства;</li>
+<li><b>Противоречие:</b> социальная задача (помощь всем) и экономическая эффективность; нельзя допускать, чтобы бесплатная помощь стала менее доступной.</li>
+</ul>
+<figure class="fig"><button class="zoom" type="button" aria-label="Увеличить схему: Государственная больница в рыночных условиях"><img src="img/fig24.png" alt="Государственная больница в рыночных условиях" loading="lazy"></button><figcaption><span class="mono">Рис. 24</span> Государственная больница в рыночных условиях</figcaption></figure>
+</div></article></section>
+    <p class="empty" id="empty">Ничего не найдено — попробуйте другое слово.</p>
+  </main>
+
+  <footer>
+    <span>Конспекты к зачёту по менеджменту · СГМУ</span>
+    <a href="https://t.me/oapwso">По вопросам и сотрудничеству — @oapwso</a>
+  </footer>
+</div>
+
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Схема"><img alt=""><p></p></div>
+
+<script>
+(function(){
+  var KEY='mgmt-done-v1', done={};
+  try{ done=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ done={}; }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(done)); }catch(e){} }
+  var topics=[].slice.call(document.querySelectorAll('.topic'));
+  var links={}; [].forEach.call(document.querySelectorAll('#nums a'), function(a){ links[a.dataset.n]=a; });
+  var total=topics.length;
+  function paint(){
+    var c=0;
+    topics.forEach(function(t){
+      var n=t.dataset.n, on=!!done[n]; if(on) c++;
+      t.classList.toggle('is-done', on);
+      var b=t.querySelector('.done'); b.setAttribute('aria-pressed', on?'true':'false');
+      b.querySelector('span').textContent= on?'Выучено ✓':'Выучено';
+      links[n].classList.toggle('ok', on);
+    });
+    document.getElementById('bar').style.width=(c/total*100)+'%';
+    document.getElementById('pcount').textContent=c+' из '+total+' выучено';
+  }
+  topics.forEach(function(t){
+    t.querySelector('.done').addEventListener('click', function(){
+      var n=t.dataset.n; if(done[n]) delete done[n]; else done[n]=1; save(); paint();
+    });
+    var body=t.querySelector('.t-body'); body.dataset.orig=body.innerHTML;
+    t.dataset.text=(t.querySelector('h3').textContent+' '+body.textContent).toLowerCase().replace(/ё/g,'е');
+  });
+  paint();
+
+  // текущая тема в навигации
+  var cur=null;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){
+      if(cur) cur.classList.remove('cur'); cur=links[e.target.dataset.n]; cur.classList.add('cur');
+      var box=document.getElementById('nums'); var l=cur.offsetLeft-box.clientWidth/2+cur.clientWidth/2; box.scrollTo({left:l, behavior:'smooth'});
+    }});
+  },{rootMargin:'-120px 0px -60% 0px'});
+  topics.forEach(function(t){ io.observe(t); });
+
+  // поиск
+  function escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+  function highlight(node, re){
+    if(node.nodeType===3){
+      var s=node.nodeValue, norm=s.replace(/ё/g,'е').replace(/Ё/g,'Е'); re.lastIndex=0;
+      if(!re.test(norm)) return; re.lastIndex=0;
+      var frag=document.createDocumentFragment(), last=0, m;
+      while((m=re.exec(norm))){ frag.appendChild(document.createTextNode(s.slice(last,m.index)));
+        var mk=document.createElement('mark'); mk.textContent=s.slice(m.index,m.index+m[0].length); frag.appendChild(mk); last=m.index+m[0].length; if(!m[0].length) break; }
+      frag.appendChild(document.createTextNode(s.slice(last))); node.parentNode.replaceChild(frag,node); return;
+    }
+    if(node.nodeType===1 && !/^(MARK|SCRIPT|IMG|BUTTON)$/.test(node.tagName)) [].slice.call(node.childNodes).forEach(function(c){ highlight(c,re); });
+  }
+  var timer;
+  document.getElementById('q').addEventListener('input', function(){
+    clearTimeout(timer); var v=this.value; timer=setTimeout(function(){ run(v); },120);
+  });
+  function run(v){
+    var q=v.trim().toLowerCase().replace(/ё/g,'е'), any=false;
+    var re=q? new RegExp(escRe(q),'gi'):null;
+    topics.forEach(function(t){
+      var body=t.querySelector('.t-body'); body.innerHTML=body.dataset.orig;
+      var h=t.querySelector('h3'); h.innerHTML=h.textContent;
+      var hit=!q || t.dataset.text.indexOf(q)>=0;
+      t.classList.toggle('hidden', !hit); links[t.dataset.n].classList.toggle('hide', !hit);
+      if(hit){ any=true; if(re){ highlight(body,re); highlight(h,re); } }
+    });
+    document.querySelectorAll('.group').forEach(function(g){ g.classList.toggle('hidden', !g.querySelector('.topic:not(.hidden)')); });
+    document.getElementById('empty').style.display= any?'none':'block';
+    rebind();
+  }
+
+  // свернуть до вопросов
+  var col=document.getElementById('collapse');
+  col.addEventListener('click', function(){
+    var on=!document.body.classList.contains('collapsed');
+    document.body.classList.toggle('collapsed', on); col.setAttribute('aria-pressed', on?'true':'false');
+    col.innerHTML= on? 'Показать<span class="long"> ответы</span>' : 'Свернуть<span class="long"> ответы</span>';
+  });
+
+  // лайтбокс
+  var lb=document.getElementById('lb'), lbImg=lb.querySelector('img'), lbCap=lb.querySelector('p'), opener=null;
+  function rebind(){
+    [].forEach.call(document.querySelectorAll('.zoom'), function(b){
+      b.onclick=function(){ opener=b; var im=b.querySelector('img'); lbImg.src=im.src; lbImg.alt=im.alt;
+        lbCap.textContent=b.parentNode.querySelector('figcaption').textContent; lb.classList.add('open'); lb.tabIndex=-1; lb.focus(); };
+    });
+  }
+  rebind();
+  function close(){ lb.classList.remove('open'); if(opener) opener.focus(); }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && lb.classList.contains('open')) close(); });
+})();
+</script>
+</body>
+</html>
