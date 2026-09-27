@@ -205,7 +205,7 @@
     show('quiz');
     renderQ();
   }
-  function imgHtml(q){ return q.img && q.type !== 'pt' ? '<div class="q-img"><img src="' + q.img + '" alt="Иллюстрация к вопросу" loading="lazy"></div>' : ''; }
+  function imgHtml(q){ return q.img && q.type !== 'pt' ? '<div class="q-img"><img src="' + q.img + '" alt="Иллюстрация к вопросу" decoding="async"></div>' : ''; }
   var HINTS = {col:'Сопоставь: для каждого пункта слева выбери вариант', ord:'Расставь пункты в правильном порядке (кнопки ↑ ↓)', pt:'Нажми на нужное место на картинке', 'in':'Введи ответ'};
 
   function renderQ(){
@@ -442,7 +442,7 @@
     if(q.type === 'col') return '<div class="pairs">' + q.L.map(function(l, i){ return '<div class="pair"><span>' + txt(l) + '</span><span class="pair-arrow">→</span><span class="right">' + txt(q.R[q.map[i]]) + '</span></div>'; }).join('') + '</div>';
     if(q.type === 'ord') return '<ol class="right-order">' + q.ans.map(function(i){ return '<li class="right">' + txt(q.items[i]) + '</li>'; }).join('') + '</ol>';
     if(q.type === 'in') return '<div class="in-ans">Ответ: <b class="right">' + esc(q.ans.join(' / ')) + '</b></div>';
-    if(q.type === 'pt') return '<div class="pt-view"><img src="' + q.img + '" alt="" loading="lazy">' + regionSvg(q) + '</div>';
+    if(q.type === 'pt') return '<div class="pt-view"><img src="' + q.img + '" alt="">' + regionSvg(q) + '</div>';
     return '';
   }
   function listItemHtml(q){
