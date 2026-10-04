@@ -147,6 +147,15 @@
   .feedback{margin-top:14px; font-weight:600; min-height:1.5em;}
   .feedback.ok{color:var(--ok);}
   .feedback.bad{color:var(--bad);}
+  .q-note{margin-top:10px; padding:10px 14px; border-radius:10px; background:var(--accent-2-soft, rgba(231,181,136,.14)); border:1px solid rgba(231,181,136,.35); color:var(--text); font-weight:500; font-size:.92rem; line-height:1.5;}
+  .q-note b{color:var(--accent-2, #E7B588);}
+  .self-ans{border:1px solid rgba(143,214,166,.4); background:var(--ok-soft); border-radius:12px; padding:12px 16px;}
+  .self-label{font-family:'Atkinson Mono',monospace; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:var(--ok); margin-bottom:4px;}
+  .self-text{color:var(--text); font-weight:600;}
+  .self-btns{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
+  .self-btns .btn{flex:1 1 140px;}
+  .self-yes:not(:disabled){border-color:rgba(143,214,166,.55); color:var(--ok);}
+  .self-no:not(:disabled){border-color:rgba(255,127,134,.55); color:var(--bad);}
   .note{margin-top:10px; font-size:.88rem; line-height:1.5; color:var(--accent-2); background:var(--accent-2-soft); border-left:3px solid var(--accent-2); border-radius:0 8px 8px 0; padding:8px 12px;}
   .note b{font-weight:600;}
   .actions{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap; align-items:center;}

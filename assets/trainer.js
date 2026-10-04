@@ -5,7 +5,9 @@
      type 'col' — соответствие: L, R, map (L[i] → R[map[i]]);
      type 'ord' — порядок: items, ans (индексы items в правильном порядке);
      type 'pt'  — клик по картинке: img, reg (полигоны [[x,y],…] в пикселях картинки);
-     type 'in'  — ввод ответа: ans (допустимые варианты). */
+     type 'in'  — ввод ответа: ans (допустимые варианты);
+     type 'self' — открытый вопрос с самопроверкой: ans (текст ответа, h:1 — HTML);
+     note — пометка к вопросу (показывается после ответа и в списке). */
 (function(){
   "use strict";
   var $ = function(id){ return document.getElementById(id); };
@@ -206,7 +208,9 @@
     renderQ();
   }
   function imgHtml(q){ return q.img && q.type !== 'pt' ? '<div class="q-img"><img src="' + q.img + '" alt="Иллюстрация к вопросу" decoding="async"></div>' : ''; }
-  var HINTS = {col:'Сопоставь: для каждого пункта слева выбери вариант', ord:'Расставь пункты в правильном порядке (кнопки ↑ ↓)', pt:'Нажми на нужное место на картинке', 'in':'Введи ответ'};
+  var HINTS = {col:'Сопоставь: для каждого пункта слева выбери вариант', ord:'Расставь пункты в правильном порядке (кнопки ↑ ↓)', pt:'Нажми на нужное место на картинке', 'in':'Введи ответ', self:'Открытый вопрос: вспомни ответ и нажми «Показать ответ»'};
+  function selfAns(q){ return q.ah ? q.ans : txt(q.ans); }
+  function noteHtml(q){ return q.note ? '<div class="q-note"><b>Пометка.</b> ' + esc(q.note) + '</div>' : ''; }
 
   function renderQ(){
     var q = S.list[S.i];
@@ -253,7 +257,9 @@
       $('textAnswer').addEventListener('input', updateCheckable);
     }
     $('feedback').textContent = ''; $('feedback').className = 'feedback';
-    $('checkBtn').hidden = false; $('checkBtn').disabled = q.type !== 'ord'; $('nextBtn').hidden = true;
+    S.revealed = false;
+    $('checkBtn').textContent = q.type === 'self' ? 'Показать ответ' : 'Проверить';
+    $('checkBtn').hidden = false; $('checkBtn').disabled = q.type !== 'ord' && q.type !== 'self'; $('nextBtn').hidden = true;
     updateProgress();
     typeset($('screen-quiz'));
   }
@@ -303,11 +309,25 @@
     if(q.type === 'col') return q.L.map(function(l, i){ return l + ' → ' + q.R[q.map[i]]; }).join('; ');
     if(q.type === 'ord') return q.ans.map(function(i, k){ return (k + 1) + '. ' + q.items[i]; }).join(' → ');
     if(q.type === 'in') return q.ans[0];
+    if(q.type === 'self') return plainOf(selfAns(q));
     return 'отмеченная область на рисунке';
   }
+  function plainOf(h){ var d = document.createElement('div'); d.innerHTML = h; return d.textContent; }
   function check(){
     if(S.checked || $('checkBtn').disabled) return;
     var q = S.list[S.i], ok = false, ex = $('taskExtra');
+    if(q.type === 'self'){
+      if(S.revealed) return;
+      S.revealed = true;
+      ex.innerHTML = '<div class="self-ans"><div class="self-label">Ответ</div><div class="self-text">' + selfAns(q) + '</div></div>' +
+        '<div class="self-btns"><button type="button" class="btn self-yes">✓ Знал</button><button type="button" class="btn self-no">✕ Не знал</button></div>';
+      $('checkBtn').hidden = true;
+      ex.querySelector('.self-yes').addEventListener('click', function(){ settle(q, true); });
+      ex.querySelector('.self-no').addEventListener('click', function(){ settle(q, false); });
+      ex.querySelector('.self-yes').focus({preventScroll: true});
+      typeset(ex);
+      return;
+    }
     if(!q.type){
       ok = S.sel.length === q.c.length && q.c.every(function(x){ return S.sel.indexOf(x) >= 0; });
       $('answers').querySelectorAll('.ans').forEach(function(b, k){
@@ -334,16 +354,22 @@
       ok = q.ans.some(function(a){ return norm(a) === v; });
       $('textAnswer').disabled = true; $('textAnswer').classList.add(ok ? 'ok' : 'bad');
     }
+    settle(q, ok);
+  }
+  function settle(q, ok){
+    if(S.checked) return;
+    if(q.type === 'self') $('taskExtra').querySelectorAll('.self-btns .btn').forEach(function(b){ b.disabled = true; });
     S.checked = true; S.answered++;
     if(ok){
-      S.score++; $('feedback').textContent = 'Верно'; $('feedback').className = 'feedback ok';
+      S.score++; $('feedback').textContent = q.type === 'self' ? 'Отмечено: знал' : 'Верно'; $('feedback').className = 'feedback ok';
       var mi = mistakes.indexOf(q.id); if(mi >= 0 && S.opts.mistakes){ mistakes.splice(mi, 1); save(LS.mistakes, mistakes); }
     } else {
       S.wrong.push(q);
-      $('feedback').textContent = 'Неверно. Правильный ответ: ' + (q.type ? answerText(q) : q.c.map(function(x){ return x + 1; }).join(', '));
+      $('feedback').textContent = q.type === 'self' ? 'Отмечено: не знал — вопрос попадёт в работу над ошибками' : 'Неверно. Правильный ответ: ' + (q.type ? answerText(q) : q.c.map(function(x){ return x + 1; }).join(', '));
       $('feedback').className = 'feedback bad';
       if(mistakes.indexOf(q.id) < 0){ mistakes.push(q.id); save(LS.mistakes, mistakes); }
     }
+    if(q.note) $('feedback').insertAdjacentHTML('beforeend', noteHtml(q));
     $('checkBtn').hidden = true; $('nextBtn').hidden = false;
     $('nextBtn').textContent = S.i === S.list.length - 1 ? 'Результат →' : 'Дальше →';
     $('nextBtn').focus({preventScroll: true});
@@ -394,7 +420,7 @@
     $('mistakes').innerHTML = S.wrong.length ? '<div class="q-meta" style="margin-top:6px">Ошибки (' + S.wrong.length + ')</div>' +
       S.wrong.map(function(q){
         return '<div class="mistake"><div class="q-meta">' + esc(q.test.title) + ' · № ' + q.n + '</div><div class="mistake-q">' + qText(q) + '</div>' + imgHtml(q) +
-          '<div class="mistake-a">Правильно: <b>' + esc(answerText(q)) + '</b></div></div>';
+          '<div class="mistake-a">Правильно: <b>' + esc(answerText(q)) + '</b></div>' + noteHtml(q) + '</div>';
       }).join('') : '';
     show('result'); typeset($('mistakes'));
   }
@@ -442,13 +468,14 @@
     if(q.type === 'col') return '<div class="pairs">' + q.L.map(function(l, i){ return '<div class="pair"><span>' + txt(l) + '</span><span class="pair-arrow">→</span><span class="right">' + txt(q.R[q.map[i]]) + '</span></div>'; }).join('') + '</div>';
     if(q.type === 'ord') return '<ol class="right-order">' + q.ans.map(function(i){ return '<li class="right">' + txt(q.items[i]) + '</li>'; }).join('') + '</ol>';
     if(q.type === 'in') return '<div class="in-ans">Ответ: <b class="right">' + esc(q.ans.join(' / ')) + '</b></div>';
+    if(q.type === 'self') return '<div class="in-ans">Ответ: <span class="right">' + selfAns(q) + '</span></div>';
     if(q.type === 'pt') return '<div class="pt-view"><img src="' + q.img + '" alt="">' + regionSvg(q) + '</div>';
     return '';
   }
   function listItemHtml(q){
-    var kind = q.type === 'col' ? ' · соответствие' : q.type === 'ord' ? ' · порядок' : q.type === 'pt' ? ' · точка на рисунке' : q.type === 'in' ? ' · ввод ответа' : (q.m ? ' · несколько ответов' : '');
+    var kind = q.type === 'col' ? ' · соответствие' : q.type === 'ord' ? ' · порядок' : q.type === 'pt' ? ' · точка на рисунке' : q.type === 'in' ? ' · ввод ответа' : q.type === 'self' ? ' · открытый вопрос' : (q.m ? ' · несколько ответов' : '');
     return '<div class="list-q" id="q-' + q.id.replace(/\./g, '-') + '"><div class="q-meta">№ ' + q.n + kind + '</div>' +
-      '<div class="q-text">' + qText(q) + '</div>' + imgHtml(q) + answerBlock(q) + '</div>';
+      '<div class="q-text">' + qText(q) + '</div>' + imgHtml(q) + answerBlock(q) + noteHtml(q) + '</div>';
   }
   var listTopic = 0, listFromQuiz = false;
   (function(){
@@ -462,7 +489,7 @@
   })();
   function matches(q, f){
     if(plainText(q).toLowerCase().indexOf(f) >= 0) return true;
-    var pool = (q.o || []).concat(q.L || [], q.R || [], q.items || [], q.ans && q.type === 'in' ? q.ans : []);
+    var pool = (q.o || []).concat(q.L || [], q.R || [], q.items || [], q.ans && q.type === 'in' ? q.ans : [], q.type === 'self' ? [plainOf(selfAns(q))] : []);
     return pool.some(function(a){ return typeof a === 'string' && a.toLowerCase().indexOf(f) >= 0; });
   }
   function renderList(ti, focusId){
