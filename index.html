@@ -464,7 +464,7 @@
     <div class="contact-text">
       <span class="mono contact-kicker">Связь</span>
       <h2>По вопросам, сотрудничеству и рекламе</h2>
-      <p>Нашли ошибку в ответе, хотите добавить свой предмет или сделать тренажёр для группы — напишите в Telegram.</p>
+      <p>Нашли ошибку в ответе, хотите добавить свой предмет, сделать тренажёр для группы или разместить рекламу — напишите в Telegram.</p>
       <p class="contact-ad"><b>Реклама на сайте</b> — карточка на главной и баннер во всех тренажёрах и атласах. Напишите, расскажем условия.</p>
     </div>
     <a class="tg-btn" href="https://t.me/oapwso" target="_blank" rel="noopener">
@@ -476,7 +476,7 @@
 
   <footer>
     <span>Прогресс в тренажёрах сохраняется в браузере на этом устройстве.</span>
-    <span>СГМУ · 2026 · <a class="foot-link" href="https://t.me/oapwso" target="_blank" rel="noopener">t.me/oapwso</a></span>
+    <span>СГМУ · 2026 · связь и реклама: <a class="foot-link" href="https://t.me/oapwso" target="_blank" rel="noopener">t.me/oapwso</a></span>
   </footer>
 </div>
 
@@ -485,13 +485,13 @@
   var chips = document.querySelectorAll('.chip');
   function apply(f){
     chips.forEach(function(c){ c.setAttribute('aria-pressed', String(c.dataset.f === f)); });
-    document.querySelectorAll('.card').forEach(function(c){ c.hidden = f !== 'all' && c.dataset.kind !== f; });
+    document.querySelectorAll('.card').forEach(function(c){ c.hidden = f !== 'all' && c.dataset.kind !== f && c.dataset.kind !== 'promo'; /* реклама видна при любом фильтре */ });
     document.querySelectorAll('.topic').forEach(function(t){ t.hidden = !t.querySelector('.card:not([hidden])'); });
     document.querySelectorAll('.subject').forEach(function(s){ s.hidden = !s.querySelector('.topic:not([hidden])'); });
   }
   chips.forEach(function(c){ c.addEventListener('click', function(){ apply(c.dataset.f); }); });
 })();
 </script>
-<script src="assets/promo.js?v=4"></script>
+<script src="assets/promo.js?v=5"></script>
 </body>
 </html>

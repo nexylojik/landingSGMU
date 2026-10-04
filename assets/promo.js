@@ -115,6 +115,16 @@
       (a.erid ? '<span class="promo-erid">Реклама · erid: ' + esc(a.erid) + '</span>' : '') +
       '</div>' + btn + '</div></div></' + tag + '>';
   }
+  // блок «Реклама» на лендинге: при каждом новом заходе — на новом месте, перед 1-м предметом, после 1-го или после 2-го
+  var block = document.querySelector('.promo-block');
+  if(block){
+    var subj = [].filter.call(document.querySelectorAll('section.subject'), function(x){ return x !== block; }).slice(0, 2);
+    var spots = [subj[0], subj[0] && subj[0].nextSibling, subj[1] && subj[1].nextSibling];  // перед чем вставить
+    var pos = ss('promo-pos');
+    if(pos === null || pos === undefined){ pos = (+ls('promo-pos-rot') || 0) % spots.length; ls('promo-pos-rot', String(+pos + 1)); ss('promo-pos', String(pos)); }
+    var spot = spots[+pos] || spots[1];
+    if(spot && spot !== block) spot.parentNode.insertBefore(block, spot);
+  }
   document.querySelectorAll('[data-promo-slot="cards"]').forEach(function(box){
     var pool = HOUSES.slice(1).concat(partners).filter(function(a){ return a.card; });
     var r = +ls('promo-card-rot') || 0;
