@@ -324,3 +324,6 @@
   .list-q .pt-view{margin-top:8px; max-width:520px;}
   .mistake-a b{color:var(--ok); font-weight:600;}
   #launchHome .modes{margin-bottom:18px;}
+
+  .tile.tile-all{border-style:dashed; border-color:rgba(255,159,162,.45); background:linear-gradient(135deg, rgba(255,159,162,.08), transparent 70%), var(--surface);}
+  .tile.tile-all .tile-title > span:first-child::before{content:"⧉ "; color:var(--accent);}

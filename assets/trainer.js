@@ -29,7 +29,13 @@
       t.q.forEach(function(q, qi){ q.id = t.key + '.' + qi; q.n = qi + 1; q.test = t; BY_ID[q.id] = q; ALL.push(q); });
       TESTS.push(t);
     });
+    // «Все части сразу» — общий тест по всем частям темы
+    if(tp.tests.length > 1){
+      tp.all = {title: 'Все части сразу', key: ti + '.all', topic: tp, gi: tp.tests.length, isAll: true,
+        q: tp.tests.reduce(function(a, t){ return a.concat(t.q); }, [])};
+    }
   });
+  function isStudied(t){ return !!studied[t.key] || (!!t.isAll && t.topic.tests.every(function(x){ return studied[x.key]; })); }
   var SINGLE = TESTS.length === 1;
 
   function load(k, d){ try{ var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; }catch(e){ return d; } }
@@ -64,6 +70,8 @@
     $('modeMistakesSub').textContent = mistakes.length ? ('Вопросов с ошибками: ' + mistakes.length) : 'Ошибок пока нет — сначала пройди тест';
     $('modeMistakes').disabled = !mistakes.length;
     $('modeRandom').hidden = SINGLE;
+    // работа над ошибками и случайные вопросы — внутри каждого теста; на главной только выбор темы
+    var modesBox = document.querySelector('#homeTop .modes'); if(modesBox) modesBox.hidden = true;
     if(SINGLE){ $('topicsBlock').hidden = true; if($('homeTop').parentNode !== $('launchHome')) $('launchHome').appendChild($('homeTop')); openLaunch(TESTS[0], true); return; }
     $('topicsBlock').hidden = false;
     var box = $('topics'); box.innerHTML = '';
@@ -72,7 +80,7 @@
       var done = tp.tests.filter(function(t){ return perfect[t.key]; }).length;
       var b = document.createElement('button'); b.className = 'tile';
       var one = tp.tests.length === 1;
-      var meta = one ? (n + ' вопр.' + bestHtml(best[tp.tests[0].key]) + (studied[tp.tests[0].key] ? '' : ' · <span class="new">не изучен</span>'))
+      var meta = one ? (n + ' вопр.' + bestHtml(best[tp.tests[0].key]) + (isStudied(tp.tests[0]) ? '' : ' · <span class="new">не изучен</span>'))
                      : (tp.tests.length + ' ' + plural(tp.tests.length, 'тест', 'теста', 'тестов') + ' · ' + n + ' вопр.');
       var pf = one ? (perfect[tp.tests[0].key] || 0) : 0;
       b.innerHTML = '<span class="tile-title"><span>' + esc(tp.title) + (tp.upd ? '<span class="upd">★ обновлено</span>' : '') + '</span>' +
@@ -89,12 +97,13 @@
   function openTopic(tp){
     $('topicTitle').textContent = tp.title;
     var box = $('tests'); box.innerHTML = '';
-    tp.tests.forEach(function(t){
+    (tp.all ? [tp.all] : []).concat(tp.tests).forEach(function(t){
       var b = document.createElement('button'); b.className = 'tile';
       var pf = perfect[t.key] || 0;
+      if(t.isAll) b.className = 'tile tile-all';
       b.innerHTML = '<span class="tile-title"><span>' + esc(t.title) + (t.upd ? '<span class="upd">★</span>' : '') + '</span>' +
         (pf ? '<span class="perfect" title="Решено на 100%">✓ ' + pf + '</span>' : '') + '</span>' +
-        '<span class="tile-meta">' + t.q.length + ' вопр.' + bestHtml(best[t.key]) + (studied[t.key] ? '' : ' · <span class="new">не изучен</span>') + '</span>';
+        '<span class="tile-meta">' + t.q.length + ' вопр.' + bestHtml(best[t.key]) + (isStudied(t) ? '' : ' · <span class="new">не изучен</span>') + '</span>';
       b.addEventListener('click', function(){ openLaunch(t); });
       box.appendChild(b);
     });
@@ -106,7 +115,13 @@
   function modesFor(t){
     var m = [{id:'all', label:'Все ' + t.q.length}, {id:'range', label:'Диапазон'}, {id:'rand', label:'Случайные'}];
     if(t.parts) m.push({id:'parts', label:t.parts.length + ' по билетам'});
+    var mc = mistakesOf(t).length;
+    if(mc) m.push({id:'mist', label:'Ошибки · ' + mc});
     return m;
+  }
+  function mistakesOf(t){
+    var ids = {}; t.q.forEach(function(q){ ids[q.id] = 1; });
+    return mistakes.filter(function(id){ return ids[id] && BY_ID[id]; });
   }
   function openLaunch(t, asHome){
     curTest = t;
@@ -117,7 +132,7 @@
     $('launchCrumb').textContent = t.topic.tests.length > 1 ? t.topic.title : 'Тест';
     $('launchTitle').textContent = t.title;
     var pf = perfect[t.key] || 0;
-    $('launchMeta').innerHTML = t.q.length + ' ' + plural(t.q.length, 'вопрос', 'вопроса', 'вопросов') + (best[t.key] != null ? ' · лучший результат ' + best[t.key] + '%' : '') + (pf ? ' · ✓ на 100%: ' + pf : '') + (studied[t.key] ? '' : ' · не изучен');
+    $('launchMeta').innerHTML = t.q.length + ' ' + plural(t.q.length, 'вопрос', 'вопроса', 'вопросов') + (best[t.key] != null ? ' · лучший результат ' + best[t.key] + '%' : '') + (pf ? ' · ✓ на 100%: ' + pf : '') + (isStudied(t) ? '' : ' · не изучен');
     var seg = $('launchSeg'); seg.innerHTML = '';
     modesFor(t).forEach(function(m){
       var b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'radio'); b.dataset.mode = m.id; b.textContent = m.label;
@@ -149,6 +164,7 @@
     if(launchMode === 'range'){ var r = clampRange(changed); var k = r[1] - r[0] + 1; sub = k + ' ' + plural(k, 'вопрос', 'вопроса', 'вопросов') + ' по порядку: с ' + r[0] + ' по ' + r[1] + '.'; }
     if(launchMode === 'rand'){ var c = Math.min(+$('rCount').value, t.q.length); sub = c + ' случайных ' + plural(c, 'вопрос', 'вопроса', 'вопросов') + ' из ' + t.q.length + '.'; }
     if(launchMode === 'parts') sub = t.parts.length + ' вопросов — по одному случайному из каждого билета.';
+    if(launchMode === 'mist'){ var mk = mistakesOf(t).length; sub = 'Работа над ошибками: вопросов с ошибками — ' + mk + '. Верно решённые уходят из списка.'; }
     $('launchSub').textContent = sub;
     launchCfg[t.key] = {mode: launchMode, from: +$('rFrom').value, to: +$('rTo').value, count: +$('rCount').value};
     save(LS.launch, launchCfg);
@@ -160,19 +176,22 @@
   function buildList(t, mode){
     if(mode === 'range'){ var r = clampRange(); return t.q.slice(r[0] - 1, r[1]); }
     if(mode === 'rand') return sample(t.q, Math.min(+$('rCount').value, t.q.length));
+    if(mode === 'mist') return shuffle(mistakesOf(t).map(function(id){ return BY_ID[id]; }));
     if(mode === 'parts') return t.parts.map(function(p){ return t.q[p[0] + Math.floor(Math.random() * (p[1] - p[0]))]; });
     return t.q.slice();
   }
   function runTitle(t, mode, list){
-    if(mode === 'range') return t.title + ' · ' + list[0].n + '–' + list[list.length - 1].n;
+    if(mode === 'range') return t.title + ' · ' + (t.isAll ? $('rFrom').value + '–' + $('rTo').value : list[0].n + '–' + list[list.length - 1].n);
     if(mode === 'rand') return t.title + ' · ' + list.length + ' случайных';
     if(mode === 'parts') return t.title + ' · по билетам';
+    if(mode === 'mist') return t.title + ' · работа над ошибками';
     return t.title;
   }
   function launch(t, mode){
     var list = buildList(t, mode);
     var opts = {test: t, mode: mode};
-    if(!studied[t.key]) openStudy(t, list, opts);
+    if(mode === 'mist'){ if(!list.length) return; opts.mistakes = true; start(runTitle(t, mode, list), list, opts); return; }
+    if(!isStudied(t)) openStudy(t, list, opts);
     else start(runTitle(t, mode, list), list, opts);
   }
   $('launchStart').addEventListener('click', function(){ launch(curTest, launchMode); });
