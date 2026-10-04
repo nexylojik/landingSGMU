@@ -119,6 +119,8 @@
   .tg-label .mono{text-transform:none; letter-spacing:.02em; font-size:.78rem; opacity:.75;}
   .tg-arrow{font-size:1.1rem; transition:transform .2s ease;}
   .tg-btn:hover .tg-arrow{transform:translateX(3px);}
+  .contact p.contact-ad{margin-top:10px;}
+  .contact-ad b{color:var(--text); font-weight:600;}
   .foot-link{color:var(--text-muted); text-decoration:none; border-bottom:1px solid var(--border);}
   .foot-link:hover{color:var(--accent); border-color:var(--accent);}
   @media (max-width:600px){ .contact{padding:22px 18px;} .contact h2{font-size:1.55rem;} .tg-btn{width:100%;} .tg-arrow{margin-left:auto;} }
@@ -461,8 +463,9 @@
   <section class="contact" aria-label="Связь">
     <div class="contact-text">
       <span class="mono contact-kicker">Связь</span>
-      <h2>По вопросам и сотрудничеству</h2>
+      <h2>По вопросам, сотрудничеству и рекламе</h2>
       <p>Нашли ошибку в ответе, хотите добавить свой предмет или сделать тренажёр для группы — напишите в Telegram.</p>
+      <p class="contact-ad"><b>Реклама на сайте</b> — карточка на главной и баннер во всех тренажёрах и атласах. Напишите, расскажем условия.</p>
     </div>
     <a class="tg-btn" href="https://t.me/oapwso" target="_blank" rel="noopener">
       <span class="tg-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.94 4.3a1.2 1.2 0 0 0-1.63-1.1L2.9 9.93c-.95.37-.9 1.73.07 2.03l4.3 1.33 1.64 5.2c.25.8 1.26 1.03 1.84.42l2.43-2.52 4.52 3.33c.7.52 1.7.13 1.87-.72l2.37-14.7ZM9.5 13.9l8.1-6.3-6.5 7.2-.26 2.64-1.34-3.54Z"/></svg></span>
@@ -489,6 +492,6 @@
   chips.forEach(function(c){ c.addEventListener('click', function(){ apply(c.dataset.f); }); });
 })();
 </script>
-<script src="assets/promo.js?v=3"></script>
+<script src="assets/promo.js?v=4"></script>
 </body>
 </html>

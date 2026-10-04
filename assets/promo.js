@@ -134,7 +134,8 @@
 
   // ---------- шторка ----------
   var sheet = null, lastFocus = null;
-  function quizBusy(){ var q = document.getElementById('screen-quiz'); return !!(q && !q.hidden); }
+  function shown_(id){ var e = document.getElementById(id); return !!(e && !e.hidden && e.getClientRects().length); }
+  function quizBusy(){ return shown_('screen-quiz') || shown_('quiz-mode'); }  // не мешаем решать тест
   function nextAd(){
     var i = (+ls('promo-rot') || 0); ls('promo-rot', String(i + 1));
     return queue[i % queue.length];
