@@ -89,6 +89,8 @@
   .card p{margin:0; color:var(--text-muted); font-size:.9rem;}
   .facts{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;}
   .fact{font-family:'Atkinson Mono', monospace; font-size:.72rem; color:var(--text-muted); border:1px solid var(--border); border-radius:7px; padding:2px 8px;}
+  .fact.tag-new{color:var(--ok); border-color:rgba(143,214,166,.4); background:rgba(143,214,166,.1);}
+  .fact.tag-new b{color:var(--ok);}
   .fact b{color:var(--text); font-weight:500;}
   .card[hidden], .topic[hidden], .subject[hidden]{display:none;}
 
@@ -132,7 +134,7 @@
     <h1>Тренажёры, атласы <em>и</em> ответы</h1>
     <p>Тесты кафедр с ответами и работой над ошибками, фото препаратов и электронограммы с подписями, ответы на вопросы к зачётам и экзаменам. Всё открывается с телефона.</p>
     <div class="stats">
-      <div class="stat"><b>8 142</b><span>вопросов с ответами</span></div>
+      <div class="stat"><b>8 235</b><span>вопросов с ответами</span></div>
       <div class="stat"><b>9</b><span>предметов</span></div>
       <div class="stat"><b>67</b><span>препаратов и ТЭМ</span></div>
     </div>
@@ -236,13 +238,13 @@
       </div>
     </div>
     <div class="topic">
-      <div class="topic-title"><h3>Коллоквиум «Белки»</h3><span class="line"></span></div>
+      <div class="topic-title"><h3>Коллоквиумы</h3><span class="line"></span></div>
       <div class="cards">
         <a class="card trainer" data-kind="trainer" href="biochem-proteins/">
           <div class="card-top"><span class="tag mono">Тренажёр теста</span><span class="arrow" aria-hidden="true">→</span></div>
-          <h4>Коллоквиум 1: белки</h4>
-          <p>Аминокислоты, структура и свойства белков, методы выделения и анализа. Один и несколько правильных ответов.</p>
-          <div class="facts"><span class="fact"><b>178</b> вопросов</span></div>
+          <h4>Коллоквиумы: белки и ферменты</h4>
+          <p>Коллоквиум 1 — аминокислоты, структура и свойства белков, методы выделения. Коллоквиум 2 — ферменты: кинетика, ингибиторы, кофакторы, изоферменты.</p>
+          <div class="facts"><span class="fact"><b>178</b> белки</span><span class="fact"><b>93</b> ферменты</span><span class="fact tag-new"><b>Новое</b></span></div>
         </a>
       </div>
     </div>
