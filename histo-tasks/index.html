@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Гистология — задачи к экзамену</title>
+<meta name="description" content="58 ситуационных задач по гистологии к экзаменационным билетам с ответами.">
+<style>
+  @font-face{ font-family:'Libre Caslon Cond'; src:url('../fonts/LibreCaslonCyrCondensed-Regular.otf') format('opentype'); font-weight:400; font-display:swap; }
+  @font-face{ font-family:'Inter Tight'; src:url('../fonts/InterTight-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+  @font-face{ font-family:'Inter Tight'; src:url('../fonts/InterTight-SemiBold.ttf') format('truetype'); font-weight:600; font-display:swap; }
+  @font-face{ font-family:'Atkinson Mono'; src:url('../fonts/AtkinsonHyperlegibleMono-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+  :root{ color-scheme:dark; --bg:#100E14; --surface:#1A1822; --surface-2:#211E2A; --border:#332F3D; --text:#ECF4FF; --text-muted:rgba(236,244,255,.62); --text-faint:rgba(236,244,255,.45);
+    --accent:#FF9FA2; --accent-soft:rgba(255,159,162,.14); --accent-2:#E7B588; --accent-2-soft:rgba(231,181,136,.14); --ok:#8FD6A6; --ok-soft:rgba(143,214,166,.13); --shadow:0 1px 2px rgba(0,0,0,.35),0 14px 34px -14px rgba(0,0,0,.65); }
+  *{box-sizing:border-box;} html{background:var(--bg); scroll-padding-top:80px;}
+  body{background:var(--bg); color:var(--text); margin:0; padding:0 16px 80px; font-family:'Inter Tight','Segoe UI',Arial,sans-serif; font-weight:500; line-height:1.6;
+    background-image:radial-gradient(900px 480px at 12% -8%, rgba(255,159,162,.13), transparent 60%), radial-gradient(760px 420px at 100% 4%, rgba(231,181,136,.09), transparent 60%); background-repeat:no-repeat;}
+  .wrap{max-width:820px; margin:0 auto;}
+  h1{font-family:'Libre Caslon Cond',Georgia,serif; font-weight:400; margin:0;}
+  .mono{font-family:'Atkinson Mono',monospace; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase;}
+  .top{display:flex; justify-content:space-between; align-items:center; padding:20px 0 0;}
+  .back{color:var(--text-muted); text-decoration:none; font-size:.9rem;} .back:hover{color:var(--accent);}
+  .hero{padding:34px 0 22px;} .kicker{color:var(--accent); display:inline-flex; gap:8px; align-items:center;} .kicker::before{content:""; width:22px; height:1px; background:var(--accent);}
+  .hero h1{font-size:clamp(2.1rem,6vw,3.2rem); line-height:1.05; margin:12px 0 10px;} .hero h1 em{font-style:normal; color:var(--accent);}
+  .hero p{color:var(--text-muted); margin:0; max-width:580px;}
+  .bar{position:sticky; top:0; z-index:5; background:rgba(16,14,20,.88); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--border); padding:10px 0; margin-bottom:14px; display:flex; gap:8px;}
+  .search{flex:1; min-width:0;} .search input{width:100%; font:inherit; font-size:.92rem; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:9px 12px; outline:none;}
+  .search input::placeholder{color:var(--text-faint);} .search input:focus{border-color:var(--accent);}
+  .btn{flex:none; font:inherit; font-weight:600; font-size:.85rem; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:9px 12px; cursor:pointer;}
+  .btn:hover{border-color:rgba(236,244,255,.3);}
+  .task{background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:16px 18px; margin-bottom:10px; box-shadow:var(--shadow);}
+  .t-head{display:flex; gap:12px; align-items:flex-start;}
+  .t-num{flex:none; min-width:34px; height:34px; border-radius:10px; background:var(--accent-soft); color:var(--accent); display:flex; align-items:center; justify-content:center; font-family:'Atkinson Mono',monospace; font-size:.85rem;}
+  .t-q{margin:4px 0 0; color:var(--text);}
+  .reveal{margin:12px 0 0 46px; font:inherit; font-size:.84rem; font-weight:600; color:var(--accent); background:transparent; border:1px solid rgba(255,159,162,.4); border-radius:99px; padding:6px 13px; cursor:pointer;}
+  .reveal[aria-expanded="true"]{color:var(--text-muted); border-color:var(--border);}
+  .t-a{margin:12px 0 0 46px; border-left:3px solid var(--ok); background:var(--ok-soft); border-radius:0 12px 12px 0; padding:10px 14px;}
+  .t-a .mono{color:var(--ok);} .t-a p{margin:4px 0 0;}
+  .note{color:var(--text-muted); font-size:.9rem;} .note b{color:var(--accent-2);}
+  mark{background:rgba(231,181,136,.32); color:#fff; border-radius:3px;}
+  .empty{display:none; text-align:center; color:var(--text-muted); padding:30px 0;}
+  footer{margin-top:36px; padding-top:18px; border-top:1px solid var(--border); color:var(--text-faint); font-size:.85rem;} footer a{color:var(--text-muted);}
+  @media (max-width:600px){ .reveal,.t-a{margin-left:0;} .task{padding:14px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a class="back" href="../">← Все тренажёры</a><span class="mono" style="color:var(--text-faint)">Экзамен · задачи</span></div>
+  <header class="hero">
+    <span class="kicker mono">Гистология</span>
+    <h1>Задачи к <em>экзаменационным</em> билетам</h1>
+    <p>58 ситуационных задач с ответами: цитология, эмбриология, ткани, частная гистология. Прочитай условие, ответь сам, затем открой ответ.</p>
+  </header>
+  <div class="bar">
+    <label class="search"><input id="q" type="search" placeholder="Поиск по задачам: например, митоз, плацента, эпителий" aria-label="Поиск по задачам"></label>
+    <button class="btn" id="all" type="button">Показать все ответы</button>
+  </div>
+  <main id="list">
+<article class="task" id="z1"><div class="t-head"><span class="t-num">1</span><p class="t-q">На лабораторном занятии студент рассматривает микропрепарат, используя микроскоп с увеличением объектива в 40 раз и окуляром в 15 раз. Во сколько раз видимое изображение структур больше ИСТИННОГО?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>В 600 раз.</p></div></article>
+<article class="task" id="z2"><div class="t-head"><span class="t-num">2</span><p class="t-q">На свободной поверхности клеток расположены структуры, в которых под электронным микроскопом видны 9 пар периферических и 2 пары центральных микротрубочек. Как называются эти структуры, и какова их роль.</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Реснички, двигательная и очищение.</p></div></article>
+<article class="task" id="z3"><div class="t-head"><span class="t-num">3</span><p class="t-q">Клетки, выстилающие кишечник, имеют щеточную каемку. При некоторых болезнях она разрушается. Какая функция клеток при этом страдает? Почему?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Страдает функция всасывания, так как уменьшается всасывательная поверхность кишечника.</p></div></article>
+<article class="task" id="z4"><div class="t-head"><span class="t-num">4</span><p class="t-q">При усиленной физической нагрузке организма в его клетках уменьшается содержание трофических включений. С чем это связано?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Трофические включения гликогена, жир, уменьшаются в связи с усилением метаболических процессов.</p></div></article>
+<article class="task" id="z5"><div class="t-head"><span class="t-num">5</span><p class="t-q">Известно, что молодые и быстрорастущие клетки имеют базофильную цитоплазму. Чем это можно объяснить?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Из-за высокого содержания рибосом и РНК, которые имеют слабо-щелочную реакцию среды.</p></div></article>
+<article class="task" id="z6"><div class="t-head"><span class="t-num">6</span><p class="t-q">В клетке видны фигуры двух дочерних звезд. Какая это фаза митоза? Сколько хромосом в каждой звезде?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Анафаза, 2 хромосомы.</p></div></article>
+<article class="task" id="z7"><div class="t-head"><span class="t-num">7</span><p class="t-q">Клетка находится в митозе. Происходит ли в ней при этом синтез белков?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Нет.</p></div></article>
+<article class="task" id="z8"><div class="t-head"><span class="t-num">8</span><p class="t-q">Количественным методом определили, что в интерфазной клетки, имеющей нормальные размеры, содержится удвоенное количество ДНК. В каком периоде клеточного цикла находится клетка?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Синтетический или постсинтетический.</p></div></article>
+<article class="task" id="z9"><div class="t-head"><span class="t-num">9</span><p class="t-q">В процессе сперматогенеза нарушено формирование акросомы. Какая функция сперматозоида будет изменена?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Нарушается проникновения сперматозоида в яйцеклетку, из-за отсутствия ферментов расщепляющих оволемму.</p></div></article>
+<article class="task" id="z10"><div class="t-head"><span class="t-num">10</span><p class="t-q">На микрофотографии представлена яйцеклетка, окружённая двумя структурами: блестящей оболочкой и лучистым венцом. Назовите тип этой яйцеклетки, укажите, какому виду живых существ может она принадлежать. Какие клетки принимают участие в образовании указанных выше структур?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Млекопитающие, изолицетальная яйцеклетка, фолликулярные клетки, клетки яйцеводов, цитолемма.</p></div></article>
+<article class="task" id="z11"><div class="t-head"><span class="t-num">11</span><p class="t-q">На препарате виден зародыш, который состоит из чётного числа бластомеров, имеющих одинаковую величину. Определите какой тип дробления характерен для этих зародышей.</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Полное(голобластическое) равномерное синхронное.</p></div></article>
+<article class="task" id="z12"><div class="t-head"><span class="t-num">12</span><p class="t-q">В эксперименте у зародыша блокирован процесс миграции клеток из области первичной полоски и головного узелка. В каких структурах зародыша произойдут нарушения развития в результате этих воздействий?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Нарушится образование хорды и осевого скелета.</p></div></article>
+<article class="task" id="z13"><div class="t-head"><span class="t-num">13</span><p class="t-q">В каудальном отделе зародыша стенка кишечной трубки образует выпячивание, в состав которого входит эктодерма, висцеральный листок мезодермы. Назовите формирующийся внезародышевый орган и укажите присущие ему функции.</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Аллантоис, участвует в формировании сосудистой сети плаценты, проксимальная часть аллантоиса участвует в образовании части переходного эпителия мочевого пузыря.</p><p class="note"><b>Комментарий.</b> Стенку аллантоиса образуют энтодерма и висцеральный листок мезодермы (в условии — «эктодерма»). В исходном файле ответ помечен как сомнительный.</p></div></article>
+<article class="task" id="z14"><div class="t-head"><span class="t-num">14</span><p class="t-q">Пласт эпителия образован клетками, ядра которых расположены неодинаково по отношению к базальной мембране. В то же время все они контактируют с последней. Какой это вид эпителия?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Однослойный (кубический, призматический) эпителий.</p><p class="note"><b>Комментарий.</b> Ядра на разных уровнях при контакте всех клеток с базальной мембраной — признак однослойного многорядного эпителия. В исходном файле ответ помечен как сомнительный.</p></div></article>
+<article class="task" id="z15"><div class="t-head"><span class="t-num">15</span><p class="t-q">В препарате железы видно, что её выводной проток содержит разветвления. В каждое из них открывается несколько концевых отделов, имеющих вид мешочка. Какой это морфологический тип железы?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Сложная альвеолярная железа с разветвленными концевыми отвелами.</p></div></article>
+<article class="task" id="z16"><div class="t-head"><span class="t-num">16</span><p class="t-q">Одной из функций кишечника, выстланного эпителием, является всасывание. Какой вид эпителия адекватен этой функции?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Однослойный цилиндрический каёмчатый эпителий.</p></div></article>
+<article class="task" id="z17"><div class="t-head"><span class="t-num">17</span><p class="t-q">Представление о гемограмме. Соотношение форменных элементов.</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Гемограмма – количественное содержание форменных элементов крови в одном литре Соотношение форменных элементов-40-50 форменные элементы крови .50-60 плазма</p></div></article>
+<article class="task" id="z18"><div class="t-head"><span class="t-num">18</span><p class="t-q">На препарате вы видите два лейкоцита. У одного из них ядро состоит из двух сегментов, у другого - из пяти. Какая клетка из них является эозинофилом? Какие дополнительные сведения вам нужны для утверждения заключения?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Эозинофил – ядро с двумя сегментами и эозинофил всегда красится красным или розовым (эозинофильная окраска).</p></div></article>
+<article class="task" id="z19"><div class="t-head"><span class="t-num">19</span><p class="t-q">Какие форменные элементы имеют самые мелкие размеры, ядра не содержат, окрашиваются неравномерно азуром, расположены небольшими скоплениями между эритроцитами?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Тромбоциты</p></div></article>
+<article class="task" id="z20"><div class="t-head"><span class="t-num">20</span><p class="t-q">Даны два препарата волокнистой соединительной ткани, окрашенные гематоксилин - эозином. В том и другом препарате выявляется выраженная оксифилия межклеточного вещества. Однако в первом препарате видно, что коллагеновые волокна располагаются параллельно друг другу, а во втором в разных направлениях (без определенной ориентации). Назовите эти ткани.</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Первая – плотная оформленная, а вторая - плотная неоформленная соединительная ткань</p></div></article>
+<article class="task" id="z21"><div class="t-head"><span class="t-num">21</span><p class="t-q">Даны два препарата специальных видов соединительной ткани, окрашенной гематоксилин - эозином. В одном из них выявляются соединённые между собой клетка отростчатой формы, в другом крупные клетки с узким ободком цитоплазмы и плоским ядром по периферии клетки. Назовите разновидности специальных видов соединительной ткани.</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Белая жировая, бурая жировая, пигментная, студенистая, ретикулярная. 1 – ретикулярная ткань ( клетки имеют отростки, с помощью которых клетки соединяются между собой), 2 – белая жировая ткань (в их цитоплазме имеется одна большая капля жира, а ядро и органоиды оттеснены к периферии)</p></div></article>
+<article class="task" id="z22"><div class="t-head"><span class="t-num">22</span><p class="t-q">Даны два препарата костной ткани конечности. В одном из них хорошо видны концентрические костные пластинки, в другом костные пластинки отсутствуют. Следует определить разновидность костной ткани и место её локализации.</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>В первом – пластинчатая костная ткань, кости скелета, во втором – ретикулофиброзная костная ткань, в местах сращения черепа и прикрепления сухожилий к костной ткани.</p></div></article>
+<article class="task" id="z23"><div class="t-head"><span class="t-num">23</span><p class="t-q">Даны два препарата мышечной ткани. В одном хорошо видны оксифильные волокна с большим количеством ядер под оболочкой, в другом - клетки веретеновидной форм с вытянутым палочковидным ядром, расположенным в центре клетки. Какие это ткани?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>1 – поперечно-полосатая мышечная ткань, 2 – гладкая мышечная ткань.</p></div></article>
+<article class="task" id="z24"><div class="t-head"><span class="t-num">24</span><p class="t-q">Определите вид ткани: а) пласт клеток, каждая из которых окружена базальной мембраной, б) пласт клеток, лежащих на базальной мембране.</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>+Ответ: первая – гладкая мышечная ткань сосудов и внутренних органов, вторая – поперечнополосатая мышечная ткань (скелетная).</p></div></article>
+<article class="task" id="z25"><div class="t-head"><span class="t-num">25</span><p class="t-q">На фотографии видна нервная клетка, от которой отходит один отросток. В то же время в тексте указано, что дендрит этой клетки идет на периферию, а аксон - в центр. Объясните, может ли этот текст соответствовать фотографии</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Если нейрон псевдоуниполярный</p></div></article>
+<article class="task" id="z26"><div class="t-head"><span class="t-num">26</span><p class="t-q">На схеме показан нейроцит, один отросток которого идет в спинной мозг, а другой, названный дендритом, подходит к мышечному волокну. Какова функция этого нейроцита?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Эфферентный нейрон, передающий импульс на рабочий орган</p></div></article>
+<article class="task" id="z27"><div class="t-head"><span class="t-num">27</span><p class="t-q">В препарате нейроцитов, окрашенных метиленовым синим, виден отросток нейроцита, содержащий глыбки темно-синего цвета. К какому виду принадлежит отросток нейроцита?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Базофильное вещество Нисля в дендрите</p></div></article>
+<article class="task" id="z28"><div class="t-head"><span class="t-num">28</span><p class="t-q">На микрофотографии во внутренней луковице пластинчатого тельца виден отросток нейроцита, какой отросток и какого нейроцита согласно функциональной классификации приведен на фотографии?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Осевой цилиндр (нейролеммоциты) аксона чувствительного нейрона.</p></div></article>
+<article class="task" id="z29"><div class="t-head"><span class="t-num">29</span><p class="t-q">Больной испытывает давление на кожу, но не чувствует боли и легкого прикосновения к коже. Какие рецепторы в коже больного повреждены. А какие не повреждены?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Не повреждены: пластинчатые тельца – барорецепторы (несвободные капсулированные нервные окончания в глубоких слоях кожи). Повреждены: свободные нервные окончания (осязательные и болевые рецепторы).</p></div></article>
+<article class="task" id="z30"><div class="t-head"><span class="t-num">30</span><p class="t-q">В эксперименте перерезаны передние корешки спинного мозга. Какие нервные окончания (чувствительные или двигательные) перестанут функционировать в результате этой перерезки?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Двигательные</p></div></article>
+<article class="task" id="z31"><div class="t-head"><span class="t-num">31</span><p class="t-q">На микрофотографии представлена пирамидная клетка размером около 120 мкм, от основания которой отходит нейрит. Укажите, к какой зоне головного мозга она принадлежит, в состав каких проводящих путей входит ее аксон, где он может заканчиваться в спинном мозге?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Моторный центр коры, аксоны образуют кортикоспинальный и кортиконуклеарный пути и оканчиваются синапсами на клетках моторных ядер.</p></div></article>
+<article class="task" id="z32"><div class="t-head"><span class="t-num">32</span><p class="t-q">На микрофотографии представлен крупный нейроцит грушевидной формы, на теле которого расположен синапс в виде корзинки. Какая клетка образует такого вида синапс с грушевидной клепкой? Где эта клетка располагается?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Корзинчатая клетка образует аксосоматические синапсы на теле грушевидной клетки, корзинчатая клетка располагается в молекулярном слое коры мозжечка.</p></div></article>
+<article class="task" id="z33"><div class="t-head"><span class="t-num">33</span><p class="t-q">Экспериментальных животных долгое время лишали витамина А. Какие функциональные нарушения можно ожидать в структуре нейросенсорных клеток?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Куриная слепота, вследствие нарушение структур дисков палочек.</p></div></article>
+<article class="task" id="z34"><div class="t-head"><span class="t-num">34</span><p class="t-q">На схеме хода лучей в глазном яблоке хрусталик имеет выпуклую форму. Какие структуры глазного яблока обеспечивают это явление?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Аккомодационный аппарат: ресничное тело, реснитчатые мышцы, реснитчатый поясок.</p></div></article>
+<article class="task" id="z35"><div class="t-head"><span class="t-num">35</span><p class="t-q">Представлены два гистологических препарата задней стенки глаза животных. На первом препарате гранулы меланина содержатся в цитоплазме околоядерной зоны клеток пигментного слоя, во втором в их отростках. В каких условиях освещения находились эти животные?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>1 – в темноте, 2 – на свету. При попадании света на пигментные клетки меланосомы мигрируют от ядра в отростки.</p></div></article>
+<article class="task" id="z36"><div class="t-head"><span class="t-num">36</span><p class="t-q">У больного нарушено восприятие раздражений, связанных с положением тела по отношению к гравитационному полю. Функция каких рецепторных клеток утрачена?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Сенсорные клетки слухового пятна.</p></div></article>
+<article class="task" id="z37"><div class="t-head"><span class="t-num">37</span><p class="t-q">Одним из симптомов нарушения работы желудочно-кишечного тракта является &quot;обложенный язык&quot;. Как объяснить, что при этом нарушается восприятие вкуса?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>При нарушениях пищеварения отторжение ороговевших клеток эпителия нитевидных сосочков задерживается, в результате чего на языке образуется налет. Этот налет предотвращает доступ элементов пищи к криптам.</p></div></article>
+<article class="task" id="z38"><div class="t-head"><span class="t-num">38</span><p class="t-q">В описании строения кровеносного капилляра указано, что в цитоплазме эндотелиальных клеток имеются истончения, базальная мембрана сплошная. Какого типа этот капилляр? В каких органах располагаются такие капилляры?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Капилляр фенестрированного типа, капилляры клубочков почек и ворсин кишечника.</p></div></article>
+<article class="task" id="z39"><div class="t-head"><span class="t-num">39</span><p class="t-q">Яд пауков, змей, содержащий гиалуронидазу, легко проникает сквозь стенку капилляра. С каким структурным элементом стенок кровеносного капилляра связана проницаемость и почему?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Гиалуронидаза расщепляет гиалуроновую кислоту, которая уплотняет структуру соединительной ткани.</p></div></article>
+<article class="task" id="z40"><div class="t-head"><span class="t-num">40</span><p class="t-q">Даны два препарата поперечно - полосатой мышечной ткани. В одном из них многочисленные ядра располагаются под оболочкой волокна. В другом - видны клетки с центрально расположенным ядром. Какой из этих препаратов относится к миокарду?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Второй препарат – миокард сердца.</p></div></article>
+<article class="task" id="z41"><div class="t-head"><span class="t-num">41</span><p class="t-q">У экспериментальных мышей сразу после рождения удалили тимус. Как это отразится на иммунных реакциях? С какими форменными элементами крови связаны эти нарушения?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Мыши не будут иметь специфической иммунной защиты организма; эти нарушения связаны с Т-лимфоцитами крови, так как их дозревание Т-лимфоцитов с момента детерминации про-Т-лимфоцитов происходит в тимусе (+ не происходит отторжения чужеродных трансплантантов и распознавание чужеродных антигенов).</p></div></article>
+<article class="task" id="z42"><div class="t-head"><span class="t-num">42</span><p class="t-q">Животному дважды, через определённый интервал вводили один и тот же антиген (культуру бактерий). При этом вторичный иммунный ответ у животного развивался гораздо быстрее и был более интенсивным. С чем связано это явление?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Это связано с выработкой В-лимфоцитов после первого введения антигена, В-лимфоциты являются клетками иммунологической памяти.</p></div></article>
+<article class="task" id="z43"><div class="t-head"><span class="t-num">43</span><p class="t-q">Исследователь в гистологических препаратах селезёнки выявил повышенное содержание железа. Что является источником железа в селезёнке? О чем свидетельствует увеличение его содержания?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Стареющие или патологические эритроциты, это свидетельствует о повышенном старении эритроцитов или мутациях, приводящих к гибели этих клеток крови.</p></div></article>
+<article class="task" id="z44"><div class="t-head"><span class="t-num">44</span><p class="t-q">В препаратах представлены две железы. В одном препарате железа имеет развитые секреторные отделы, из которых секрет по выводному протоку выделяется в близлежащую полость. Во втором железа представлена скоплением секреторных клеток, пронизанным густой сетью кровеносных капилляров, по которой транспортируется секрет. Какая из желез является эндокринной?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Вторая.</p></div></article>
+<article class="task" id="z45"><div class="t-head"><span class="t-num">45</span><p class="t-q">В препарате щитовидной железы фолликулы содержат много коллоида, в результате чего размеры увеличены. Тироциты плоские. Какому функциональному состоянию органа соответствует такая картина?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Орган находится в состоянии гипофункции щитовидной железы. Нарушение соотношения «секреция-реабсорбция коллоида», в сторону преобладания секреции над реабсорбцией.</p></div></article>
+<article class="task" id="z46"><div class="t-head"><span class="t-num">46</span><p class="t-q">При микроскопии двух препаратов пищевода человека студент обнаружил в одном из них в мышечной оболочке поперечно-полосатую, а в другом - гладкую мышечную ткань. Поэтому он решил, что один из препаратов является отклонением от нормы (какой - он не знал). Прав ли студент? Дайте объяснение своему решению.</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Студент не прав. Препарат с поперечно-полосатой тканью был сделан из верхней трети пищевода, а препарат с гладкой мышечной тканью был сделан из нижней трети пищевода. (Кроме того в верху пищевода мышечная пластинка пищевода представлена пучками продольно ориентированных гладких миоцитов, а внизу они сливаются в единую пластинку)</p></div></article>
+<article class="task" id="z47"><div class="t-head"><span class="t-num">47</span><p class="t-q">Анализ желудочного сока выявил резкое падение его кислотности. С нарушением каких клеток желудка это может быть связано?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>В начальной стадии заболевания хронического гастрита париетальные клетки фундальных желёз желудка вырабатывают избыточное количество соляной кислоты и желудочного сока, однако затем часть этих клеток погибает из-за постоянного воспаления этого органа, и кислотность становится нормальной.</p></div></article>
+<article class="task" id="z48"><div class="t-head"><span class="t-num">48</span><p class="t-q">Поставлена задача изучить процессы пристеночного пищеварения и всасывания. Какой морфологический объект должен быть использован для этой цели?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Препарат ворсинок тонкой кишки.</p></div></article>
+<article class="task" id="z49"><div class="t-head"><span class="t-num">49</span><p class="t-q">Многие люди потребляют большое количество сахара. Какие клетки поджелудочной железы в этих условиях функционируют с большим напряжением?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>В-клетки, вырабатывающие инсулин, который вырабатывается после приема пищи и снижает концентрацию сахара в крови</p></div></article>
+<article class="task" id="z50"><div class="t-head"><span class="t-num">50</span><p class="t-q">В одной журнальной статье было написано, что в центре долек печени располагается центральная вена, а в реферате студента - что в центре долек находится &quot;триада&quot;. Как оценить статью и реферат?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>В журнале было описано классическое определение печеночной дольки, которая образована печеночными балками и внутридольковыми синусоидными кровеносными капиллярами и желчными протоками, в центре такой печеночной дольки располагается центральная вена,а сбоку находится триада; Студент писал о портальной печеночной дольке, которая включает в себя сегменты трех соседних классических печеночных долек, окружающих триаду, по периферии же находятся центральные вены.</p></div></article>
+<article class="task" id="z51"><div class="t-head"><span class="t-num">51</span><p class="t-q">У больного бронхиальной астмой временами возникают приступы удушья вследствие сильного сжатия, главным образом, мелких бронхов. Какие структурные элементы бронхов обуславливают их спазм? Почему сильнее других сжимаются именно мелкие бронхи?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>В мелких бронках мышечная оболочка,состоящая из гладких миоцитов самая толстая. Спазм обуславливает сокращение гладких миоцитов</p></div></article>
+<article class="task" id="z52"><div class="t-head"><span class="t-num">52</span><p class="t-q">Проводили микроскопический анализ двух биоптатов кожи кисти. В одном было обнаружено пять чётко выраженных слоев эпидермиса и простые железы в дерме; в другом - эпидермис был тонким, слоистость слабо прослеживалась, дерма содержала корни волос, волосяные луковицы и два вида простых желез. Какие участки кожи подвергались анализу? Каких сведений не хватает для определения желез и уточнения морфологического диагноза биоптатов?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>В первом – толстая кожа из пяти слоев (ладонь); во втором – тонкая кожа (тыльная поверхность кистей). Простые железы бывают двух видов: трубчатые и альвеолярны</p></div></article>
+<article class="task" id="z53"><div class="t-head"><span class="t-num">53</span><p class="t-q">На фотографии представлены два почечных тельца. У одного приносящие и выносящие артериолы сосудистого клубочка имеют одинаковый размер, у другого - приносящая артериола заметно больше, чем выносящая. Какой из этих нефронов образует больше мочи?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Второй. Это почечные тельца нефронов кортикальной и юкстамедуллярной системы (там где приносящая и выносящая артериолы одинаковые) кровотока почки. Больше мочи образует нефрон кортикальной системы,так как давление в приносящей артериоле больше,чем в выносящей и из-за разницы давлений происходит более активная фильтрация. Почечные тельца юкстамедуллярной системы выполняют функцию шунтов.</p></div></article>
+<article class="task" id="z54"><div class="t-head"><span class="t-num">54</span><p class="t-q">При микроскопическом анализе участка стенки извитого семенного канальца отмечено преобладание в составе сперматогенного эпителия сперматид, появление в просвете канала зрелых сперматозоидов. Для какого периода сперматогенеза характерна такая картина?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Период формирования.</p></div></article>
+<article class="task" id="z55"><div class="t-head"><span class="t-num">55</span><p class="t-q">Исследовали два среза яичника, В одном обнаружены примордиальные, первичные фолликулы, и атретические тела развитое желтое тело, в другом - примордиальные, первичные, вторичные фолликулы, зрелый фолликул (Граафов пузырек) и атретические тела. Какой стадии овариального цикла соответствует картина в каждом случае? Какие гормоны секретируются яичником в этой стадии?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>1- Пременструальня фаза в период расцвета желтого тела, продуцирующее гормон прогестерон. 2 – пролиферативная (постменструальная фаза), продукция эстрогенов.</p></div></article>
+<article class="task" id="z56"><div class="t-head"><span class="t-num">56</span><p class="t-q">Исследовали три препарата яичника человека. На первом в корковом веществе видны примордиальные, первичные и много атрезирующих фолликулов. На втором—кроме указанных структур вторичные и третичные (зрелые) фолликулы. В третьем препарате отмечено малое количество фолликулов (примордиалъных, первичных, вторичных), массовая их атрезия, развитие соединительной ткани. Для каких возрастных периодов характерна такая структура органа?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Препубертатный, пубертатный и постпубертатный (климактерический).</p></div></article>
+<article class="task" id="z57"><div class="t-head"><span class="t-num">57</span><p class="t-q">Зарегистрировано начало имплантации зародыша человека. На какой стадии находится зародыш, каков его возраст при нормальном течении беременности?</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>7-9 сутки, начало 1-й фазы гаструляции.</p></div></article>
+<article class="task" id="z58"><div class="t-head"><span class="t-num">58</span><p class="t-q">Во время беременности формируется система &quot;мать - плод&quot;. Назовите орган, обеспечивающий связь матери и плода, его тип у человека и место преимущественного синтеза эмбриоспецифических белков.</p></div>
+<button class="reveal" type="button" aria-expanded="false">Показать ответ</button>
+<div class="t-a" hidden><span class="mono">Ответ</span><p>Плацента, гемохориальный тип плаценты (2 трофический тип). Синтез эмбриоспецифических белков в цитотрофобласте.</p></div></article>
+  <p class="empty" id="empty">Ничего не найдено.</p>
+  </main>
+  <footer>Задачи к экзаменационным билетам по гистологии · <a href="https://t.me/oapwso">по вопросам — @oapwso</a></footer>
+</div>
+<script>
+(function(){
+  var cards=[].slice.call(document.querySelectorAll('.task')), allOpen=false;
+  function setOpen(c,on){ c.querySelector('.t-a').hidden=!on; var b=c.querySelector('.reveal'); b.setAttribute('aria-expanded',on?'true':'false'); b.textContent=on?'Скрыть ответ':'Показать ответ'; }
+  cards.forEach(function(c){
+    c.querySelector('.reveal').addEventListener('click',function(){ setOpen(c, c.querySelector('.t-a').hidden); });
+    c.dataset.txt=c.textContent.toLowerCase().replace(/ё/g,'е');
+    c.querySelectorAll('.t-q,.t-a p:not(.note)').forEach(function(p){ p.dataset.orig=p.innerHTML; });
+  });
+  document.getElementById('all').addEventListener('click',function(){
+    allOpen=!allOpen; cards.forEach(function(c){ setOpen(c,allOpen); }); this.textContent=allOpen?'Скрыть все ответы':'Показать все ответы';
+  });
+  function esc(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+  document.getElementById('q').addEventListener('input',function(){
+    var v=this.value.trim().toLowerCase().replace(/ё/g,'е'), any=false, re=v?new RegExp(esc(v),'gi'):null;
+    cards.forEach(function(c){
+      var hit=!v||c.dataset.txt.indexOf(v)>=0; c.hidden=!hit; if(hit) any=true;
+      c.querySelectorAll('.t-q,.t-a p:not(.note)').forEach(function(p){ p.innerHTML=p.dataset.orig; if(re&&hit) p.innerHTML=p.innerHTML.replace(re,function(m){ return '<mark>'+m+'</mark>'; }); });
+    });
+    document.getElementById('empty').style.display=any?'none':'block';
+  });
+})();
+</script>
+</body>
+</html>
