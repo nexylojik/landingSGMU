@@ -20,7 +20,8 @@
      главное держи в верхних 55% кадра: нижнюю часть закрывает затемнение с текстом;
      другая пропорция не сплющится, но обрежется по краям.
    Свои карточки (HOUSES) показываются всегда: первая — всегда первой на лендинге,
-   на втором месте по очереди вторая и карточки партнёров; в шторке — все по кругу. */
+   на втором месте по очереди вторая и карточки партнёров.
+   Шторка снизу — только вакансия by.studio, свой текст на каждый показ (SHEET). */
 (function(){
   'use strict';
   var HOUSES = [
@@ -39,6 +40,14 @@
   var VACANT = { id: 'vacant', tag: 'Место для рекламы', title: 'Здесь может быть ваша реклама',
     text: 'Тренажёрами пользуются студенты СГМУ каждый день. Расскажите о своём проекте здесь.',
     cta: 'Перейти', url: 'https://t.me/oapwso', img: 'promo/vacant.jpg' };
+  // шторка: при заходе, через 20 мин и через час — по тексту на каждый показ
+  var hire = HOUSES[0];
+  function hireAs(title, text){ var o = {}; for(var k in hire) o[k] = hire[k]; o.title = title; o.text = text; return o; }
+  var SHEET = [
+    hire,
+    hireAs('20 минут за тестами — упорства хватает', 'Направь его в деньги: by.studio обучит аутричу с нуля. Работаешь из дома или прямо с пар.'),
+    hireAs('Час за учёбой. Следующий может приносить деньги', 'Аутрич для by.studio: пишешь клиентам — получаешь процент со сделок. Всему научим.')
+  ];
   var SHOW_AT = [4, 20 * 60, 60 * 60];   // секунды на сайте за визит: при заходе, через 20 мин и через час
 
   var BASE = (document.currentScript && document.currentScript.src || '').replace(/[^\/]*$/, '');
@@ -54,7 +63,6 @@
     return a.url + (a.url.indexOf('?') < 0 ? '?' : '&') + 'utm_source=sgmu&utm_medium=' + place + '&utm_campaign=' + encodeURIComponent(a.id);
   }
   var partners = ADS.filter(active);
-  var queue = HOUSES.concat(partners);
 
   // ---------- стили ----------
   var css = '' +
@@ -146,10 +154,6 @@
   var sheet = null, lastFocus = null;
   function shown_(id){ var e = document.getElementById(id); return !!(e && !e.hidden && e.getClientRects().length); }
   function quizBusy(){ return shown_('screen-quiz') || shown_('quiz-mode'); }  // не мешаем решать тест
-  function nextAd(){
-    var i = (+ls('promo-rot') || 0); ls('promo-rot', String(i + 1));
-    return queue[i % queue.length];
-  }
   var sheetAd = null;
   function close(byUser){
     if(!sheet) return;
@@ -159,8 +163,8 @@
     setTimeout(function(){ s.remove(); }, 500);
     if(lastFocus && lastFocus.focus) try{ lastFocus.focus({preventScroll: true}); }catch(e){}
   }
-  function open(){
-    var a = nextAd(); sheetAd = a;
+  function open(n){
+    var a = SHEET[n] || hire; sheetAd = a;
     lastFocus = document.activeElement;
     sheet = document.createElement('aside');
     sheet.className = 'promo-sheet'; sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-label', a.tag);
@@ -179,7 +183,7 @@
     if(document.hidden) return;
     t++; ss('promo-t', String(t));
     if(shown < SHOW_AT.length && t >= SHOW_AT[shown] && !sheet && !quizBusy()){
-      shown++; ss('promo-shown', String(shown)); open();
+      open(shown); shown++; ss('promo-shown', String(shown));
     }
   }, 1000);
 })();
