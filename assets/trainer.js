@@ -83,7 +83,7 @@
       var meta = one ? (n + ' вопр.' + bestHtml(best[tp.tests[0].key]) + (isStudied(tp.tests[0]) ? '' : ' · <span class="new">не изучен</span>'))
                      : (tp.tests.length + ' ' + plural(tp.tests.length, 'тест', 'теста', 'тестов') + ' · ' + n + ' вопр.');
       var pf = one ? (perfect[tp.tests[0].key] || 0) : 0;
-      b.innerHTML = '<span class="tile-title"><span>' + esc(tp.title) + (tp.upd ? '<span class="upd">★ обновлено</span>' : '') + '</span>' +
+      b.innerHTML = '<span class="tile-title"><span>' + esc(tp.title) + (tp.upd ? '<span class="upd">★ обновлено</span>' : '') + (tp.badge ? '<span class="badge">' + esc(tp.badge) + '</span>' : '') + '</span>' +
         (pf ? '<span class="perfect" title="Решено на 100%">✓ ' + pf + '</span>' : '') + '</span>' +
         '<span class="tile-meta">' + meta + '</span>' +
         (!one ? '<span class="tile-bar" title="Тестов решено на 100%: ' + done + ' из ' + tp.tests.length + '"><i style="width:' + (done / tp.tests.length * 100) + '%"></i></span>' : '');
@@ -101,7 +101,7 @@
       var b = document.createElement('button'); b.className = 'tile';
       var pf = perfect[t.key] || 0;
       if(t.isAll) b.className = 'tile tile-all';
-      b.innerHTML = '<span class="tile-title"><span>' + esc(t.title) + (t.upd ? '<span class="upd">★</span>' : '') + '</span>' +
+      b.innerHTML = '<span class="tile-title"><span>' + esc(t.title) + (t.upd ? '<span class="upd">★</span>' : '') + (t.badge ? '<span class="badge">' + esc(t.badge) + '</span>' : '') + '</span>' +
         (pf ? '<span class="perfect" title="Решено на 100%">✓ ' + pf + '</span>' : '') + '</span>' +
         '<span class="tile-meta">' + t.q.length + ' вопр.' + bestHtml(best[t.key]) + (isStudied(t) ? '' : ' · <span class="new">не изучен</span>') + '</span>';
       b.addEventListener('click', function(){ openLaunch(t); });
@@ -130,7 +130,7 @@
     $('launchCrumbRow').hidden = !!asHome;
     $('launchHome').hidden = !asHome;
     $('launchCrumb').textContent = t.topic.tests.length > 1 ? t.topic.title : 'Тест';
-    $('launchTitle').textContent = t.title;
+    $('launchTitle').innerHTML = esc(t.title) + (t.badge ? ' <span class="badge">' + esc(t.badge) + '</span>' : '');
     var pf = perfect[t.key] || 0;
     $('launchMeta').innerHTML = t.q.length + ' ' + plural(t.q.length, 'вопрос', 'вопроса', 'вопросов') + (best[t.key] != null ? ' · лучший результат ' + best[t.key] + '%' : '') + (pf ? ' · ✓ на 100%: ' + pf : '') + (isStudied(t) ? '' : ' · не изучен');
     var seg = $('launchSeg'); seg.innerHTML = '';

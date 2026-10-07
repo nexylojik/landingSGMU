@@ -237,6 +237,7 @@
   .tile-meta .best{color:var(--ok);} .tile-meta .best.mid{color:var(--accent-2);} .tile-meta .best.low{color:var(--bad);}
   .tile-meta .new{color:var(--accent);}
   .tile .perfect{flex:none; font-family:'Atkinson Mono', monospace; font-size:.72rem; font-weight:500; color:var(--ok); background:var(--ok-soft); border-radius:999px; padding:1px 7px; white-space:nowrap;}
+  .badge{display:inline-block; vertical-align:middle; margin-left:8px; padding:2px 9px; border-radius:999px; font-family:'Atkinson Mono', monospace; font-size:.7rem; font-weight:500; letter-spacing:.02em; color:#1A1216; background:var(--accent-2); white-space:nowrap;}
   .upd{color:var(--accent-2); font-size:.75rem; font-family:'Atkinson Mono', monospace; margin-left:4px;}
   .tile-bar{height:4px; border-radius:999px; background:var(--surface-2); overflow:hidden; margin-top:6px;}
   .tile-bar i{display:block; height:100%; background:var(--ok); border-radius:999px;}
