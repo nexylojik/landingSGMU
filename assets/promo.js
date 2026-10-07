@@ -21,7 +21,8 @@
      другая пропорция не сплющится, но обрежется по краям.
    Свои карточки (HOUSES) показываются всегда: первая — всегда первой на лендинге,
    на втором месте по очереди вторая и карточки партнёров.
-   Шторка снизу — только вакансия by.studio, свой текст на каждый показ (SHEET). */
+   Шторка снизу (SHEET): при заходе — канал сайта в Telegram (кнопка «Я подписался» убирает его насовсем),
+   через 20 минут и через час — вакансия by.studio. */
 (function(){
   'use strict';
   var HOUSES = [
@@ -43,9 +44,13 @@
   // шторка: при заходе, через 20 мин и через час — по тексту на каждый показ
   var hire = HOUSES[0];
   function hireAs(title, text){ var o = {}; for(var k in hire) o[k] = hire[k]; o.title = title; o.text = text; return o; }
+  var TG = { id: 'tg', tag: 'Telegram · канал сайта', title: 'Подпишись на канал сайта',
+    text: 'Новые тесты, атласы и исправления ответов — сразу в Telegram, чтобы не пропустить перед зачётом.',
+    cta: 'Подписаться', url: 'https://t.me/landingSGMU', done: 'Я подписался', img: 'promo/tg.jpg' };
+  var TG_DONE = 'promo-tg-done';   // localStorage: нажал «Я подписался» — шторку канала больше не показываем
   var SHEET = [
+    TG,
     hire,
-    hireAs('20 минут за тестами — упорства хватает', 'Направь его в деньги: by.studio обучит аутричу с нуля. Работаешь из дома или прямо с пар.'),
     hireAs('Час за учёбой. Следующий может приносить деньги', 'Аутрич для by.studio: пишешь клиентам — получаешь процент со сделок. Всему научим.')
   ];
   var SHOW_AT = [4, 20 * 60, 60 * 60];   // секунды на сайте за визит: при заходе, через 20 мин и через час
@@ -80,6 +85,7 @@
     '.promo-card .promo-title{margin:0;color:#fff;font-size:1.22rem;font-weight:600;line-height:1.2;letter-spacing:-.005em;text-shadow:0 1px 3px rgba(0,0,0,.55);}' +
     '.promo-card .promo-desc{margin:5px 0 0;font-size:.86rem;font-weight:500;line-height:1.4;color:rgba(255,255,255,.88);text-shadow:0 1px 2px rgba(0,0,0,.6);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}' +
     '.promo-light::after{background:linear-gradient(180deg,rgba(8,7,12,.06) 0%,rgba(8,7,12,.30) 32%,rgba(8,7,12,.88) 56%,rgba(8,7,12,.96) 100%);}' +
+    'button.promo-glass{font-family:inherit;}' +
     '.promo-btns{display:flex;gap:8px;flex-wrap:wrap;}.promo-glass2{background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.04));}' +
     '.promo-erid{display:block;margin-top:6px;font-size:.66rem;color:rgba(255,255,255,.7);}' +
     /* liquid glass кнопка */
@@ -111,11 +117,13 @@
                 : '<span class="promo-glass">' + esc(text) + arrow + '</span>';
   }
   function photoCard(a, place, tagName){
-    var tag = a.url2 ? 'div' : (tagName || 'a');
+    var two = a.url2 || a.done;
+    var tag = two ? 'div' : (tagName || 'a');
     var href = tag === 'a' ? ' href="' + esc(link(a, place)) + '" target="_blank" rel="noopener"' : '';
     var btn = tag === 'a' ? glass(a.cta || 'Перейти') : glass(a.cta || 'Перейти', link(a, place));
     if(a.url2) btn = '<div class="promo-btns">' + btn + glass(a.cta2 || 'Перейти', link({url: a.url2, id: a.id}, place), true) + '</div>';
-    return '<' + tag + ' class="promo-card' + (a.url2 ? ' promo-two' : '') + (a.light ? ' promo-light' : '') + '"' + href + ' data-kind="promo">' +
+    if(a.done) btn = '<div class="promo-btns">' + btn + '<button type="button" class="promo-glass promo-glass2 promo-done">' + esc(a.done) + '</button></div>';
+    return '<' + tag + ' class="promo-card' + (two ? ' promo-two' : '') + (a.light ? ' promo-light' : '') + '"' + href + ' data-kind="promo">' +
       (a.img ? '<img class="promo-bg" src="' + esc(imgUrl(a)) + '" alt="" loading="eager" decoding="async">' : '') +
       '<div class="promo-in"><span class="promo-chip">' + esc(a.tag) + '</span><span class="promo-gap"></span>' +
       '<div class="promo-low"><div class="promo-txt"><p class="promo-title">' + esc(a.title) + '</p>' +
@@ -171,7 +179,9 @@
     sheet.innerHTML = photoCard(a, 'sheet', 'div') + '<button class="promo-x" type="button" aria-label="Закрыть">✕</button>';
     document.body.appendChild(sheet);
     sheet.querySelector('.promo-x').addEventListener('click', function(){ close(true); });
-    sheet.querySelectorAll('.promo-glass').forEach(function(g){ g.addEventListener('click', function(){ track('promo_click', a, 'sheet'); setTimeout(close, 150); }); });
+    sheet.querySelectorAll('a.promo-glass').forEach(function(g){ g.addEventListener('click', function(){ track('promo_click', a, 'sheet'); setTimeout(close, 150); }); });
+    var dn = sheet.querySelector('.promo-done');
+    if(dn) dn.addEventListener('click', function(){ ls(TG_DONE, '1'); close(true); });
     track('promo_view', a, 'sheet');
     requestAnimationFrame(function(){ requestAnimationFrame(function(){ if(sheet) sheet.classList.add('open'); }); });
   }
@@ -183,7 +193,8 @@
     if(document.hidden) return;
     t++; ss('promo-t', String(t));
     if(shown < SHOW_AT.length && t >= SHOW_AT[shown] && !sheet && !quizBusy()){
-      open(shown); shown++; ss('promo-shown', String(shown));
+      if(!(SHEET[shown] === TG && ls(TG_DONE))) open(shown);
+      shown++; ss('promo-shown', String(shown));
     }
   }, 1000);
 })();

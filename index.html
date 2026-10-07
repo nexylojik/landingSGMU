@@ -126,6 +126,34 @@
   @media (max-width:600px){ .contact{padding:22px 18px;} .contact h2{font-size:1.55rem;} .tg-btn{width:100%;} .tg-arrow{margin-left:auto;} }
   footer{margin-top:54px; padding-top:18px; border-top:1px solid var(--border); color:var(--text-faint); font-size:.82rem; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;}
   @media (max-width:600px){ .hero{padding:40px 0 24px;} .stats{gap:20px;} .subject h2{font-size:1.6rem;} }
+  /* ---- баннер канала в Telegram: широкий на ПК, квадрат на телефоне ---- */
+  .tg-banner{position:relative; display:flex; align-items:center; gap:26px; margin:6px 0 26px; padding:18px 28px 18px 18px; border-radius:22px; overflow:hidden; isolation:isolate; text-decoration:none; color:var(--text); border:1px solid rgba(255,159,162,.28);
+    background:radial-gradient(60% 140% at 12% 50%, rgba(255,120,128,.22), transparent 60%), radial-gradient(50% 120% at 100% 0%, rgba(231,181,136,.10), transparent 60%), linear-gradient(90deg,#0A0A0E,#15121B);
+    box-shadow:var(--shadow); transition:transform .2s ease, border-color .2s ease;}
+  .tg-banner:hover{transform:translateY(-2px); border-color:rgba(255,159,162,.55);}
+  .tg-banner:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  .tg-banner::before{content:""; position:absolute; inset:0; z-index:-1; background:repeating-linear-gradient(115deg, transparent 0 22px, rgba(255,159,162,.035) 22px 23px);}
+  .tgb-sq{display:none;}
+  .tgb-logo{flex:none; width:150px; height:150px; border-radius:50%; object-fit:cover; box-shadow:0 0 0 1px rgba(255,159,162,.35), 0 0 46px -6px rgba(255,120,128,.55);}
+  .tgb-txt{flex:1; min-width:0; display:flex; flex-direction:column; gap:6px;}
+  .tgb-kicker{color:var(--accent); font-size:.74rem; letter-spacing:.08em; text-transform:uppercase;}
+  .tgb-title{font-family:'Libre Caslon Cond', Georgia, serif; font-weight:400; font-size:2rem; line-height:1.05;}
+  .tgb-desc{color:var(--text-muted); font-size:.95rem; max-width:520px;}
+  .tgb-btn{flex:none; display:inline-flex; align-items:center; gap:8px; padding:13px 22px; border-radius:999px; font-weight:600; color:#fff; white-space:nowrap;
+    background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,.08)); border:1px solid rgba(255,255,255,.42); -webkit-backdrop-filter:blur(14px) saturate(180%); backdrop-filter:blur(14px) saturate(180%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 0 10px 26px -8px rgba(0,0,0,.6);}
+  .tg-banner:hover .tgb-btn{background:linear-gradient(180deg,rgba(255,255,255,.36),rgba(255,255,255,.12));}
+  @media (max-width:600px){
+    .tg-banner{display:block; aspect-ratio:1/1; padding:0; margin:4px 0 22px; background:#0A0A0E;}
+    .tg-banner::before{display:none;}
+    .tgb-sq{display:block; position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2;}
+    .tg-banner::after{content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg, transparent 50%, rgba(10,10,14,.9) 64%, #0A0A0E 100%);}
+    .tgb-logo{display:none;}
+    .tgb-txt{position:absolute; left:18px; right:18px; bottom:76px; gap:4px;}
+    .tgb-title{font-size:1.55rem;}
+    .tgb-desc{font-size:.86rem; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+    .tgb-btn{position:absolute; left:18px; right:18px; bottom:18px; justify-content:center;}
+  }
   @media (prefers-reduced-motion: reduce){ *{transition:none !important;} }
 </style>
 </head>
@@ -141,6 +169,17 @@
       <div class="stat"><b>67</b><span>препаратов и ТЭМ</span></div>
     </div>
   </header>
+
+  <a class="tg-banner" href="https://t.me/landingSGMU" target="_blank" rel="noopener" aria-label="Канал сайта в Telegram — подписаться">
+    <img class="tgb-sq" src="assets/promo/tg-square.jpg?v=2" alt="" loading="eager" decoding="async">
+    <img class="tgb-logo" src="assets/promo/tg-logo.jpg" alt="" decoding="async">
+    <span class="tgb-txt">
+      <span class="tgb-kicker mono">Telegram · канал сайта</span>
+      <span class="tgb-title">Все обновления — в канале</span>
+      <span class="tgb-desc">Анонсы новых тестов, атласов и исправлений ответов — чтобы ничего не пропустить перед зачётом.</span>
+    </span>
+    <span class="tgb-btn">Подписаться <span aria-hidden="true">→</span></span>
+  </a>
 
   <nav class="filters" aria-label="Фильтр">
     <button class="chip" data-f="all" aria-pressed="true">Все</button>
@@ -492,6 +531,6 @@
   chips.forEach(function(c){ c.addEventListener('click', function(){ apply(c.dataset.f); }); });
 })();
 </script>
-<script src="assets/promo.js?v=6"></script>
+<script src="assets/promo.js?v=7"></script>
 </body>
 </html>
