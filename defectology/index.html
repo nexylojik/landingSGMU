@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Основы дефектологии — ответы к зачёту</title>
+<meta name="description" content="Основы дефектологии: ответы на 32 вопросов к зачёту — категории детей с ОВЗ, дизонтогенез, инклюзия, ПМПК, права инвалидов.">
+<style>
+  @font-face{ font-family:'Libre Caslon Cond'; src:url('../fonts/LibreCaslonCyrCondensed-Regular.otf') format('opentype'); font-weight:400; font-display:swap; }
+  @font-face{ font-family:'Inter Tight'; src:url('../fonts/InterTight-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+  @font-face{ font-family:'Inter Tight'; src:url('../fonts/InterTight-SemiBold.ttf') format('truetype'); font-weight:600; font-display:swap; }
+  @font-face{ font-family:'Atkinson Mono'; src:url('../fonts/AtkinsonHyperlegibleMono-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+  :root{
+    color-scheme: dark;
+    --bg:#100E14; --surface:#1A1822; --surface-2:#211E2A; --border:#332F3D;
+    --text:#ECF4FF; --text-muted:rgba(236,244,255,.62); --text-faint:rgba(236,244,255,.45);
+    --accent:#FF9FA2; --accent-soft:rgba(255,159,162,.14);
+    --accent-2:#E7B588; --accent-2-soft:rgba(231,181,136,.14);
+    --ok:#8FD6A6; --ok-soft:rgba(143,214,166,.14);
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 14px 34px -14px rgba(0,0,0,.65);
+  }
+  *{box-sizing:border-box;}
+  html{background:var(--bg); scroll-padding-top:118px;}
+  body{
+    background:var(--bg); color:var(--text); margin:0; padding:0 16px 80px;
+    font-family:'Inter Tight','Segoe UI',Arial,sans-serif; font-weight:500; line-height:1.62;
+    background-image:radial-gradient(900px 480px at 12% -8%, rgba(255,159,162,.13), transparent 60%), radial-gradient(760px 420px at 100% 4%, rgba(231,181,136,.09), transparent 60%);
+    background-repeat:no-repeat;
+  }
+  .wrap{max-width:860px; margin:0 auto;}
+  h1,h2,h3{font-family:'Libre Caslon Cond',Georgia,serif; font-weight:400; letter-spacing:.01em; text-wrap:balance; margin:0;}
+  a{color:inherit;}
+  b{font-weight:600; color:#fff;}
+  .mono{font-family:'Atkinson Mono',monospace; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase;}
+
+  .top{display:flex; justify-content:space-between; align-items:center; padding:20px 0 0; gap:12px;}
+  .back{color:var(--text-muted); text-decoration:none; font-size:.9rem; display:inline-flex; gap:6px; align-items:center;}
+  .back:hover{color:var(--accent);}
+  .hero{padding:36px 0 26px;}
+  .kicker{color:var(--accent); display:inline-flex; align-items:center; gap:8px;}
+  .kicker::before{content:""; width:22px; height:1px; background:var(--accent);}
+  .hero h1{font-size:clamp(2.2rem,6vw,3.4rem); line-height:1.04; margin:14px 0 12px;}
+  .hero h1 em{font-style:normal; color:var(--accent);}
+  .hero p{color:var(--text-muted); max-width:580px; margin:0;}
+  .progress{margin-top:22px; display:flex; align-items:center; gap:14px; max-width:420px;}
+  .bar{flex:1; height:6px; border-radius:99px; background:var(--surface-2); overflow:hidden;}
+  .bar i{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--accent),var(--accent-2)); transition:width .3s ease;}
+  .progress span{color:var(--text-muted); font-size:.85rem; white-space:nowrap;}
+
+  /* навигация */
+  .nav{position:sticky; top:0; z-index:5; background:rgba(16,14,20,.88); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border); padding:10px 0; margin-bottom:8px;}
+  .nav-row{display:flex; gap:8px; align-items:center;}
+  .search{flex:1; min-width:0; position:relative;}
+  .search input{width:100%; font:inherit; font-size:.92rem; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:9px 12px 9px 36px; outline:none;}
+  .search input::placeholder{color:var(--text-faint);}
+  .search input:focus{border-color:var(--accent);}
+  .search svg{position:absolute; left:11px; top:50%; transform:translateY(-50%); width:16px; height:16px; color:var(--text-faint);}
+  .toggle{flex:none; font:inherit; font-weight:600; font-size:.85rem; color:var(--text-muted); background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:9px 12px; cursor:pointer;}
+  .toggle:hover{color:var(--text);}
+  .nums{display:flex; gap:5px; overflow-x:auto; scrollbar-width:none; padding-top:9px;}
+  .nums::-webkit-scrollbar{display:none;}
+  .nums a{flex:none; min-width:34px; height:30px; display:flex; align-items:center; justify-content:center; text-decoration:none; font-family:'Atkinson Mono',monospace; font-size:.8rem;
+    color:var(--text-muted); background:var(--surface); border:1px solid var(--border); border-radius:9px; transition:all .15s ease;}
+  .nums a:hover{color:var(--text); border-color:rgba(236,244,255,.3);}
+  .nums a.cur{border-color:var(--accent); color:var(--accent);}
+  .nums a.ok{background:var(--ok-soft); border-color:rgba(143,214,166,.4); color:var(--ok);}
+  .nums a.hide{display:none;}
+
+  .tabs{display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-bottom:9px;}
+  .tabs button{font:inherit; text-align:left; display:flex; flex-direction:column; gap:1px; padding:8px 12px; border-radius:12px; border:1px solid var(--border); background:var(--surface); color:var(--text-muted); cursor:pointer;}
+  .tabs button b{color:var(--text); font-weight:600; font-size:.93rem;}
+  .tabs button span{font-family:'Atkinson Mono',monospace; font-size:.7rem; letter-spacing:.04em;}
+  .tabs button[aria-selected="true"]{border-color:var(--accent); background:var(--accent-soft);}
+  .tabs button[aria-selected="true"] b{color:var(--accent);}
+  .tabs button:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+  .group#g-z .t-num{background:var(--ok-soft); color:var(--ok);}
+  .nums a.off{display:none;}
+  .group.off{display:none;}
+  /* группы и темы */
+  .group{padding-top:26px;}
+  .group-head{margin:0 0 14px;}
+  .group-head .mono{color:var(--accent-2);}
+  .group-head h2{font-size:2rem; line-height:1.1; margin:6px 0 4px;}
+  .group-head p{color:var(--text-muted); margin:0; font-size:.93rem;}
+  .topic{background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:20px 22px 22px; margin-bottom:12px; box-shadow:var(--shadow);}
+  .topic.is-done{border-color:rgba(143,214,166,.35);}
+  .t-head{display:flex; gap:12px; align-items:flex-start;}
+  .t-num{flex:none; width:36px; height:36px; border-radius:11px; background:var(--accent-soft); color:var(--accent); display:flex; align-items:center; justify-content:center; font-family:'Atkinson Mono',monospace; font-size:.9rem; margin-top:1px;}
+  .group#g-b .t-num{background:var(--accent-2-soft); color:var(--accent-2);}
+  .topic.is-done .t-num{background:var(--ok-soft); color:var(--ok);}
+  .t-head h3{flex:1; font-size:1.5rem; line-height:1.15; padding-top:3px;}
+  .done{flex:none; display:inline-flex; align-items:center; gap:6px; font:inherit; font-size:.8rem; font-weight:600; color:var(--text-muted); background:transparent; border:1px solid var(--border); border-radius:99px; padding:6px 11px; cursor:pointer; transition:all .15s ease;}
+  .done svg{width:14px; height:14px;}
+  .done:hover{color:var(--text); border-color:rgba(236,244,255,.3);}
+  .done[aria-pressed="true"]{background:var(--ok-soft); color:var(--ok); border-color:rgba(143,214,166,.45);}
+  .t-body{margin-top:12px; padding-left:48px;}
+  .t-body p{margin:0 0 10px; color:rgba(236,244,255,.86);}
+  .t-body h4{font-family:'Inter Tight',sans-serif; font-weight:600; font-size:.98rem; color:var(--accent-2); margin:16px 0 6px;}
+  .t-body h4:first-child{margin-top:0;}
+  .t-body ul,.t-body ol{margin:0 0 10px; padding:0; list-style:none;}
+  .t-body li{position:relative; padding-left:20px; margin:0 0 6px; color:rgba(236,244,255,.86);}
+  .t-body ul li::before{content:""; position:absolute; left:4px; top:.66em; width:6px; height:6px; border-radius:50%; background:var(--accent);}
+  .t-body ol{counter-reset:n;}
+  .t-body ol li{counter-increment:n; padding-left:28px;}
+  .t-body ol li::before{content:counter(n); position:absolute; left:0; top:.15em; width:20px; height:20px; border-radius:6px; background:var(--accent-soft); color:var(--accent); font-family:'Atkinson Mono',monospace; font-size:.72rem; display:flex; align-items:center; justify-content:center;}
+  mark{background:rgba(231,181,136,.32); color:#fff; border-radius:3px; padding:0 1px;}
+
+  .fig{margin:14px 0 12px;}
+  .zoom{display:block; width:100%; padding:12px; margin:0; border:1px solid var(--border); border-radius:14px; background:#FFFFFF; cursor:zoom-in;}
+  .zoom img{display:block; width:100%; height:auto;}
+  .zoom:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+  .fig figcaption{margin-top:7px; color:var(--text-muted); font-size:.86rem;}
+  .fig figcaption .mono{color:var(--accent-2); margin-right:4px;}
+
+  .tbl{overflow-x:auto; margin:12px 0; border:1px solid var(--border); border-radius:14px;}
+  .tbl table{border-collapse:collapse; width:100%; min-width:460px; font-size:.9rem;}
+  .tbl th,.tbl td{padding:9px 12px; text-align:left; vertical-align:top; border-bottom:1px solid var(--border);}
+  .tbl tr:last-child th,.tbl tr:last-child td{border-bottom:0;}
+  .tbl thead th{background:var(--surface-2); color:var(--accent-2); font-weight:600;}
+  .tbl tbody th{color:var(--text); font-weight:600;}
+  .tbl td{color:rgba(236,244,255,.86);}
+
+  .empty{display:none; text-align:center; color:var(--text-muted); padding:40px 0;}
+  .hidden{display:none !important;}
+  body.collapsed .t-body{display:none;}
+  body.collapsed .topic{padding-bottom:20px;}
+
+  .lightbox{position:fixed; inset:0; z-index:20; background:rgba(8,7,10,.9); display:none; align-items:center; justify-content:center; padding:16px; cursor:zoom-out;}
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:min(1300px,100%); max-height:88vh; background:#fff; border-radius:12px; padding:14px;}
+  .lightbox p{position:absolute; bottom:14px; left:16px; right:16px; text-align:center; color:var(--text-muted); margin:0; font-size:.9rem;}
+
+  footer{margin-top:40px; padding-top:20px; border-top:1px solid var(--border); color:var(--text-faint); font-size:.85rem; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+  footer a{color:var(--text-muted);}
+  footer a:hover{color:var(--accent);}
+
+  @media (max-width:600px){
+    .topic{padding:16px 15px 18px; border-radius:16px;}
+    .t-body{padding-left:0;}
+    .t-head h3{font-size:1.28rem;}
+    .done span{display:none;}
+    .done{padding:7px;}
+    .zoom{padding:6px;}
+    .toggle .long{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="back" href="../">← Все тренажёры</a>
+    <span class="mono" style="color:var(--text-faint)">Зачёт · конспекты</span>
+  </div>
+  <header class="hero">
+    <span class="kicker mono">Основы дефектологии</span>
+    <h1>Ответы к зачёту<br>по <em>дефектологии</em></h1>
+    <p>32 вопросов: предмет дефектологии, категории детей с ОВЗ, дизонтогенез, ЗПР, аутизм, нарушения слуха, зрения, речи и ОДА, инклюзия, ПМПК, права инвалидов. Отмечайте выученные темы — прогресс сохранится в браузере.</p>
+    <div class="progress"><div class="bar"><i id="bar"></i></div><span id="pcount">0 из 32</span></div>
+  </header>
+
+  <nav class="nav" aria-label="Вопросы">
+    <div class="nav-row">
+      <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input id="q" type="search" placeholder="Поиск: например, аутизм, ПМПК, Выготский" aria-label="Поиск по вопросам"></label>
+      <button class="toggle" id="collapse" type="button" aria-pressed="false">Свернуть<span class="long"> ответы</span></button>
+    </div>
+    <div class="nums" id="nums">
+<a href="#t1" data-n="1" data-tab="a">1</a>
+<a href="#t2" data-n="2" data-tab="a">2</a>
+<a href="#t3" data-n="3" data-tab="a">3</a>
+<a href="#t4" data-n="4" data-tab="a">4</a>
+<a href="#t5" data-n="5" data-tab="a">5</a>
+<a href="#t6" data-n="6" data-tab="a">6</a>
+<a href="#t7" data-n="7" data-tab="a">7</a>
+<a href="#t8" data-n="8" data-tab="a">8</a>
+<a href="#t9" data-n="9" data-tab="a">9</a>
+<a href="#t10" data-n="10" data-tab="a">10</a>
+<a href="#t11" data-n="11" data-tab="a">11</a>
+<a href="#t12" data-n="12" data-tab="a">12</a>
+<a href="#t13" data-n="13" data-tab="a">13</a>
+<a href="#t14" data-n="14" data-tab="a">14</a>
+<a href="#t15" data-n="15" data-tab="a">15</a>
+<a href="#t16" data-n="16" data-tab="a">16</a>
+<a href="#t17" data-n="17" data-tab="a">17</a>
+<a href="#t18" data-n="18" data-tab="a">18</a>
+<a href="#t19" data-n="19" data-tab="a">19</a>
+<a href="#t20" data-n="20" data-tab="a">20</a>
+<a href="#t21" data-n="21" data-tab="a">21</a>
+<a href="#t22" data-n="22" data-tab="a">22</a>
+<a href="#t23" data-n="23" data-tab="a">23</a>
+<a href="#t24" data-n="24" data-tab="a">24</a>
+<a href="#t25" data-n="25" data-tab="a">25</a>
+<a href="#t26" data-n="26" data-tab="a">26</a>
+<a href="#t27" data-n="27" data-tab="a">27</a>
+<a href="#t28" data-n="28" data-tab="a">28</a>
+<a href="#t29" data-n="29" data-tab="a">29</a>
+<a href="#t30" data-n="30" data-tab="a">30</a>
+<a href="#t31" data-n="31" data-tab="a">31</a>
+<a href="#t32" data-n="32" data-tab="a">32</a>
+    </div>
+  </nav>
+
+  <main id="main">
+<section class="group" id="g-a" data-tab="a"><div class="group-head"><span class="mono">Вопросы 1–32</span><h2>Вопросы к зачёту</h2><p>По дисциплине «Основы дефектологии».</p></div>
+<article class="topic" id="t1" data-n="1">
+<header class="t-head"><span class="t-num">1</span><h3>Определите предмет, задачи, принципы и методы дефектологии как науки</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Дефектология</b> — наука о психофизических особенностях развития детей с нарушениями и о закономерностях их обучения и воспитания. Современное название — <b>специальная (коррекционная) педагогика и психология</b>.</p>
+<h4>Предмет</h4>
+<p>Закономерности развития, обучения, воспитания и социализации лиц с ограниченными возможностями здоровья (ОВЗ); пути коррекции и компенсации нарушений.</p>
+<h4>Задачи</h4>
+<ul>
+<li>Изучение причин и структуры нарушений развития.</li>
+<li>Ранняя диагностика и ранняя помощь.</li>
+<li>Разработка содержания, методов и форм специального обучения и воспитания.</li>
+<li>Коррекция и компенсация нарушений, профилактика вторичных отклонений.</li>
+<li>Социальная адаптация и интеграция в общество, профориентация.</li>
+</ul>
+<h4>Принципы</h4>
+<ul>
+<li>Раннее выявление и ранняя коррекция.</li>
+<li>Коррекционно-компенсирующая направленность обучения.</li>
+<li>Единство диагностики и коррекции.</li>
+<li>Индивидуальный и дифференцированный подход.</li>
+<li>Опора на сохранные функции и «зону ближайшего развития» (Л.С. Выготский).</li>
+<li>Комплексный (междисциплинарный) подход, учёт возрастных особенностей, участие семьи.</li>
+</ul>
+<h4>Методы</h4>
+<ul>
+<li>Наблюдение, беседа, анкетирование.</li>
+<li>Эксперимент (констатирующий, обучающий, формирующий).</li>
+<li>Тестирование, анализ продуктов деятельности, изучение документации и анамнеза.</li>
+<li>Клинические и инструментальные методы обследования (совместно с врачами).</li>
+</ul>
+</div></article>
+<article class="topic" id="t2" data-n="2">
+<header class="t-head"><span class="t-num">2</span><h3>Междисциплинарные связи дефектологии</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p>Дефектология — <b>интегративная</b> наука: она опирается на данные многих областей знания.</p>
+<ul>
+<li><b>Медицина</b>: педиатрия, неврология, психиатрия, генетика, оториноларингология, офтальмология, ортопедия — причины нарушений, диагностика, лечение.</li>
+<li><b>Анатомия и физиология</b> (в том числе высшей нервной деятельности) — строение и работа анализаторов и нервной системы.</li>
+<li><b>Психология</b>: общая, детская, специальная, нейропсихология — особенности психического развития.</li>
+<li><b>Педагогика</b> — общие закономерности обучения и воспитания.</li>
+<li><b>Лингвистика</b> — для логопедии и сурдопедагогики.</li>
+<li><b>Социология, социальная работа, право</b> — социальная защита, интеграция, права инвалидов.</li>
+<li><b>Философия</b> — методологические основы, отношение общества к людям с нарушениями.</li>
+</ul>
+<p>На практике связи реализуются в работе <b>ПМПК</b> и в комплексном сопровождении ребёнка командой специалистов.</p>
+</div></article>
+<article class="topic" id="t3" data-n="3">
+<header class="t-head"><span class="t-num">3</span><h3>Дайте классификацию детей с ограниченными возможностями здоровья. Какие отрасли дефектологии их изучают?</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<div class="tbl"><table><thead><tr><th>Категория детей</th><th>Отрасль дефектологии</th></tr></thead><tbody>
+<tr><th>С нарушениями слуха (глухие, слабослышащие, позднооглохшие)</th><td>Сурдопедагогика</td></tr>
+<tr><th>С нарушениями зрения (слепые, слабовидящие)</th><td>Тифлопедагогика</td></tr>
+<tr><th>С нарушениями интеллекта (умственная отсталость)</th><td>Олигофренопедагогика</td></tr>
+<tr><th>С нарушениями речи</th><td>Логопедия</td></tr>
+<tr><th>С задержкой психического развития</th><td>Специальная психология и педагогика ЗПР</td></tr>
+<tr><th>С нарушениями опорно-двигательного аппарата (в т.ч. ДЦП)</th><td>Специальная педагогика детей с НОДА</td></tr>
+<tr><th>С расстройствами аутистического спектра, эмоционально-волевой сферы</th><td>Специальная психология (коррекция РАС)</td></tr>
+<tr><th>Со сложными (комплексными) нарушениями, слепоглухие</th><td>Тифлосурдопедагогика, педагогика детей с ТМНР</td></tr>
+</tbody></table></div>
+<p>Классификация основана на ведущем нарушении (по В.А. Лапшину, Б.П. Пузанову; по степени — первичный дефект и вторичные отклонения).</p>
+</div></article>
+<article class="topic" id="t4" data-n="4">
+<header class="t-head"><span class="t-num">4</span><h3>Двойственная роль дефекта в формировании и развитии личности ребёнка</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p>Положение <b>Л.С. Выготского</b>: дефект играет в развитии двойственную роль.</p>
+<ul>
+<li><b>Отрицательная (минус)</b> — дефект ограничивает возможности ребёнка, нарушает связь с окружающим миром, тормозит развитие и ведёт к <b>вторичным отклонениям</b> (недоразвитие речи у глухого, бедность представлений у слепого, нарушения общения).</li>
+<li><b>Положительная (плюс)</b> — дефект становится <b>стимулом к компенсации</b>: организм и личность ищут обходные пути, усиленно развиваются сохранные функции (осязание и слух у слепых, зрительное восприятие у глухих).</li>
+</ul>
+<p>Выготский подчёркивал, что ребёнок с дефектом — не «менее развитый», а <b>иначе развивающийся</b>; главная проблема — не сам биологический дефект, а его <b>социальные последствия</b> («социальный вывих»). Поэтому задача обучения — направить развитие по пути компенсации и социальной интеграции.</p>
+</div></article>
+<article class="topic" id="t5" data-n="5">
+<header class="t-head"><span class="t-num">5</span><h3>Раскройте причины возникновения психофизических нарушений у детей</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<h4>По времени воздействия</h4>
+<ul>
+<li><b>Пренатальные</b> (до родов): генетические и хромосомные нарушения, инфекции матери (краснуха, токсоплазмоз, цитомегаловирус), интоксикации (алкоголь, никотин, наркотики, лекарства), резус-конфликт, гипоксия плода, болезни матери, радиация.</li>
+<li><b>Натальные</b> (в родах): асфиксия, родовая травма, недоношенность.</li>
+<li><b>Постнатальные</b> (после рождения): нейроинфекции (менингит, энцефалит), черепно-мозговые травмы, тяжёлые соматические болезни, интоксикации, ототоксичные препараты.</li>
+</ul>
+<h4>По характеру</h4>
+<ul>
+<li><b>Эндогенные</b> (внутренние) — наследственные, генетические.</li>
+<li><b>Экзогенные</b> (внешние) — биологические (инфекции, травмы) и <b>социальные</b> (депривация, педагогическая запущенность, неблагоприятная семья).</li>
+</ul>
+<p>Часто действует сочетание нескольких факторов; тяжесть нарушения зависит от времени, силы и длительности воздействия.</p>
+</div></article>
+<article class="topic" id="t6" data-n="6">
+<header class="t-head"><span class="t-num">6</span><h3>Олигофренопедагогика как наука. Охарактеризуйте формы умственной отсталости</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Олигофренопедагогика</b> — отрасль дефектологии об обучении и воспитании детей с <b>умственной отсталостью</b> (нарушениями интеллектуального развития).</p>
+<p><b>Умственная отсталость</b> — стойкое необратимое недоразвитие познавательной деятельности вследствие органического поражения ЦНС, возникшего до 3 лет (олигофрения) или позже (деменция).</p>
+<h4>Формы по степени (МКБ-10)</h4>
+<div class="tbl"><table><thead><tr><th>Степень</th><th>IQ</th><th>Особенности</th></tr></thead><tbody>
+<tr><th>Лёгкая (F70)</th><td>50–69</td><td>Обучаемы по адаптированной программе, овладевают бытовыми и трудовыми навыками</td></tr>
+<tr><th>Умеренная (F71)</th><td>35–49</td><td>Простые навыки самообслуживания и труда, элементарная грамота</td></tr>
+<tr><th>Тяжёлая (F72)</th><td>20–34</td><td>Минимальные навыки самообслуживания, нужен постоянный уход</td></tr>
+<tr><th>Глубокая (F73)</th><td>&lt;20</td><td>Речь почти отсутствует, полная зависимость от окружающих</td></tr>
+</tbody></table></div>
+<h4>Клинические формы (по М.С. Певзнер)</h4>
+<p>Неосложнённая; осложнённая нарушениями нейродинамики (возбудимость, тормозимость); с нарушениями анализаторов; с психопатоподобным поведением; с выраженной лобной недостаточностью.</p>
+</div></article>
+<article class="topic" id="t7" data-n="7">
+<header class="t-head"><span class="t-num">7</span><h3>Раскройте основные положения концепции психического дизонтогенеза</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Дизонтогенез</b> — нарушение нормального хода индивидуального развития. Термин ввёл Г. Швальбе; концепцию развивали Л.С. Выготский, Г.Е. Сухарева, В.В. Лебединский.</p>
+<h4>Основные положения</h4>
+<ul>
+<li>Нарушение развития имеет <b>сложную структуру</b>: <b>первичный дефект</b> (биологический, связан с поражением) и <b>вторичные отклонения</b> (возникают в процессе развития, имеют социальную природу и лучше поддаются коррекции).</li>
+<li>Тяжесть зависит от <b>времени поражения</b> (чем раньше, тем тяжелее), <b>локализации</b> и <b>распространённости</b>.</li>
+<li>Важен <b>сенситивный период</b>: страдают прежде всего функции, бурно развивающиеся в момент поражения.</li>
+<li>Нарушается межфункциональное взаимодействие.</li>
+</ul>
+<h4>Виды дизонтогенеза (по В.В. Лебединскому)</h4>
+<ol>
+<li><b>Недоразвитие</b> (общее стойкое) — умственная отсталость.</li>
+<li><b>Задержанное развитие</b> — ЗПР.</li>
+<li><b>Повреждённое развитие</b> — деменция (утрата сформированных функций).</li>
+<li><b>Дефицитарное развитие</b> — нарушения зрения, слуха, ОДА.</li>
+<li><b>Искажённое развитие</b> — аутизм.</li>
+<li><b>Дисгармоничное развитие</b> — психопатии, нарушения эмоционально-волевой сферы.</li>
+</ol>
+</div></article>
+<article class="topic" id="t8" data-n="8">
+<header class="t-head"><span class="t-num">8</span><h3>Дайте характеристику детей с задержкой психического развития</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>ЗПР</b> — нарушение нормального темпа психического развития: отставание отдельных психических функций (памяти, внимания, мышления, эмоционально-волевой сферы) от возрастных норм. В отличие от умственной отсталости, ЗПР <b>обратима</b> при своевременной коррекции.</p>
+<h4>Особенности</h4>
+<ul>
+<li>Сниженная работоспособность, быстрая утомляемость, неустойчивое внимание.</li>
+<li>Снижение объёма памяти, медленное запоминание.</li>
+<li>Отставание наглядно-образного и словесно-логического мышления, но ребёнок принимает помощь и переносит способ решения.</li>
+<li>Незрелость эмоционально-волевой сферы, преобладание игровых мотивов.</li>
+<li>Недостаточный запас знаний и представлений, трудности в учёбе.</li>
+</ul>
+<h4>Клинические варианты (по К.С. Лебединской)</h4>
+<ol>
+<li>Конституционального происхождения (гармонический инфантилизм).</li>
+<li>Соматогенного происхождения.</li>
+<li>Психогенного происхождения (неблагоприятные условия воспитания).</li>
+<li>Церебрально-органического происхождения — самая стойкая и тяжёлая.</li>
+</ol>
+</div></article>
+<article class="topic" id="t9" data-n="9">
+<header class="t-head"><span class="t-num">9</span><h3>Дайте психолого-педагогическую характеристику детей с аутизмом. Каковы возможности их развития, образования и социализации?</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Расстройства аутистического спектра (РАС)</b> — нарушения развития, при которых страдают социальное взаимодействие и коммуникация, а поведение и интересы ограничены и стереотипны (вариант искажённого дизонтогенеза).</p>
+<h4>Характерные черты</h4>
+<ul>
+<li>Трудности контакта: избегание взгляда, отсутствие интереса к людям, непонимание эмоций других.</li>
+<li>Нарушения речи: от отсутствия до эхолалии, неиспользование речи для общения.</li>
+<li>Стереотипии (раскачивание, повторяющиеся действия), стремление к постоянству, страх изменений.</li>
+<li>Сенсорная сверхчувствительность или пониженная чувствительность.</li>
+<li>Неравномерное развитие: возможны особые способности при выраженных трудностях в других областях.</li>
+</ul>
+<h4>Группы по О.С. Никольской</h4>
+<p>1 — полная отрешённость; 2 — активное отвержение; 3 — захваченность аутистическими интересами; 4 — чрезвычайная трудность общения, ранимость.</p>
+<h4>Возможности развития и социализации</h4>
+<ul>
+<li>Ранняя диагностика и ранняя помощь значительно улучшают прогноз.</li>
+<li>Методы: прикладной анализ поведения (ABA), эмоционально-уровневый подход, TEACCH, альтернативная коммуникация (PECS).</li>
+<li>Обучение по адаптированным программам — в инклюзивных и отдельных классах, с тьютором.</li>
+<li>Структурированная среда, визуальные расписания, работа с семьёй.</li>
+<li>Многие дети при поддержке получают образование и профессию, становятся самостоятельными.</li>
+</ul>
+</div></article>
+<article class="topic" id="t10" data-n="10">
+<header class="t-head"><span class="t-num">10</span><h3>Определите категории детей с разной степенью нарушения слуха. Взаимосвязь слуха и речи в развитии ребёнка</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<h4>Категории (по Л.В. Нейману, Р.М. Боскис)</h4>
+<ul>
+<li><b>Глухие</b> — стойкая двусторонняя потеря слуха, при которой речь самостоятельно не формируется (потеря свыше 80–90 дБ). Ранооглохшие — без речи, позднооглохшие — с сохранённой речью.</li>
+<li><b>Слабослышащие (тугоухие)</b> — частичная потеря слуха (I–IV степени, 26–80 дБ), речь развивается, но с недостатками.</li>
+<li><b>Позднооглохшие</b> — потерявшие слух, когда речь уже сформировалась.</li>
+</ul>
+<p>Также дети с кохлеарными имплантами — отдельная группа, требующая слухоречевой реабилитации.</p>
+<h4>Взаимосвязь слуха и речи</h4>
+<ul>
+<li>Речь ребёнок усваивает через подражание услышанному — слух является основой формирования речи.</li>
+<li>Потеря слуха в раннем возрасте ведёт к отсутствию или недоразвитию речи (вторичное нарушение — «глухонемота»).</li>
+<li>Недоразвитие речи тормозит словесно-логическое мышление, общение, развитие личности.</li>
+<li>Чем раньше выявлено нарушение и начата коррекция (слухопротезирование, имплантация, занятия с сурдопедагогом), тем лучше развивается речь.</li>
+</ul>
+</div></article>
+<article class="topic" id="t11" data-n="11">
+<header class="t-head"><span class="t-num">11</span><h3>Определите категории детей с разной степенью нарушения зрения. Какое влияние нарушения зрения оказывают на формирование личности ребёнка?</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<h4>Категории</h4>
+<ul>
+<li><b>Слепые (незрячие)</b> — тотальная слепота или острота зрения до 0,04 на лучшем глазу с коррекцией; ведущие анализаторы — осязание и слух; обучение по системе Брайля.</li>
+<li><b>Частично зрячие</b> — с остаточным зрением, позволяющим различать свет, контуры.</li>
+<li><b>Слабовидящие</b> — острота зрения 0,05–0,4 на лучшем глазу с коррекцией; обучение с опорой на зрение при особых условиях (крупный шрифт, освещение, оптика).</li>
+<li>Дети с косоглазием и амблиопией.</li>
+</ul>
+<h4>Влияние на формирование личности</h4>
+<ul>
+<li>Обеднение чувственного опыта, неточность и фрагментарность представлений, «вербализм» (знание слов без реальных образов).</li>
+<li>Ограничение движений и ориентировки в пространстве, задержка двигательного развития.</li>
+<li>Трудности в общении: недоступность мимики и жестов.</li>
+<li>Возможны пассивность, неуверенность, тревожность, зависимость от взрослых.</li>
+<li>При правильном воспитании формируются компенсаторные механизмы: развитые осязание, слух, память, речь; личность развивается полноценно.</li>
+</ul>
+</div></article>
+<article class="topic" id="t12" data-n="12">
+<header class="t-head"><span class="t-num">12</span><h3>Дети с нарушениями опорно-двигательного аппарата</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p>Дети с <b>НОДА</b> — группа детей с двигательными расстройствами разной природы и тяжести.</p>
+<h4>Основные группы</h4>
+<ul>
+<li>Заболевания нервной системы: <b>детский церебральный паралич</b> (около 90% случаев), последствия полиомиелита, спинномозговые травмы.</li>
+<li>Врождённые патологии ОДА: вывих бедра, кривошея, косолапость, аномалии конечностей, артрогрипоз.</li>
+<li>Приобретённые: травмы, сколиозы, остеомиелит, ревматоидный артрит, системные заболевания скелета.</li>
+</ul>
+<h4>Особенности</h4>
+<ul>
+<li>Двигательные нарушения разной степени: от лёгких до невозможности самостоятельного передвижения.</li>
+<li>При поражении мозга — нарушения речи, познавательной деятельности, эмоционально-волевой сферы.</li>
+<li>Ограничение жизненного опыта и общения, возможны неуверенность и зависимость.</li>
+</ul>
+<h4>Помощь</h4>
+<p>Комплексная: медицинская реабилитация (ЛФК, массаж, ортопедия), психолого-педагогическая коррекция, логопедия, доступная среда, технические средства реабилитации, обучение по адаптированным программам.</p>
+</div></article>
+<article class="topic" id="t13" data-n="13">
+<header class="t-head"><span class="t-num">13</span><h3>Раскройте сущность понятия «детский церебральный паралич». Каковы основные причины и направления работы по формированию двигательных функций, звукопроизношения, развитию познавательной деятельности у детей с ДЦП</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>ДЦП</b> — группа непрогрессирующих двигательных нарушений, возникающих вследствие поражения или недоразвития головного мозга в пренатальном, натальном или раннем постнатальном периоде. Двигательные расстройства часто сочетаются с нарушениями речи, интеллекта, зрения, слуха, судорогами.</p>
+<h4>Причины</h4>
+<p>Гипоксия плода и асфиксия в родах, внутриутробные инфекции, родовая травма, недоношенность, резус-конфликт, ядерная желтуха новорождённых, нейроинфекции и травмы в раннем возрасте.</p>
+<h4>Формы (по К.А. Семёновой)</h4>
+<p>Спастическая диплегия, двойная гемиплегия, гемипаретическая, гиперкинетическая, атонически-астатическая.</p>
+<h4>Направления работы</h4>
+<ul>
+<li><b>Двигательные функции</b>: ЛФК, массаж, ортопедические укладки и средства, формирование навыков удержания головы, сидения, ходьбы, развитие мелкой моторики и навыков самообслуживания.</li>
+<li><b>Звукопроизношение</b>: работа над дизартрией — нормализация мышечного тонуса артикуляционного аппарата, логопедический массаж, артикуляционная и дыхательная гимнастика, постановка и автоматизация звуков, развитие голоса.</li>
+<li><b>Познавательная деятельность</b>: развитие восприятия, пространственных представлений, внимания, памяти, мышления через предметно-практическую деятельность и игру; обучение по адаптированной программе.</li>
+<li>Работа ведётся <b>комплексно</b> (врач, логопед, дефектолог, психолог, инструктор ЛФК) и с участием семьи.</li>
+</ul>
+</div></article>
+<article class="topic" id="t14" data-n="14">
+<header class="t-head"><span class="t-num">14</span><h3>Дайте психолого-педагогическую классификацию речевых нарушений</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p>Классификация <b>Р.Е. Левиной</b> ориентирована на организацию обучения и коррекции. Нарушения делят на две группы:</p>
+<h4>1. Нарушения средств общения</h4>
+<ul>
+<li><b>Фонетико-фонематическое недоразвитие (ФФН)</b> — нарушения произношения и восприятия звуков при нормальном слухе и интеллекте (при дислалии, лёгкой дизартрии, ринолалии).</li>
+<li><b>Общее недоразвитие речи (ОНР)</b> — нарушены все компоненты речевой системы: звуковая сторона, лексика, грамматика. Уровни: I — общеупотребительной речи нет; II — начатки общеупотребительной речи; III — развёрнутая речь с элементами недоразвития; IV (по Т.Б. Филичевой) — лёгкие остаточные проявления.</li>
+</ul>
+<h4>2. Нарушения в применении средств общения</h4>
+<ul>
+<li><b>Заикание</b> — нарушение коммуникативной функции при сформированных средствах речи.</li>
+</ul>
+<p>Существует также <b>клинико-педагогическая</b> классификация: нарушения устной речи (дисфония, брадилалия, тахилалия, заикание, дислалия, ринолалия, дизартрия, алалия, афазия) и письменной (дислексия, дисграфия).</p>
+</div></article>
+<article class="topic" id="t15" data-n="15">
+<header class="t-head"><span class="t-num">15</span><h3>Раскройте сущность социальной и педагогической интеграции</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Интеграция</b> — процесс включения лиц с ОВЗ в общественную жизнь наравне со всеми.</p>
+<h4>Социальная интеграция</h4>
+<p>Включение человека с ОВЗ в общество: равный доступ к образованию, труду, медицине, культуре, транспорту; доступная среда; участие в общественной жизни; принятие обществом. Цель — самостоятельная и полноценная жизнь.</p>
+<h4>Педагогическая интеграция</h4>
+<p>Совместное обучение и воспитание детей с ОВЗ и нормально развивающихся сверстников. Формы:</p>
+<ul>
+<li><b>Комбинированная</b> — ребёнок учится в обычном классе при постоянной поддержке дефектолога.</li>
+<li><b>Частичная</b> — часть дня с обычными сверстниками, часть — в специальной группе.</li>
+<li><b>Временная</b> — совместные мероприятия (праздники, кружки).</li>
+<li><b>Полная</b> — обучение в обычном классе без специальной поддержки (для детей, близких к норме).</li>
+</ul>
+<p>Высшая ступень развития этих идей — <b>инклюзия</b>: не ребёнок приспосабливается к школе, а школа — к потребностям каждого ребёнка.</p>
+</div></article>
+<article class="topic" id="t16" data-n="16">
+<header class="t-head"><span class="t-num">16</span><h3>Определите специфику взаимодействия специалистов и семьи в воспитании ребёнка с ограниченными возможностями здоровья</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<ul>
+<li>Семья — <b>главный участник</b> реабилитации: ребёнок проводит в ней большую часть времени, а результат коррекции во многом зависит от родителей.</li>
+<li>Специалисты (врач, дефектолог, логопед, психолог, социальный педагог) работают <b>единой командой</b> и согласовывают действия с семьёй.</li>
+<li><b>Партнёрство</b>: родители — не пассивные исполнители, а равноправные участники, участвующие в составлении индивидуальной программы.</li>
+</ul>
+<h4>Направления работы с семьёй</h4>
+<ul>
+<li>Психологическая поддержка родителей: помощь в принятии диагноза, преодоление стресса, чувства вины, гиперопеки или отвержения.</li>
+<li>Просвещение: информирование о нарушении, правах, возможностях помощи.</li>
+<li>Обучение родителей приёмам коррекционной работы дома.</li>
+<li>Консультирование по выбору образовательного маршрута, социальным льготам.</li>
+<li>Включение в родительские клубы, группы поддержки.</li>
+</ul>
+<p>Формы: консультации, совместные занятия, домашние задания, тренинги, служба ранней помощи, домашнее визитирование.</p>
+</div></article>
+<article class="topic" id="t17" data-n="17">
+<header class="t-head"><span class="t-num">17</span><h3>Дайте характеристику системы специального образования в России</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p>Система специального образования — сеть учреждений и служб, обеспечивающих обучение, воспитание и коррекцию развития детей с ОВЗ. Правовая основа — <b>Федеральный закон «Об образовании в РФ» № 273-ФЗ</b> (ст. 79), ФГОС для обучающихся с ОВЗ и с умственной отсталостью.</p>
+<h4>Структура</h4>
+<ul>
+<li><b>Ранняя помощь</b>: службы ранней помощи, лекотеки, консультативные пункты.</li>
+<li><b>Дошкольное образование</b>: группы компенсирующей и комбинированной направленности в детских садах.</li>
+<li><b>Школьное образование</b>: отдельные (коррекционные) школы для разных категорий детей; отдельные классы в обычных школах; инклюзивное обучение; надомное и дистанционное обучение.</li>
+<li><b>Профессиональное образование</b>: колледжи и вузы с адаптированными программами, ресурсные учебно-методические центры.</li>
+<li><b>ПМПК и психолого-педагогические центры</b>, психолого-педагогические консилиумы в школах.</li>
+</ul>
+<h4>Основные принципы</h4>
+<p>Вариативность форм, обучение по адаптированным основным образовательным программам (АООП), создание специальных условий, право родителей выбирать форму обучения.</p>
+</div></article>
+<article class="topic" id="t18" data-n="18">
+<header class="t-head"><span class="t-num">18</span><h3>Раскройте сущность социальной адаптации детей с ОВЗ</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Социальная адаптация</b> — процесс приспособления ребёнка с ОВЗ к условиям социальной среды: усвоение норм, ролей, навыков жизни в обществе, способность жить максимально самостоятельно.</p>
+<h4>Компоненты</h4>
+<ul>
+<li><b>Бытовая</b> — навыки самообслуживания и ведения хозяйства.</li>
+<li><b>Коммуникативная</b> — умение общаться, строить отношения.</li>
+<li><b>Учебная</b> — включение в образовательный процесс.</li>
+<li><b>Профессиональная (трудовая)</b> — получение профессии, трудоустройство.</li>
+<li><b>Социально-психологическая</b> — самооценка, принятие себя, уверенность.</li>
+</ul>
+<h4>Условия успешной адаптации</h4>
+<ul>
+<li>Ранняя диагностика и коррекция, индивидуальная программа реабилитации и абилитации (ИПРА).</li>
+<li>Поддержка семьи и специалистов.</li>
+<li>Доступная среда, технические средства реабилитации.</li>
+<li>Инклюзивная образовательная и социальная среда, принятие сверстниками.</li>
+<li>Профориентация и сопровождаемое трудоустройство.</li>
+</ul>
+</div></article>
+<article class="topic" id="t19" data-n="19">
+<header class="t-head"><span class="t-num">19</span><h3>Семья как фактор компенсации ОВЗ</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<ul>
+<li>Семья — первая и главная среда развития ребёнка; от её позиции зависит, станет ли дефект причиной социальной недостаточности или будет компенсирован.</li>
+<li><b>Компенсация</b> — замещение или перестройка нарушенных функций за счёт сохранных; она идёт успешнее при постоянных занятиях, эмоциональной поддержке и правильном воспитании дома.</li>
+</ul>
+<h4>Как семья способствует компенсации</h4>
+<ul>
+<li>Принятие ребёнка, благоприятный эмоциональный климат.</li>
+<li>Ранняя помощь: своевременное обращение к специалистам, выполнение рекомендаций.</li>
+<li>Развивающая среда дома, занятия, игры, привлечение к быту и труду.</li>
+<li>Формирование самостоятельности, а не гиперопека.</li>
+<li>Социальные контакты: прогулки, общение со сверстниками, кружки.</li>
+</ul>
+<h4>Неблагоприятные типы воспитания</h4>
+<p><b>Гиперопека</b> (лишает самостоятельности), <b>отвержение</b> или эмоциональный холод, <b>гипоопека</b> (безнадзорность), авторитарное давление — тормозят компенсацию и ведут к вторичным нарушениям личности.</p>
+</div></article>
+<article class="topic" id="t20" data-n="20">
+<header class="t-head"><span class="t-num">20</span><h3>Дайте характеристику инклюзивного образования</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Инклюзивное образование</b> — обеспечение равного доступа к образованию для всех обучающихся с учётом разнообразия особых образовательных потребностей и индивидуальных возможностей (ст. 2 ФЗ № 273). Ребёнок с ОВЗ учится в обычном классе вместе со сверстниками.</p>
+<h4>Принципы</h4>
+<ul>
+<li>Ценность человека не зависит от его способностей.</li>
+<li>Каждый человек способен учиться; у каждого свои особые потребности.</li>
+<li>Не ребёнок подстраивается под систему, а система — под ребёнка.</li>
+<li>Разнообразие обогащает всех участников.</li>
+</ul>
+<h4>Условия</h4>
+<ul>
+<li>Адаптированная образовательная программа и индивидуальный учебный план.</li>
+<li>Специалисты сопровождения: тьютор, дефектолог, логопед, психолог, ассистент.</li>
+<li>Безбарьерная среда, специальное оборудование и учебники.</li>
+<li>Подготовка педагогов, работа с родителями и одноклассниками.</li>
+</ul>
+<h4>Плюсы и трудности</h4>
+<p>Плюсы: социализация, развитие толерантности у всех детей. Трудности: нехватка специалистов, неготовность педагогов и среды, большие классы.</p>
+</div></article>
+<article class="topic" id="t21" data-n="21">
+<header class="t-head"><span class="t-num">21</span><h3>Эволюция отношения к лицам, имеющим отклонения в развитии</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p>Периодизация <b>Н.Н. Малофеева</b> — пять периодов отношения общества и государства к людям с нарушениями:</p>
+<ol>
+<li><b>От агрессии и нетерпимости к осознанию необходимости призрения</b> (от древности до XII в.): умерщвление младенцев с дефектами (Спарта), отчуждение; первые приюты при монастырях.</li>
+<li><b>От осознания необходимости призрения к осознанию возможности обучения</b> (XII–XVIII вв.): создание приютов и богаделен, первые опыты обучения глухих и слепых.</li>
+<li><b>От осознания возможности к осознанию необходимости обучения</b> (XVIII–начало XX в.): первые специальные школы для глухих (Париж, 1770, де л’Эпе) и слепых (1784, В. Гаюи), в России — Павловское училище глухонемых (1806).</li>
+<li><b>От осознания необходимости обучения части детей к пониманию необходимости специального образования для всех</b> (начало XX в. — 1970-е): создание государственной системы специального образования, дифференциация видов школ.</li>
+<li><b>От равных прав к равным возможностям, от «институализации» к интеграции</b> (с 1970-х): признание прав инвалидов, интеграция и инклюзия.</li>
+</ol>
+</div></article>
+<article class="topic" id="t22" data-n="22">
+<header class="t-head"><span class="t-num">22</span><h3>Инклюзивное образование</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Инклюзия</b> (от англ. <i>inclusion</i> — включение) — процесс совместного обучения детей с ОВЗ и без них, при котором образовательная система меняется под потребности каждого ученика.</p>
+<h4>Отличие от интеграции</h4>
+<div class="tbl"><table><thead><tr><th>Интеграция</th><th>Инклюзия</th></tr></thead><tbody>
+<tr><td>Ребёнок приспосабливается к школе</td><td>Школа приспосабливается к ребёнку</td></tr>
+<tr><td>Включают тех, кто «готов»</td><td>Включают всех</td></tr>
+<tr><td>Фокус на дефекте</td><td>Фокус на возможностях и потребностях</td></tr>
+</tbody></table></div>
+<h4>Модели инклюзии</h4>
+<ul>
+<li>Полная — обучение в классе весь день с сопровождением.</li>
+<li>Частичная — часть занятий в классе, часть индивидуально.</li>
+<li>Ресурсный класс — для детей с РАС и другими сложными нарушениями.</li>
+</ul>
+<h4>Правовая база</h4>
+<p>Конвенция ООН о правах инвалидов (ст. 24), Саламанкская декларация (1994), ФЗ «Об образовании в РФ» № 273-ФЗ, ФГОС для обучающихся с ОВЗ.</p>
+<h4>Участники</h4>
+<p>Педагог, тьютор, дефектолог, логопед, психолог, родители, ПМПк школы.</p>
+</div></article>
+<article class="topic" id="t23" data-n="23">
+<header class="t-head"><span class="t-num">23</span><h3>Международные документы о правах ребёнка и правах инвалидов</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<ul>
+<li><b>Всеобщая декларация прав человека</b> (ООН, 1948) — равенство прав всех людей, право на образование.</li>
+<li><b>Декларация прав ребёнка</b> (1959) — право ребёнка с физическими и умственными недостатками на особый режим, образование и заботу.</li>
+<li><b>Декларация о правах умственно отсталых лиц</b> (1971) и <b>Декларация о правах инвалидов</b> (1975).</li>
+<li><b>Конвенция ООН о правах ребёнка</b> (1989; СССР ратифицировал в 1990) — ст. 23: неполноценный ребёнок должен вести полноценную жизнь в условиях, обеспечивающих достоинство и активное участие в обществе.</li>
+<li><b>Стандартные правила обеспечения равных возможностей для инвалидов</b> (1993).</li>
+<li><b>Саламанкская декларация</b> (ЮНЕСКО, 1994) — о принципах инклюзивного образования.</li>
+<li><b>Конвенция ООН о правах инвалидов</b> (2006; Россия ратифицировала в 2012) — недискриминация, доступность, инклюзивное образование (ст. 24), право на труд и независимую жизнь.</li>
+</ul>
+</div></article>
+<article class="topic" id="t24" data-n="24">
+<header class="t-head"><span class="t-num">24</span><h3>Отечественные документы о правах ребёнка и правах инвалидов</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<ul>
+<li><b>Конституция РФ</b> (1993) — равенство прав, право на образование, социальное обеспечение, охрану здоровья.</li>
+<li><b>ФЗ № 181-ФЗ «О социальной защите инвалидов в Российской Федерации»</b> (1995) — понятие инвалидности, реабилитация и абилитация, ИПРА, доступная среда, льготы.</li>
+<li><b>ФЗ № 124-ФЗ «Об основных гарантиях прав ребёнка в РФ»</b> (1998).</li>
+<li><b>ФЗ № 273-ФЗ «Об образовании в Российской Федерации»</b> (2012) — понятия «обучающийся с ОВЗ», «инклюзивное образование», «адаптированная образовательная программа», ст. 79 — организация образования для детей с ОВЗ.</li>
+<li><b>ФЗ № 323-ФЗ «Об основах охраны здоровья граждан в РФ»</b> (2011).</li>
+<li><b>Семейный кодекс РФ</b> — права ребёнка в семье.</li>
+<li><b>ФГОС</b> начального общего образования обучающихся с ОВЗ и ФГОС для обучающихся с умственной отсталостью (2014).</li>
+<li>Государственная программа <b>«Доступная среда»</b>.</li>
+</ul>
+</div></article>
+<article class="topic" id="t25" data-n="25">
+<header class="t-head"><span class="t-num">25</span><h3>Методологические основы дефектологии. Основные научные теории</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p>Методология дефектологии опирается на философские, психологические и медико-биологические положения о развитии человека.</p>
+<h4>Основные теории</h4>
+<ul>
+<li><b>Культурно-историческая теория Л.С. Выготского</b>: структура дефекта (первичный и вторичные нарушения), социальная природа вторичных отклонений, единство закономерностей нормального и аномального развития, учение о <b>зоне ближайшего развития</b>, идея компенсации и социальной реабилитации.</li>
+<li><b>Учение о компенсации</b> (И.П. Павлов, П.К. Анохин — теория функциональных систем): высшая нервная деятельность пластична, нарушенные функции могут восстанавливаться или замещаться.</li>
+<li><b>Теория деятельности</b> (А.Н. Леонтьев) — развитие психики в деятельности.</li>
+<li><b>Концепция дизонтогенеза</b> (Г.Е. Сухарева, В.В. Лебединский).</li>
+<li>Положение о <b>единстве биологического и социального</b> в развитии.</li>
+<li>Гуманистический подход: ценность личности, права человека, инклюзия.</li>
+</ul>
+</div></article>
+<article class="topic" id="t26" data-n="26">
+<header class="t-head"><span class="t-num">26</span><h3>Причины и механизмы отклонений в развитии. Экзогенные и эндогенные факторы. Наследственные заболевания</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<h4>Эндогенные (внутренние) факторы</h4>
+<ul>
+<li>Генные мутации и хромосомные аномалии.</li>
+<li>Наследственные болезни обмена веществ.</li>
+<li>Несовместимость крови матери и плода (резус-конфликт).</li>
+</ul>
+<h4>Экзогенные (внешние) факторы</h4>
+<ul>
+<li><b>Биологические</b>: внутриутробные инфекции, интоксикации, гипоксия, родовые травмы, недоношенность, нейроинфекции и черепно-мозговые травмы после рождения.</li>
+<li><b>Социальные</b>: депривация (недостаток общения, заботы), педагогическая запущенность, психотравмы.</li>
+</ul>
+<h4>Механизмы</h4>
+<p>Поражение или недоразвитие ЦНС и анализаторов → первичный дефект → вторичные отклонения в процессе развития. Тяжесть зависит от времени, силы, длительности воздействия и локализации поражения.</p>
+<h4>Наследственные заболевания</h4>
+<ul>
+<li><b>Хромосомные</b>: синдром Дауна (трисомия 21), Шерешевского–Тёрнера (45,X0), Клайнфельтера (47,XXY), синдром «кошачьего крика».</li>
+<li><b>Генные</b>: фенилкетонурия, галактоземия, муковисцидоз, синдром ломкой X-хромосомы, миопатия Дюшенна, наследственные формы глухоты и слепоты.</li>
+<li>Профилактика: медико-генетическое консультирование, пренатальная диагностика, неонатальный скрининг.</li>
+</ul>
+</div></article>
+<article class="topic" id="t27" data-n="27">
+<header class="t-head"><span class="t-num">27</span><h3>Особые образовательные потребности лиц с ОВЗ и инвалидов</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Особые образовательные потребности</b> — потребности в условиях обучения, без которых ребёнок с ОВЗ не может освоить образовательную программу (понятие из ФГОС).</p>
+<h4>Общие для всех категорий</h4>
+<ul>
+<li>Раннее выявление нарушения и начало специального обучения.</li>
+<li>Адаптированная образовательная программа, индивидуальный темп обучения.</li>
+<li>Специальные методы, приёмы и средства обучения.</li>
+<li>Коррекционные занятия (логопед, дефектолог, психолог).</li>
+<li>Особая организация среды, доступность.</li>
+<li>Сопровождение тьютором или ассистентом при необходимости.</li>
+<li>Участие семьи, продолжение образования после школы.</li>
+</ul>
+<h4>Специфические (примеры)</h4>
+<ul>
+<li>Слепые — шрифт Брайля, тифлотехника; слабовидящие — крупный шрифт, освещение.</li>
+<li>Глухие — жестовая речь, слуховые аппараты, развитие слухового восприятия.</li>
+<li>НОДА — безбарьерная среда, технические средства, адаптированная мебель.</li>
+<li>РАС — структурированная среда, визуальная поддержка.</li>
+</ul>
+</div></article>
+<article class="topic" id="t28" data-n="28">
+<header class="t-head"><span class="t-num">28</span><h3>Содержание работы ПМПК — психолого-медико-педагогической комиссии</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>ПМПК</b> — орган, который проводит комплексное обследование детей, определяет наличие особенностей развития и рекомендует условия обучения. Деятельность регулируется приказом Минпросвещения (Положение о ПМПК).</p>
+<h4>Состав</h4>
+<p>Педагог-психолог, учитель-дефектолог (олигофренопедагог, тифлопедагог, сурдопедагог), учитель-логопед, социальный педагог, врачи (педиатр, невролог, психиатр, офтальмолог, оториноларинголог, ортопед).</p>
+<h4>Основные функции</h4>
+<ul>
+<li>Комплексное психолого-медико-педагогическое обследование детей от 0 до 18 лет.</li>
+<li>Определение статуса «ребёнок с ОВЗ».</li>
+<li>Рекомендации по образовательной программе, форме и специальным условиям обучения (в том числе для ГИА).</li>
+<li>Консультирование родителей и педагогов.</li>
+<li>Учёт детей с ОВЗ, участие в разработке ИПРА.</li>
+</ul>
+<p>Заключение ПМПК носит <b>рекомендательный</b> характер для родителей, но обязательно для образовательных организаций, если родители его предоставили.</p>
+</div></article>
+<article class="topic" id="t29" data-n="29">
+<header class="t-head"><span class="t-num">29</span><h3>ПМПК. Общие принципы проведения диагностики детей с разными видами отклонений</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<h4>Принципы диагностики (по В.И. Лубовскому и др.)</h4>
+<ul>
+<li><b>Комплексность</b> — обследование разными специалистами (медицинское, психологическое, педагогическое, логопедическое).</li>
+<li><b>Целостность и системность</b> — изучение всех сторон развития во взаимосвязи, выявление структуры дефекта.</li>
+<li><b>Динамичность</b> — изучение ребёнка в развитии, повторные обследования.</li>
+<li><b>Качественный анализ</b> — важен не только результат, но и способ выполнения задания, характер ошибок.</li>
+<li><b>Учёт зоны ближайшего развития</b> — оценка обучаемости: как ребёнок принимает и использует помощь.</li>
+<li><b>Учёт возрастных и индивидуальных особенностей</b>, использование доступных ребёнку заданий и способов ответа.</li>
+<li><b>Гуманность</b>: щадящая обстановка, согласие родителей, конфиденциальность.</li>
+</ul>
+<h4>Этапы</h4>
+<ol>
+<li>Изучение документации и анамнеза, беседа с родителями.</li>
+<li>Обследование специалистами.</li>
+<li>Коллегиальное обсуждение и заключение с рекомендациями.</li>
+</ol>
+</div></article>
+<article class="topic" id="t30" data-n="30">
+<header class="t-head"><span class="t-num">30</span><h3>Этические основы специального сопровождения</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p><b>Специальное сопровождение</b> — комплексная помощь ребёнку с ОВЗ и его семье специалистами. Оно строится на этических принципах:</p>
+<ul>
+<li><b>Гуманизм</b> — признание ценности личности независимо от нарушения.</li>
+<li><b>Уважение достоинства</b>, недопустимость унижения, жалости, стигматизации.</li>
+<li><b>Конфиденциальность</b> — сохранение тайны диагноза и сведений о семье.</li>
+<li><b>Добровольность и информированное согласие</b> родителей (законных представителей).</li>
+<li><b>Защита интересов ребёнка</b> — приоритет его благополучия.</li>
+<li><b>Принцип «не навреди»</b>, профессиональная компетентность.</li>
+<li><b>Партнёрство</b> с семьёй и уважение её выбора.</li>
+<li>Опора на возможности, а не на дефект; поддержка самостоятельности.</li>
+<li>Корректное использование терминов («ребёнок с ОВЗ», а не «инвалид», «дефективный»).</li>
+</ul>
+</div></article>
+<article class="topic" id="t31" data-n="31">
+<header class="t-head"><span class="t-num">31</span><h3>Правовые основы социальной защиты инвалидов</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<p>Основной закон — <b>ФЗ № 181-ФЗ «О социальной защите инвалидов в РФ»</b> (1995).</p>
+<h4>Ключевые понятия</h4>
+<ul>
+<li><b>Инвалид</b> — лицо с нарушением здоровья со стойким расстройством функций организма, приводящим к ограничению жизнедеятельности и необходимости социальной защиты.</li>
+<li>Инвалидность устанавливает <b>медико-социальная экспертиза (МСЭ)</b>: I, II, III группы; детям до 18 лет — категория «ребёнок-инвалид».</li>
+<li><b>Реабилитация и абилитация</b>, индивидуальная программа реабилитации или абилитации (<b>ИПРА</b>).</li>
+</ul>
+<h4>Меры социальной защиты</h4>
+<ul>
+<li>Пенсии и ежемесячные денежные выплаты, социальные услуги.</li>
+<li>Обеспечение техническими средствами реабилитации, лекарствами, санаторно-курортным лечением.</li>
+<li>Доступная среда (пандусы, транспорт, информация).</li>
+<li>Право на образование, квоты при трудоустройстве и поступлении в вузы.</li>
+<li>Льготы по жилью, налогам, оплате услуг ЖКХ.</li>
+</ul>
+<p>Также: Конституция РФ, Конвенция ООН о правах инвалидов, ФЗ № 273 и № 323, государственная программа «Доступная среда».</p>
+</div></article>
+<article class="topic" id="t32" data-n="32">
+<header class="t-head"><span class="t-num">32</span><h3>Роль врача-педиатра в социокультурной адаптации лиц с ограниченными возможностями жизнедеятельности и здоровья</h3>
+<button class="done" type="button" aria-pressed="false" title="Отметить как выученное"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Выучено</span></button></header>
+<div class="t-body">
+<ul>
+<li><b>Раннее выявление</b> нарушений: неонатальный и аудиологический скрининг, профилактические осмотры, оценка нервно-психического развития, своевременное направление к специалистам.</li>
+<li><b>Профилактика</b>: работа с беременными и семьёй, вакцинация, профилактика вторичных осложнений.</li>
+<li><b>Лечение и медицинская реабилитация</b>, диспансерное наблюдение, координация работы узких специалистов.</li>
+<li>Направление на <b>медико-социальную экспертизу</b>, участие в разработке ИПРА.</li>
+<li>Направление на <b>ПМПК</b> и в службы ранней помощи, взаимодействие с педагогами и психологами.</li>
+<li><b>Работа с семьёй</b>: информирование о диагнозе и прогнозе, психологическая поддержка, обучение уходу, разъяснение прав и льгот.</li>
+<li>Рекомендации по выбору образовательного учреждения, режима, физической активности, профориентации.</li>
+<li>Этичное отношение к ребёнку и семье, формирование у родителей веры в возможности ребёнка.</li>
+</ul>
+<p>Педиатр — первый и постоянный специалист рядом с семьёй, поэтому от него во многом зависит, будет ли помощь <b>ранней и комплексной</b>.</p>
+</div></article>
+</section>
+    <p class="empty" id="empty">Ничего не найдено — попробуйте другое слово.</p>
+  </main>
+
+  <footer>
+    <span>Конспекты к зачёту по основам дефектологии · СГМУ</span>
+    <a href="https://t.me/oapwso">По вопросам и сотрудничеству — @oapwso</a>
+  </footer>
+</div>
+
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Схема"><img alt=""><p></p></div>
+
+<script>
+(function(){
+  var KEY='defect-done-v1', done={};
+  try{ done=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ done={}; }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(done)); }catch(e){} }
+  var topics=[].slice.call(document.querySelectorAll('.topic'));
+  var links={}; [].forEach.call(document.querySelectorAll('#nums a'), function(a){ links[a.dataset.n]=a; });
+  var total=topics.length;
+  function paint(){
+    var c=0;
+    topics.forEach(function(t){
+      var n=t.dataset.n, on=!!done[n]; if(on && t.closest('.group').dataset.tab===(typeof tab==='string'?tab:'a')) c++;
+      t.classList.toggle('is-done', on);
+      var b=t.querySelector('.done'); b.setAttribute('aria-pressed', on?'true':'false');
+      b.querySelector('span').textContent= on?'Выучено ✓':'Выучено';
+      links[n].classList.toggle('ok', on);
+    });
+    document.getElementById('bar').style.width=(c/total*100)+'%';
+    document.getElementById('pcount').textContent=c+' из '+total+' выучено';
+  }
+  topics.forEach(function(t){
+    t.querySelector('.done').addEventListener('click', function(){
+      var n=t.dataset.n; if(done[n]) delete done[n]; else done[n]=1; save(); paint();
+    });
+    var body=t.querySelector('.t-body'); body.dataset.orig=body.innerHTML;
+    t.dataset.text=(t.querySelector('h3').textContent+' '+body.textContent).toLowerCase().replace(/ё/g,'е');
+  });
+  paint();
+
+  // вкладки: 1 контроль / 2 контроль / зачёт
+  var TKEY='defect-tab', tab='a';
+  
+  var tabBtns=[].slice.call(document.querySelectorAll('.tabs button'));
+  function setTab(t, keepScroll){
+    tab=t; try{ localStorage.setItem(TKEY,t); }catch(e){}
+    tabBtns.forEach(function(b){ b.setAttribute('aria-selected', b.dataset.tab===t?'true':'false'); });
+    var searching=document.getElementById('q').value.trim();
+    document.querySelectorAll('.group').forEach(function(g){ g.classList.toggle('off', !searching && g.dataset.tab!==t); });
+    [].forEach.call(document.querySelectorAll('#nums a'), function(a){ a.classList.toggle('off', !searching && a.dataset.tab!==t); });
+    total=document.querySelectorAll('.group[data-tab="'+t+'"] .topic').length; paint();
+    if(!keepScroll) window.scrollTo(0, document.querySelector('.nav').offsetTop);
+  }
+  tabBtns.forEach(function(b){ b.addEventListener('click', function(){ setTab(b.dataset.tab); }); });
+  var h=location.hash.slice(1); if(h){ var el=document.getElementById(h); if(el){ var g=el.closest('.group'); if(g) tab=g.dataset.tab; } }
+  setTab(tab, true);
+
+  // текущая тема в навигации
+  var cur=null;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){
+      if(cur) cur.classList.remove('cur'); cur=links[e.target.dataset.n]; cur.classList.add('cur');
+      var box=document.getElementById('nums'); var l=cur.offsetLeft-box.clientWidth/2+cur.clientWidth/2; box.scrollTo({left:l, behavior:'smooth'});
+    }});
+  },{rootMargin:'-120px 0px -60% 0px'});
+  topics.forEach(function(t){ io.observe(t); });
+
+  // поиск
+  function escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+  function highlight(node, re){
+    if(node.nodeType===3){
+      var s=node.nodeValue, norm=s.replace(/ё/g,'е').replace(/Ё/g,'Е'); re.lastIndex=0;
+      if(!re.test(norm)) return; re.lastIndex=0;
+      var frag=document.createDocumentFragment(), last=0, m;
+      while((m=re.exec(norm))){ frag.appendChild(document.createTextNode(s.slice(last,m.index)));
+        var mk=document.createElement('mark'); mk.textContent=s.slice(m.index,m.index+m[0].length); frag.appendChild(mk); last=m.index+m[0].length; if(!m[0].length) break; }
+      frag.appendChild(document.createTextNode(s.slice(last))); node.parentNode.replaceChild(frag,node); return;
+    }
+    if(node.nodeType===1 && !/^(MARK|SCRIPT|IMG|BUTTON)$/.test(node.tagName)) [].slice.call(node.childNodes).forEach(function(c){ highlight(c,re); });
+  }
+  var timer;
+  document.getElementById('q').addEventListener('input', function(){
+    clearTimeout(timer); var v=this.value; timer=setTimeout(function(){ run(v); },120);
+  });
+  function run(v){
+    var q=v.trim().toLowerCase().replace(/ё/g,'е'), any=false;
+    var re=q? new RegExp(escRe(q),'gi'):null;
+    topics.forEach(function(t){
+      var body=t.querySelector('.t-body'); body.innerHTML=body.dataset.orig;
+      var h=t.querySelector('h3'); h.innerHTML=h.textContent;
+      var hit=!q || t.dataset.text.indexOf(q)>=0;
+      t.classList.toggle('hidden', !hit); links[t.dataset.n].classList.toggle('hide', !hit);
+      if(hit){ any=true; if(re){ highlight(body,re); highlight(h,re); } }
+    });
+    document.querySelectorAll('.group').forEach(function(g){ g.classList.toggle('hidden', !g.querySelector('.topic:not(.hidden)')); });
+    setTab(tab, true);
+    document.getElementById('empty').style.display= any?'none':'block';
+    rebind();
+  }
+
+  // свернуть до вопросов
+  var col=document.getElementById('collapse');
+  col.addEventListener('click', function(){
+    var on=!document.body.classList.contains('collapsed');
+    document.body.classList.toggle('collapsed', on); col.setAttribute('aria-pressed', on?'true':'false');
+    col.innerHTML= on? 'Показать<span class="long"> ответы</span>' : 'Свернуть<span class="long"> ответы</span>';
+  });
+
+  // лайтбокс
+  var lb=document.getElementById('lb'), lbImg=lb.querySelector('img'), lbCap=lb.querySelector('p'), opener=null;
+  function rebind(){
+    [].forEach.call(document.querySelectorAll('.zoom'), function(b){
+      b.onclick=function(){ opener=b; var im=b.querySelector('img'); lbImg.src=im.src; lbImg.alt=im.alt;
+        lbCap.textContent=b.parentNode.querySelector('figcaption').textContent; lb.classList.add('open'); lb.tabIndex=-1; lb.focus(); };
+    });
+  }
+  rebind();
+  function close(){ lb.classList.remove('open'); if(opener) opener.focus(); }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && lb.classList.contains('open')) close(); });
+})();
+</script>
+<script src="../assets/promo.js?v=7"></script>
+</body>
+</html>
