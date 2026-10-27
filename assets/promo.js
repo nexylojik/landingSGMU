@@ -19,41 +19,23 @@
      без текста и логотипов на самом фото — текст и кнопку сайт накладывает сам;
      главное держи в верхних 55% кадра: нижнюю часть закрывает затемнение с текстом;
      другая пропорция не сплющится, но обрежется по краям.
-   Свои карточки (HOUSES) показываются всегда: первая — всегда первой на лендинге,
-   на втором месте по очереди вторая и карточки партнёров.
-   Шторка снизу (SHEET): при заходе — канал сайта в Telegram (кнопка «Я подписался» убирает его насовсем),
-   через 20 минут и через час — вакансия by.studio. */
+   На лендинге — до двух карточек из HOUSES и партнёров по очереди; если их нет — «Место для рекламы».
+   Шторка снизу (SHEET): при заходе — канал сайта в Telegram (кнопка «Я подписался» убирает его насовсем). */
 (function(){
   'use strict';
-  var HOUSES = [
-    { id: 'bystudio', tag: 'Вакансия · by.studio',
-      title: 'Работа, которую можно делать на парах',
-      text: 'Дизайн-студия by.studio ищет тех, кто хочет зарабатывать и учиться: переписка с клиентами, обучение, процент со сделок.',
-      cta: 'Связаться', url: 'https://t.me/oapwso', card: true, img: 'promo/hire.jpg' },
-    { id: 'bystudio-works', tag: 'by.studio · портфолио',
-      title: 'Посмотри, с кем будешь работать',
-      text: '16 запущенных продуктов, 30M+ охвата, клиенты — Telegram и UFC. Пиши для работы.',
-      cta: 'Наши работы', url: 'https://www.hakowsky.com', cta2: 'Связаться', url2: 'https://t.me/oapwso', card: true, light: true, img: 'promo/works.jpg' }
-  ];
+  var HOUSES = [];
   var ADS = [
     // { id:'partner1', tag:'Реклама · ИП Иванов', title:'…', text:'…', cta:'Подробнее', url:'https://…', erid:'…', until:'2026-12-31', card:true },
   ];
   var VACANT = { id: 'vacant', tag: 'Место для рекламы', title: 'Здесь может быть ваша реклама',
     text: 'Тренажёрами пользуются студенты СГМУ каждый день. Расскажите о своём проекте здесь.',
     cta: 'Перейти', url: 'https://t.me/oapwso', img: 'promo/vacant.jpg' };
-  // шторка: при заходе, через 20 мин и через час — по тексту на каждый показ
-  var hire = HOUSES[0];
-  function hireAs(title, text){ var o = {}; for(var k in hire) o[k] = hire[k]; o.title = title; o.text = text; return o; }
   var TG = { id: 'tg', tag: 'Telegram · канал сайта', title: 'Подпишись на канал сайта',
     text: 'Новые тесты, атласы и исправления ответов — сразу в Telegram, чтобы не пропустить перед зачётом.',
     cta: 'Подписаться', url: 'https://t.me/landingSGMU', done: 'Я подписался', img: 'promo/tg.jpg' };
   var TG_DONE = 'promo-tg-done';   // localStorage: нажал «Я подписался» — шторку канала больше не показываем
-  var SHEET = [
-    TG,
-    hire,
-    hireAs('Час за учёбой. Следующий может приносить деньги', 'Аутрич для by.studio: пишешь клиентам — получаешь процент со сделок. Всему научим.')
-  ];
-  var SHOW_AT = [4, 20 * 60, 60 * 60];   // секунды на сайте за визит: при заходе, через 20 мин и через час
+  var SHEET = [TG];
+  var SHOW_AT = [4];   // секунды на сайте за визит: при заходе
 
   var BASE = (document.currentScript && document.currentScript.src || '').replace(/[^\/]*$/, '');
   function imgUrl(a){ return !a.img ? '' : (/^(https?:)?\/\//.test(a.img) ? a.img : BASE + a.img); }
@@ -142,12 +124,11 @@
     if(spot && spot !== block) spot.parentNode.insertBefore(block, spot);
   }
   document.querySelectorAll('[data-promo-slot="cards"]').forEach(function(box){
-    var pool = HOUSES.slice(1).concat(partners).filter(function(a){ return a.card; });
+    var pool = HOUSES.concat(partners).filter(function(a){ return a.card; });
     var r = +ls('promo-card-rot') || 0;
-    var second = pool.length ? pool[r % pool.length] : VACANT;
-    if(pool.length > 1) ls('promo-card-rot', String(r + 1));
-    box.innerHTML = photoCard(HOUSES[0], 'card') + photoCard(second, 'card');
-    var shownAds = [HOUSES[0], second];
+    var shownAds = pool.length ? [pool[r % pool.length]] : [VACANT];
+    if(pool.length > 1){ shownAds.push(pool[(r + 1) % pool.length]); ls('promo-card-rot', String(r + 1)); }
+    box.innerHTML = shownAds.map(function(a){ return photoCard(a, 'card'); }).join('');
     box.querySelectorAll('.promo-card').forEach(function(c, i){
       var ad = shownAds[i]; c.classList.add('card');
       c.addEventListener('click', function(){ track('promo_click', ad, 'card'); });
@@ -172,7 +153,7 @@
     if(lastFocus && lastFocus.focus) try{ lastFocus.focus({preventScroll: true}); }catch(e){}
   }
   function open(n){
-    var a = SHEET[n] || hire; sheetAd = a;
+    var a = SHEET[n]; sheetAd = a;
     lastFocus = document.activeElement;
     sheet = document.createElement('aside');
     sheet.className = 'promo-sheet'; sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-label', a.tag);
